@@ -22,3 +22,15 @@ Content-Type: application/json
 
 {
 }
+
+### Added User
+POST http://localhost:9100/login/add
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "1234",
+  "role": {
+    "roleId": 100001
+  }
+}

@@ -14,5 +14,6 @@ public interface EmployeeService {
 
     User performLogin(User user);
     User changePassword(User user);
+    User addUser(User user);
 
 }

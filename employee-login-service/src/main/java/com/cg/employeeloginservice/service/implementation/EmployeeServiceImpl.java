@@ -39,4 +39,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public User changePassword(User user) {
         return null;
     }
+
+    @Override
+    public User addUser(User user) {
+        employeeRepository.saveAndFlush(user);
+        return employeeRepository.findById(user.getEmpId()).get();
+    }
 }

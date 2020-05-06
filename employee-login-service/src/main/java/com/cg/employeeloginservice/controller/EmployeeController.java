@@ -25,4 +25,10 @@ public class EmployeeController {
         return new ResponseEntity<User>(loggedInUser, HttpStatus.OK);
     }
 
+    @PostMapping("/login/add")
+    public ResponseEntity<User> addUser(@RequestBody User user){
+        User addedUser = employeeService.addUser(user);
+        return new ResponseEntity<>(addedUser, HttpStatus.OK);
+    }
+
 }
