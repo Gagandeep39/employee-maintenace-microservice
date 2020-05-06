@@ -1,0 +1,24 @@
+### Perform Login - Correct data
+POST http://localhost:9100/login
+Content-Type: application/json
+
+{
+  "username": "gagan",
+  "password": "123456"
+ }
+
+### Wrong Username
+POST http://localhost:9100/login
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "1234"
+}
+
+### Completely Wrong data
+POST http://localhost:9100/login
+Content-Type: application/json
+
+{
+}
