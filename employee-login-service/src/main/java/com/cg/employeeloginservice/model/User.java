@@ -36,8 +36,9 @@ public class User {
     @Column(name = "password", length = 20)
     private String password;
 
-    @Column(name = "role", length = 20)
-    private String role;
+    @ManyToOne
+    @JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "FK_role_id"))
+    private Role role;
 
     @JsonManagedReference
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
