@@ -85,7 +85,7 @@ INSERT INTO address (emp_id, area, city, pincode, state) VALUES (100008,'West Fo
 INSERT INTO user_master (user_id, password, role_id, username) VALUES (100009,'123456',100003,'hareem');
 INSERT INTO emp_details (emp_id, date_of_birth, date_of_joining, designation, email, first_name, gender,
 last_name, manager_id, marital_status, phoneno, dept_id, emp_basic, emp_grade) VALUES (100009,'1968-10-30','1984-11-26','AssistantDeveloper','hareem@mail.com',
-'Hareem','M','Dunkley',100002,'Separated','7555590931',100005,3600000,'M7');
+'Hareem','M','Dunkley',100002,'Divorced','7555590931',100005,3600000,'M7');
 INSERT INTO address (emp_id, area, city, pincode, state) VALUES (100009,'Thompson Drive','Oakland','94612','California');
 
 
