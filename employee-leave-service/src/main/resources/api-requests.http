@@ -1,1 +1,6 @@
 
+### Fetch Manager Leaves
+GET http://localhost:9300/leaves/employee/100001
+
+### Fetch Manager Leaves
+GET http://localhost:9300/leaves/manager/100001

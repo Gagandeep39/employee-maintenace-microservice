@@ -1,8 +1,8 @@
 server:
-  port: 9200
+  port: 9300
 spring:
   profiles:
-    active: prod
+    active: dev
   application:
     name: employee-maintenance-service
 
