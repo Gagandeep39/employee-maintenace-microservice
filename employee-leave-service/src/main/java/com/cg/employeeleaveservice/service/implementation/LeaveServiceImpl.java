@@ -1,6 +1,7 @@
 package com.cg.employeeleaveservice.service.implementation;
 
 import com.cg.employeeleaveservice.enums.LeaveStatus;
+import com.cg.employeeleaveservice.exception.LeaveNotFoundException;
 import com.cg.employeeleaveservice.model.LeaveHistory;
 import com.cg.employeeleaveservice.repository.LeaveHistoryRepository;
 import com.cg.employeeleaveservice.service.LeaveService;
@@ -36,7 +37,7 @@ public class LeaveServiceImpl implements LeaveService {
     @Override
     public LeaveHistory updateLeave(LeaveHistory leaveHistory) {
         Optional<LeaveHistory> container = leaveHistoryRepository.findById(leaveHistory.getLeaveId());
-        container.orElseThrow(() -> new RuntimeException("Leave not found"));
+        container.orElseThrow(() -> new LeaveNotFoundException("Leave not found"));
         LeaveHistory tempHistory = container.get();
         if (tempHistory.getLeaveStatus()== LeaveStatus.Approved)
             throw new RuntimeException("Leave Already Approved");
