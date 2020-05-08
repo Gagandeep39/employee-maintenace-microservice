@@ -7,7 +7,7 @@ spring:
     platform: MYSQL
     # Not required as we dont need to initialize dummy data in persistant database
     # Uncomment this when the database is recreated so dummy data is added. Comment it afterwards
-    initialization-mode: always
+    # initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: update

@@ -16,7 +16,7 @@ spring:
     # Enables execution of data-h2.sql script
     # No data initialization required as this is not primary microservice
     # Uncomment this to load data (To test this service individually)
-    # platform: h2
+    platform: h2
   jpa:
     hibernate:
       ddl-auto: update
