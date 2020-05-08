@@ -61,7 +61,7 @@ public class EmployeeDetails {
     @JoinColumn(name = "dept_id", foreignKey = @ForeignKey(name = "FK_DEPT_ID"))
     private Department department;
 
-    @OneToOne(mappedBy = "employeeDetails")
+    @OneToOne(mappedBy = "employeeDetails", cascade = CascadeType.ALL)
     private Address address;
 
     @OneToOne
