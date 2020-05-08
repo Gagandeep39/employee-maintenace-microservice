@@ -23,9 +23,8 @@ import java.util.List;
 public interface EmployeeDetailsRepository extends JpaRepository<EmployeeDetails, Integer> {
 
     Page<EmployeeDetails> findByGenderIn(Collection<Gender> genders, Pageable pageable);
-
-    // TODO - Broken
-    Page<EmployeeDetails> findByDepartmentIn(Collection<String> department, Pageable pageable);
+    
+    Page<EmployeeDetails> findByDepartment_DepartmentIdIn(Collection<Integer> department, Pageable pageable);
 
     Page<EmployeeDetails> findByMaritalStatusIn(Collection<MaritalStatus> maritalStatuses, Pageable pageable);
 
