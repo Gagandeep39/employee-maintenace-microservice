@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 /**
  * @author Gagandeep
  * @date 08-05-2020
@@ -51,6 +53,13 @@ public class LeaveController {
     public ResponseEntity<LeaveHistory> updateLeave(@RequestBody LeaveHistory leaveHistory){
         LeaveHistory updatedLeaveHistory = leaveService.updateLeave(leaveHistory);
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/balance/{empId}")
+    public ResponseEntity<HashMap<String, Integer>> fetchBalance(@PathVariable Integer empId){
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("balance", leaveService.fetchLeaveBalance(empId));
+        return new ResponseEntity<>(map, HttpStatus.ACCEPTED);
     }
 
 }
