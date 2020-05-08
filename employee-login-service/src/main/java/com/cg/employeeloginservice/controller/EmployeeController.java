@@ -31,4 +31,10 @@ public class EmployeeController {
         return new ResponseEntity<>(addedUser, HttpStatus.OK);
     }
 
+    @PutMapping("/login/change")
+    public ResponseEntity<User> changePassword(@RequestBody User user) {
+        User modifiedUser = employeeService.changePassword(user);
+        return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
+    }
+
 }
