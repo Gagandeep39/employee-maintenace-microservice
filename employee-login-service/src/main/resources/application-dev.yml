@@ -12,7 +12,7 @@ spring:
     # Not required as we are using mem database
     # initialization-mode: always
     # Enables execution of data-h2.sql script
-    platform: h2
+    # platform: h2
   jpa:
     hibernate:
       ddl-auto: update
