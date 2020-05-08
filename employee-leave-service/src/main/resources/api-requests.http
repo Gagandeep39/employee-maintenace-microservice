@@ -1,6 +1,37 @@
 
 ### Fetch Manager Leaves
-GET http://localhost:9300/leaves/employee/100001
+GET http://localhost:9300/leaves/employee/100002
 
 ### Fetch Manager Leaves
-GET http://localhost:9300/leaves/manager/100001
+GET http://localhost:9300/leaves/manager/100002
+
+### Fetch Leave balance
+GET http://localhost:9300/leaves/balance/100002
+
+### Save Leave
+POST http://localhost:9300/leaves/add
+Content-Type: application/json
+
+{
+      "leaveBalance": 13,
+      "dateFrom": "2020-07-03",
+      "dateTo": "2020-07-07",
+      "leaveStatus": "Applied",
+      "numberOfDays": 5,
+      "employeeDetails": {
+        "empDetailsId": 100006
+      }
+}
+
+### Update Leave / Rerun to test Exception Handling
+POST http://localhost:9300/leaves/update
+Content-Type: application/json
+
+{
+  "leaveId": 100025,
+  "leaveBalance": 13,
+  "dateFrom": "2020-07-03",
+  "dateTo": "2020-07-07",
+  "leaveStatus": "Approved",
+  "numberOfDays": 5
+}
