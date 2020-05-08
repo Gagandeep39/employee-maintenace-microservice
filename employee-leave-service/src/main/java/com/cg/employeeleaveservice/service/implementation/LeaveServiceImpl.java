@@ -41,6 +41,6 @@ public class LeaveServiceImpl implements LeaveService {
     @Override
     public Page<LeaveHistory> fetchAllSubEmployeeLeaves(Integer pageNo, Integer pageSize, String sortBy, Integer managerId) {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
-        return leaveHistoryRepository.findByEmployeeDetails_Manager_EmpDetailsId(paging, managerId);
+        return leaveHistoryRepository.findByEmployeeDetails_EmpDetailsId(paging, managerId);
     }
 }
