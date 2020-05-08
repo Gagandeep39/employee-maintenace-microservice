@@ -21,7 +21,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"employeeDetails"})
 public class Address {
 
     @Id

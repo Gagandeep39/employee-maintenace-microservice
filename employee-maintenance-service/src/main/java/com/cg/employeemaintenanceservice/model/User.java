@@ -21,6 +21,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
+//@ToString(exclude = {"employeeDetails"})
 //@JsonIdentityInfo(generator=ObjectIdGenerators.UUIDGenerator.class, property="@id")
 public class User {
 
