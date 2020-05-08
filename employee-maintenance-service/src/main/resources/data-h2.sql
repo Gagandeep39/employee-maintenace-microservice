@@ -245,6 +245,6 @@ INSERT INTO leave_history (leave_id, date_from, date_to, leave_balance, leave_st
   INSERT INTO leave_history (leave_id, date_from, date_to, leave_balance, leave_status, no_of_days_applied, emp_id)
  VALUES (100025,'2020-10-07','2020-10-08',13,'Applied',2,100001);
 
-ALTER sequence user_id_sequence restart with 100026;
+ALTER sequence leave_id_sequence restart with 100026;
 
 
