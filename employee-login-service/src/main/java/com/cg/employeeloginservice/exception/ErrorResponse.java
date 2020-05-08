@@ -4,16 +4,16 @@
 
 package com.cg.employeeloginservice.exception;
 
-public class UserErrorResponse {
+public class ErrorResponse {
     private int status;
 	private String message;
 	private long timeStamp;
 	
-	public UserErrorResponse() {
+	public ErrorResponse() {
 		super();
 	}
 
-	public UserErrorResponse(int status, String message, long timeStamp) {
+	public ErrorResponse(int status, String message, long timeStamp) {
 		super();
 		this.status = status;
 		this.message = message;
