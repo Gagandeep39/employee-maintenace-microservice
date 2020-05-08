@@ -37,7 +37,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public User changePassword(User user) {
-        return null;
+        Optional<User> databaseUser = employeeRepository.findByUsername(user.getUsername());
+        databaseUser.orElseThrow(()->new UserNotFoundException("User does not exist"));
+        databaseUser.get().setPassword(user.getPassword());
+        return databaseUser.get();
     }
 
     @Override
