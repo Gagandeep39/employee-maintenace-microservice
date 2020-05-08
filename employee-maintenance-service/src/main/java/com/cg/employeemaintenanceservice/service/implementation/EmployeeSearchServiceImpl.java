@@ -71,7 +71,7 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
     public Page<EmployeeDetails> findByDepartments(Integer pageNo, Integer pageSize, String sortBy, String departments) {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         List<String> departmentList = Arrays.asList(departments.split(","));
-        Page<EmployeeDetails> pagedResult = employeeDetailsRepository.findByDepartmentIn(departmentList, paging);
+        Page<EmployeeDetails> pagedResult = employeeDetailsRepository.findByDepartment_DepartmentNameIn(departmentList, paging);
         return pagedResult;
     }
 
