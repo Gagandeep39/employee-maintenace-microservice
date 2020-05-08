@@ -1,0 +1,11 @@
+server:
+  port: 9200
+spring:
+  profiles:
+    active: prod
+  application:
+    name: employee-maintenance-service
+
+#  jackson:
+#    serialization:
+#      fail-on-self-references: true
