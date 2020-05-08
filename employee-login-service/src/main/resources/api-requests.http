@@ -34,3 +34,12 @@ Content-Type: application/json
     "roleId": 100001
   }
 }
+
+### Change password
+PUT  http://localhost:9100/login/change
+Content-Type: application/json
+
+{
+  "empId": "100001",
+  "password": "1234"
+}
