@@ -1,3 +1,37 @@
-<p>
-  header works!
-</p>
+<!--
+@author Gagandeep Singh
+@email singh.gagandeep3911@gmail.com
+@create date 2020-05-09 19:03:42
+@modify date 2020-05-09 19:03:42
+@desc Navigation Bar
+-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow p-3 mb-5">
+  <a class="navbar-brand" [routerLink]="['/employee/home']" routerLinkActive="active">Employee Maintenance System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"  ></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/employee/home']" routerLinkActive="active" >Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/employee/search']" routerLinkActive="active">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/employee/addleave']" routerLinkActive="active">My Leaves</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/manager/approve']" routerLinkActive="active">Leave Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/admin/add']" routerLinkActive="active">Add</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav" style="align-items: right;">
+      <li class="nav-item"><a class="nav-link" (click)="logOut()">Log Out</a></li>
+    </ul>
+  </div>
+</nav>
