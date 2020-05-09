@@ -7,7 +7,7 @@
  */
 
 import { Department } from './department.model';
-import { Address } from 'cluster';
+import { Address } from './address.model';
 
 export interface EmployeeDetails {
     empDetailsId:  number;
