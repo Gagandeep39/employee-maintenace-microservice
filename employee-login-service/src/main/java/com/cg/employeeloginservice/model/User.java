@@ -31,7 +31,7 @@ public class User {
     @GeneratedValue(generator = "user_id_sequence", strategy = GenerationType.SEQUENCE)
     private Integer empId;
 
-    @Column(name = "username", length = 20)
+    @Column(name = "username", length = 20, unique = true)
     private String username;
 
     @Column(name = "password", length = 20)
@@ -42,7 +42,7 @@ public class User {
     private Role role;
 
     @JsonManagedReference
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.MERGE)
     private EmployeeDetails employeeDetails;
 
 }
