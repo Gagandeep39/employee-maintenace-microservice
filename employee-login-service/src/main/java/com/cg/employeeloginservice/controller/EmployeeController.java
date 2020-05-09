@@ -14,24 +14,25 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
+@RequestMapping("/login")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping("/login")
+    @PostMapping("/")
     public ResponseEntity<User> performLogin(@RequestBody User user){
         User loggedInUser = employeeService.performLogin(user);
         return new ResponseEntity<User>(loggedInUser, HttpStatus.OK);
     }
 
-    @PostMapping("/login/add")
+    @PostMapping("/add")
     public ResponseEntity<User> addUser(@RequestBody User user){
         User addedUser = employeeService.addUser(user);
         return new ResponseEntity<>(addedUser, HttpStatus.OK);
     }
 
-    @PutMapping("/login/change")
+    @PutMapping("/change")
     public ResponseEntity<User> changePassword(@RequestBody User user) {
         User modifiedUser = employeeService.changePassword(user);
         return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
