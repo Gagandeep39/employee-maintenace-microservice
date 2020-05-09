@@ -138,10 +138,12 @@ Operation | Route
 --------- | -----
 Login          | `/login`
 View Employees | `/employees/search`
-View Employees | `/employees/details`
+Employee Info  | `/employees/home`
 Leave          | `/employees/leaves`
 Leave Details  | `/employees/addleave`
 Change password| `/employees/change`
 Admin add      | `/admin/add`
 Admin edit     | `/admin/edit`
 Manager approve| `/manager/leave`
+Access Denied  | `/error/403`
+Error          | `/error/404`
