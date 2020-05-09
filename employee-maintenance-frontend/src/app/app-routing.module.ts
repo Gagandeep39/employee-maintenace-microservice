@@ -27,8 +27,8 @@ import { AccessDeniedComponent } from './shared/access-denied/access-denied.comp
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'employees/search', component: SearchEmployeeComponent },
-    { path: 'employees/leaves', component: ViewLeavesComponent },
+    { path: 'employee/search', component: SearchEmployeeComponent },
+    { path: 'employee/leaves', component: ViewLeavesComponent },
     { path: 'employee/home', component: HomeComponent },
     { path: 'employee/addleave', component: CreateLeaveComponent },
     { path: 'employee/change', component: ChangePasswordComponent },
