@@ -32,19 +32,21 @@ public class EmployeeRegistrationServiceImpl implements EmployeeRegistrationServ
         EmployeeDetails details = user.getEmployeeDetails();
         Address address = details.getAddress();
         // Saving user credentials
-        Integer userId = saveAndFetchId(user);
+        User addedUser = saveAndFetchId(user);
         // Initializing objects
-        details.setEmpDetailsId(userId);
+        details.setEmpDetailsId(addedUser.getEmpId());
+        // If nt setting the whole object, then we have to atleast set the details.user.id
+        details.setUser(addedUser);
         address.setEmployeeDetails(details);
         // Saving objects
         return employeeDetailsRepository.save(details);
     }
 
-    private Integer saveAndFetchId(User user) {
+    private User saveAndFetchId(User user) {
         user.setEmployeeDetails(null);
         User addedUser = userService.addUser(user);
         if (addedUser.getEmpId()==0)
             throw new RuntimeException("Registration Failed: Error Communicating with Login Service");
-        return addedUser.getEmpId();
+        return addedUser;
     }
 }
