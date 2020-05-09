@@ -20,7 +20,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<User> performLogin(@RequestBody User user){
         User loggedInUser = employeeService.performLogin(user);
         return new ResponseEntity<User>(loggedInUser, HttpStatus.OK);
