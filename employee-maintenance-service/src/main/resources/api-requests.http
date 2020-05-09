@@ -68,6 +68,8 @@ GET http://localhost:9200/employees/search/category?departments=100005,100001
 ### Manager ID
 GET http://localhost:9200/employees/search/category?managerId=100002
 
+### Fetch By MaritalStatus
+GET http://localhost:9200/employees/search/category?maritalStatus=Single,Divorced
 
 
 ### Add Employee Version 2 (Not Implemented)
