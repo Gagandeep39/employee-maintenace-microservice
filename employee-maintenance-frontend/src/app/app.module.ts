@@ -21,8 +21,8 @@ import { ApproveLeaveComponent } from './manager/approve-leave/approve-leave.com
 import { SearchEmployeeComponent } from './employees/search-employee/search-employee.component';
 import { ViewLeavesComponent } from './employees/view-leaves/view-leaves.component';
 import { LoginComponent } from './login/login.component';
-import { AppHeaderComponent } from './shared/app-header/app-header.component';
-import { AppFooterComponent } from './shared/app-footer/app-footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +36,8 @@ import { AppFooterComponent } from './shared/app-footer/app-footer.component';
     SearchEmployeeComponent,
     ViewLeavesComponent,
     LoginComponent,
-    AppHeaderComponent,
-    AppFooterComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
