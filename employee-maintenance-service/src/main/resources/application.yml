@@ -5,3 +5,12 @@ spring:
     active: dev
   application:
     name: employee-maintenance-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
+
+service:
+  url:
+    login: employee-login-service
+

@@ -1,10 +1,14 @@
 server:
   port: 9300
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
 spring:
   profiles:
     active: dev
   application:
-    name: employee-maintenance-service
+    name: employee-leave-service
 
 #  jackson:
 #    serialization:
