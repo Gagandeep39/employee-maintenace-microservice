@@ -134,6 +134,8 @@ PUT `/leaves`
 
 #### Routes to different components
 
+Operation | Route
+--------- | -----
 - Login           | `/login`
 - View Employees  | `/employees/search`
 - View Employees  | `/employees/details`
