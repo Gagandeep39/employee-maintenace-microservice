@@ -9,7 +9,7 @@
 import { Department } from './department.model';
 import { Address } from './address.model';
 
-export interface EmployeeDetails {
+export class EmployeeDetails {
     empDetailsId:  number;
     firstName:     string;
     lastName:      string;

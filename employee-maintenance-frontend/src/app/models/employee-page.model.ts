@@ -1,7 +1,7 @@
 import { EmployeeDetails } from './employee-details.model';
 import { Sort } from './sort.model';
 
-export interface EmployeePage {
+export class EmployeePage {
     content:          EmployeeDetails[];
     totalPages:       number;
     last:             boolean;
