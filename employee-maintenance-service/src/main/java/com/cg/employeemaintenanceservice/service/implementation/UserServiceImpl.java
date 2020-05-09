@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     private User dummyUser;
 
     @Override
-    // @HystrixCommand(fallbackMethod = "fallbackAddUser")
+    @HystrixCommand(fallbackMethod = "fallbackAddUser")
     public User addUser(User user) {
         // User addedUser = 
         return restTemplate.postForObject("http://employee-login-service/login/add", user, User.class);
@@ -38,7 +38,8 @@ public class UserServiceImpl implements UserService {
      * @param user To be stored saved in user database
      * @return User Object with a generated ID
      */
-    public User fallbackAddUser(User user) {
+    public User fallbackAddUser(User user, Throwable throwable) {
+        log.info("Fallback Reason: " + throwable.getMessage());
         return dummyUser;
     }
 
