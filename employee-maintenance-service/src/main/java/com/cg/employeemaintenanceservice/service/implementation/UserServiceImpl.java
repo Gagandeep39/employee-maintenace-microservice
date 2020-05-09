@@ -28,9 +28,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @HystrixCommand(fallbackMethod = "fallbackAddUser")
     public User addUser(User user) {
-        log.info("---------Add User---------");
-        User addedUser = restTemplate.postForObject("http://localhost:9100/login/add", user, User.class);
-        return addedUser;
+        // User addedUser = 
+        return restTemplate.postForObject("http://employee-login-service/login/add", user, User.class);
     }
 
     /**
@@ -39,7 +38,8 @@ public class UserServiceImpl implements UserService {
      * @param user To be stored saved in user database
      * @return User Object with a generated ID
      */
-    public User fallbackAddUser(User user) {
+    public User fallbackAddUser(User user, Throwable throwable) {
+        log.info("Fallback Reason: " + throwable.getMessage());
         return dummyUser;
     }
 

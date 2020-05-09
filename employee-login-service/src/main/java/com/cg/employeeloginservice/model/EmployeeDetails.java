@@ -98,7 +98,7 @@ public class EmployeeDetails {
     @OneToOne(mappedBy = "employeeDetails", cascade = CascadeType.ALL)
     private Address address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "emp_id", foreignKey = @ForeignKey(name = "FK_USER_ID"))
     @JsonBackReference
     @MapsId
