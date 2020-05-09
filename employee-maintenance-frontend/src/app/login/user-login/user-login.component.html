@@ -1,3 +1,35 @@
-<p>
-  user-login works!
-</p>
+<div class="container">
+  <form class="form-control" (ngSubmit)="login(); loginForm.reset()" #loginForm=ngForm>
+    <table class="table table-hover table-borderless">
+      <h4>Login</h4>
+      <tr>
+        <td>Username</td>
+        <td>
+          <input class="form-control" placeholder="Enter Username" [(ngModel)]="username" name="username" #usern=ngModel
+            required>
+        </td>
+        <td>
+          <div *ngIf="submitted==true && usern.invalid" class="alert alert-danger">Username cannot be empty</div>
+        </td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td>
+          <input class="form-control" placeholder="Enter Password" [(ngModel)]="password" type="password"
+            name="password" #passw=ngModel required>
+        </td>
+        <td>
+          <div *ngIf="submitted==true && passw.invalid" class="alert alert-danger">Password cannot be empty</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="Login">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+
+
+</div>
