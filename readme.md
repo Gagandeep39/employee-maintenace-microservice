@@ -137,11 +137,13 @@ PUT `/leaves`
 Operation | Route
 --------- | -----
 Login          | `/login`
-View Employees | `/employees/search`
-View Employees | `/employees/details`
-Leave          | `/employees/leaves`
-Leave Details  | `/employees/addleave`
-Change password| `/employees/change`
+View Employees | `/employee/search`
+Employee Info  | `/employee/home`
+Leave          | `/employee/leaves`
+Leave Details  | `/employee/addleave`
+Change password| `/employee/change`
 Admin add      | `/admin/add`
 Admin edit     | `/admin/edit`
-Manager approve| `/manager/leave`
+Manager approve| `/manager/approve`
+Access Denied  | `/error/403`
+Error          | `/error/404`
