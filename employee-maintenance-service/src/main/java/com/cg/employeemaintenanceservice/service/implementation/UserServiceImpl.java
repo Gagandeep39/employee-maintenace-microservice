@@ -26,11 +26,10 @@ public class UserServiceImpl implements UserService {
     private User dummyUser;
 
     @Override
-    @HystrixCommand(fallbackMethod = "fallbackAddUser")
+    // @HystrixCommand(fallbackMethod = "fallbackAddUser")
     public User addUser(User user) {
-        log.info("---------Add User---------");
-        User addedUser = restTemplate.postForObject("http://localhost:9100/login/add", user, User.class);
-        return addedUser;
+        // User addedUser = 
+        return restTemplate.postForObject("http://employee-login-service/login/add", user, User.class);
     }
 
     /**
