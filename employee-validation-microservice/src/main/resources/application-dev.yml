@@ -6,7 +6,7 @@ spring:
       enabled: true
       path: /h2 
   datasource:
-    url: jdbc:h2:mem:mydb
+    url: jdbc:h2:tcp://localhost:9050/mem:mydb;DB_CLOSE_DELAY=-1
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -16,7 +16,7 @@ spring:
     # Enables execution of data-h2.sql script
     # No data initialization required as this is not primary microservice
     # Uncomment this to load data (To test this service individually)
-    platform: h2
+    # platform: h2
   jpa:
     hibernate:
       ddl-auto: update
