@@ -9,7 +9,7 @@
 import { EmployeeDetails } from './employee-details.model';
 import { Role } from './role.model';
 
-export interface User {
+export class User {
     empId:           number;
     username:        string;
     password:        string;
