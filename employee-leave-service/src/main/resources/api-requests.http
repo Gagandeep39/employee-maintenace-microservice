@@ -9,7 +9,7 @@ GET http://localhost:9300/leaves/manager/100002
 GET http://localhost:9300/leaves/balance/100002
 
 ### Save Leave
-POST http://localhost:9300/leaves/add
+POST http://localhost:9300/leaves
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### Update Leave / Rerun to test Exception Handling
-POST http://localhost:9300/leaves/update
+PUT http://localhost:9300/leaves
 Content-Type: application/json
 
 {
