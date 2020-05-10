@@ -25,7 +25,7 @@
       <td> {{ employee.maritalStatus }} </td>
       <td> {{ employee.gender }} </td>
       <td> {{ employee.manager }} </td>
-      <td> <button class="btn btn-primary">Details</button> </td>
+      <td> <button class="btn btn-primary" [routerLink]="[ '/employee/details', employee.empDetailsId ]">Details</button> </td>
     </tr>
     
   </table>
