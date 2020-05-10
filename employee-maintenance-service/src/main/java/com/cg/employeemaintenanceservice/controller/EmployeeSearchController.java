@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @time 03:11
  */
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/employees")
 public class EmployeeSearchController {
@@ -54,5 +55,21 @@ public class EmployeeSearchController {
             page = employeeSearchService.findEmployeeByManagerId(pageNo, pageSize, sortBy, managerId);
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
+
+    @GetMapping("/search/name")
+    public ResponseEntity<Page<EmployeeDetails>> searchByName(
+            @RequestParam String name,
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "empDetailsId") String sortBy){
+        Page<EmployeeDetails> page = employeeSearchService.findByName(pageNo, pageSize, sortBy, name);
+        return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/id/{id}")
+    public ResponseEntity<EmployeeDetails> findById(@PathVariable Integer id){
+        return new ResponseEntity<>(employeeSearchService.findById(id), HttpStatus.OK);
+    }
+
 
 }

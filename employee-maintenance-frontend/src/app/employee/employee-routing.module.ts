@@ -27,6 +27,7 @@ const routes: Routes = [
             { path: 'search', component: SearchEmployeeComponent },
             { path: 'leaves', component: ViewLeavesComponent },
             { path: 'home', component: HomeComponent },
+            { path: 'details/:id', component: HomeComponent },
             { path: 'addleave', component: CreateLeaveComponent },
             { path: 'change', component: ChangePasswordComponent },
             { path: 'admin/add', component: AddEmployeeComponent },

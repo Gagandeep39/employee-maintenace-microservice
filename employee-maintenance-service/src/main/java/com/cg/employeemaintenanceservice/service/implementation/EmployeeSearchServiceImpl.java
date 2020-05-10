@@ -86,4 +86,16 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
         return pagedResult;
     }
 
+    @Override
+    public Page<EmployeeDetails> findByName(Integer pageNo, Integer pageSize, String sortBy, String name) {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        Page<EmployeeDetails> pagedResult = employeeDetailsRepository.findEmployeeDetailsByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name, paging);
+        return pagedResult;
+    }
+
+    @Override
+    public EmployeeDetails findById(Integer id) {
+        return employeeDetailsRepository.findById(id).get();
+    }
+
 }
