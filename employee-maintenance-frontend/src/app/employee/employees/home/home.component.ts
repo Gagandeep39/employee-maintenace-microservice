@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     if (this.activatedRoute.snapshot.url[0].path.includes('home')) {
-      this.userInfo = this.authService.loggedInUser;
+      this.userInfo = this.authService.fetchFromSessionStorage();
       // Added later on
       this.employee = this.userInfo.employeeDetails;
     } else {
