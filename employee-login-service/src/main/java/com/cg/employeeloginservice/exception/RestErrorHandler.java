@@ -17,10 +17,10 @@ public class RestErrorHandler {
     public ResponseEntity<ErrorResponse> handleErrorResponse(UserNotFoundException exception)
     {
         ErrorResponse response= new ErrorResponse();
-        response.setStatus(HttpStatus.NOT_FOUND.value());
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
         response.setMessage(exception.getMessage());
         response.setTimeStamp(System.currentTimeMillis());
-        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
