@@ -68,7 +68,7 @@ public class EmployeeSearchController {
 
     @GetMapping("/search/id/{id}")
     public ResponseEntity<EmployeeDetails> findById(@PathVariable Integer id){
-        return new ResponseEntity<>(employeeSearchService.findById(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(employeeSearchService.findById(id), HttpStatus.OK);
     }
 
 
