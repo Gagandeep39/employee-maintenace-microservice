@@ -16,5 +16,6 @@ public interface EmployeeSearchService {
     Page<EmployeeDetails> findByMaritalStatuses(Integer pageNo, Integer pageSize, String sortBy, String maritalStatuses);
     Page<EmployeeDetails> findByDepartments(Integer pageNo, Integer pageSize, String sortBy, String departments);
     Page<EmployeeDetails> findByGrade(Integer pageNo, Integer pageSize, String sortBy, String grades);
+    Page<EmployeeDetails> findByName(Integer pageNo, Integer pageSize, String sortBy, String name);
 
 }

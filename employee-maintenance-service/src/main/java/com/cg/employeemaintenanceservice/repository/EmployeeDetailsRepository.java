@@ -23,7 +23,7 @@ import java.util.List;
 public interface EmployeeDetailsRepository extends JpaRepository<EmployeeDetails, Integer> {
 
     Page<EmployeeDetails> findByGenderIn(Collection<Gender> genders, Pageable pageable);
-    
+
     Page<EmployeeDetails> findByDepartment_DepartmentIdIn(Collection<Integer> department, Pageable pageable);
 
     Page<EmployeeDetails> findByMaritalStatusIn(Collection<MaritalStatus> maritalStatuses, Pageable pageable);
@@ -32,4 +32,9 @@ public interface EmployeeDetailsRepository extends JpaRepository<EmployeeDetails
 
     Page<EmployeeDetails> findByManager_EmpDetailsId(Integer managerId, Pageable pageable);
 
+    Page<EmployeeDetails> findEmployeeDetailsByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(
+            String firstName, String lastName, Pageable pageable);
+
+    // Select e from EmployeeDetails e where e.firstName LIKE %?1% or e.lastName
+    // LIKE %?1%
 }

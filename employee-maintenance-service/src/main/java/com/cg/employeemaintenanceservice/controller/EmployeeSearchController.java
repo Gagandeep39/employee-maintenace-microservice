@@ -56,4 +56,15 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    @GetMapping("/search/name")
+    public ResponseEntity<Page<EmployeeDetails>> searchByName(
+            @RequestParam String name,
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "empDetailsId") String sortBy){
+        Page<EmployeeDetails> page = employeeSearchService.findByName(pageNo, pageSize, sortBy, name);
+        return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
+    }
+
+
 }
