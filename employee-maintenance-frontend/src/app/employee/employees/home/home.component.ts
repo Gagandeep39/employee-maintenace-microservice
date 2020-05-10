@@ -11,6 +11,7 @@ import { EmployeeService } from 'src/app/service/employee.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { User } from 'src/app/models/user.mode';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -43,5 +45,9 @@ export class HomeComponent implements OnInit {
     this.employeeService.getEmployeeById(empId).subscribe((response) => {
       this.employee = response;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
