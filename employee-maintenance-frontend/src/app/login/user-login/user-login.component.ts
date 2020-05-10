@@ -21,7 +21,7 @@ export class UserLoginComponent implements OnInit {
   errorUsername: string;
   errorPassword: string;
   errorMessage: string;
-  staySignedInToggle: boolean;
+  staySignedInToggle: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -56,6 +56,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   saveSignedInState() {
+    this.staySignedInToggle = !this.staySignedInToggle;
     this.authService.keepMeSignedInToggleState = this.staySignedInToggle;
   }
 }
