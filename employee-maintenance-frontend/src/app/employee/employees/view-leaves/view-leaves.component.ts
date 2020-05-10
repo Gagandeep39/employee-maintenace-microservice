@@ -15,12 +15,17 @@ export class ViewLeavesComponent implements OnInit {
 
   public leavePage: LeavePage = new LeavePage();
   public currentPage: number;
+  public leaveBalance: number = 0;
 
   constructor(private leaveService: LeaveService, private route: Router) { }
 
   ngOnInit() {
+    this.fetchLeaveBalance();
     this.fetchDatafromServer(0);
     this.currentPage = 0;
+  }
+  fetchLeaveBalance() {
+    this.leaveService.getLeaveBalance().subscribe(response => this.leaveBalance = response);
   }
 
   fetchDatafromServer(pageNo: number, pageSize = 10) {
