@@ -6,4 +6,12 @@
  * @desc Leave History
  */
 
-export interface LeaveHistory {}
+export class LeaveHistory {
+    leaveId:         number;
+    leaveBalance:    number;
+    dateFrom:        Date;
+    dateTo:          Date;
+    leaveStatus:     string;
+    numberOfDays:    number;
+    employeeDetails: number;
+}
