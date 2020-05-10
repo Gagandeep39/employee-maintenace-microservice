@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'http://192.168.56.1',
+  login: ':9100/login',
+  changePassword: ':9100/login/change',
+  addEmployee: ':9200/employees',
+  fetchAllEmployee: ':9200/employees/search'
 };
 
 /*
