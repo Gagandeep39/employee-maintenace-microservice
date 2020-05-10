@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @time 03:11
  */
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/employees")
 public class EmployeeSearchController {
