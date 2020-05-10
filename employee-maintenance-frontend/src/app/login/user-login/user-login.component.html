@@ -49,10 +49,9 @@
       <!-- SignIn Checkbox -->
       <div class="form-group">
         <div class="custom-control custom-checkbox">
-          <input #staySignedIn 
+          <input
             class="custom-control-input" type="checkbox" id="staySignedIn" name="staySignedIn" (click)="saveSignedInState()" >
           <label class="custom-control-label" for="staySignedIn">Stay Signed In</label>
-          {{ staySignedInToggle | json }}
         </div>
       </div>
       <!-- Submit Button -->
