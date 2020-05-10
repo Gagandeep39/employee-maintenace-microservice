@@ -17,13 +17,13 @@ import java.util.HashMap;
  */
 
 @RestController
-@RequestMapping("/leaves")
+@CrossOrigin("*")
 public class LeaveController {
 
     @Autowired
     private LeaveService leaveService;
 
-    @GetMapping("/employee/{empId}")
+    @GetMapping("/leaves/employee/{empId}")
     public ResponseEntity<Page<LeaveHistory>> fetchEmployeeLeave(
             @PathVariable Integer empId,
             @RequestParam(defaultValue = "0") Integer pageNo,
@@ -33,7 +33,7 @@ public class LeaveController {
         return new ResponseEntity<>(leaveHistories, HttpStatus.OK);
     }
 
-    @GetMapping("/manager/{managerId}")
+    @GetMapping("/leaves/manager/{managerId}")
     public ResponseEntity<Page<LeaveHistory>> fetchManagerLeaves(
             @PathVariable Integer managerId,
             @RequestParam(defaultValue = "0") Integer pageNo,
@@ -43,19 +43,19 @@ public class LeaveController {
         return new ResponseEntity<>(leaveHistories, HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @PostMapping("/leaves")
     public ResponseEntity<LeaveHistory> addLeave(@RequestBody LeaveHistory leaveHistory){
         LeaveHistory updatedLeaveHistory = leaveService.createLeave(leaveHistory);
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
     }
 
-    @PutMapping("/")
+    @PutMapping("/leaves")
     public ResponseEntity<LeaveHistory> updateLeave(@RequestBody LeaveHistory leaveHistory){
         LeaveHistory updatedLeaveHistory = leaveService.updateLeave(leaveHistory);
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/balance/{empId}")
+    @GetMapping("/leaves/balance/{empId}")
     public ResponseEntity<HashMap<String, Integer>> fetchBalance(@PathVariable Integer empId){
         HashMap<String, Integer> map = new HashMap<>();
         map.put("balance", leaveService.fetchLeaveBalance(empId));

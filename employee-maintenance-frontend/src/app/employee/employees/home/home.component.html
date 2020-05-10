@@ -57,6 +57,14 @@
 
           <tbody>
 
+            <tr *ngIf="userInfo!=undefined">
+              <td class="title">Username</td>
+              <td> {{ userInfo?.username  }} </td>
+            </tr>
+            <tr *ngIf="userInfo!=undefined">
+              <td class="title">Role</td>
+              <td> {{ userInfo?.role.role  }} </td>
+            </tr>
             <tr>
               <td class="title">Department</td>
               <td> {{ employee?.department.departmentName  }} </td>
@@ -79,7 +87,9 @@
             </tr>
           </tbody>
         </table>
-
+        <div *ngIf="userInfo==undefined">
+          <button class="btn btn-success" (click)="goBack()">Back</button>
+        </div>
       </div>
 
     </div>

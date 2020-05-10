@@ -23,7 +23,7 @@ import { EmployeeComponent } from './employee.component';
 const routes: Routes = [
     {
         path: 'employee', component: EmployeeComponent, children: [
-            { path: '', redirectTo: 'employee/home', pathMatch: 'full' },
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'search', component: SearchEmployeeComponent },
             { path: 'leaves', component: ViewLeavesComponent },
             { path: 'home', component: HomeComponent },
