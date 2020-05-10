@@ -1,3 +1,6 @@
+/*
+ @author Pranav Karmarkar
+*/
 import { Component, OnInit } from '@angular/core';
 import { LeaveService } from 'src/app/service/leave.service';
 import { LeavePage } from 'src/app/models/leave-page.model';
@@ -13,7 +16,7 @@ export class ViewLeavesComponent implements OnInit {
   public leavePage: LeavePage = new LeavePage();
   public currentPage: number;
 
-  constructor(private leaveService: LeaveService, private route : Router) { }
+  constructor(private leaveService: LeaveService, private route: Router) { }
 
   ngOnInit() {
     this.fetchDatafromServer(0);
@@ -45,8 +48,7 @@ export class ViewLeavesComponent implements OnInit {
     return new Array(i);
   }
 
-  createLeave()
-  {
+  createLeave() {
     this.route.navigate(['employee/addleave']);
   }
 }

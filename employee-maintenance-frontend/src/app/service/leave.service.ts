@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class LeaveService {
 
-  empId= 100001;
+  empId = 100001;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,7 +25,6 @@ export class LeaveService {
       });
   }
 
-  createLeave()
-  {
+  createLeave() {
   }
 }
