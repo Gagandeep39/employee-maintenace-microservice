@@ -11,7 +11,8 @@ export const environment = {
   fetchAllEmployee: ':9200/employees/search',
   byName: ':9200/employees/search/name',
   byId: ':9200/employees/search/id/',
-  employeeLeave: ':9300/leaves/employee/'
+  employeeLeave: ':9300/leaves/employee/',
+  leaveBalance: ':9300/leaves/balance/'
 };
 
 /*
