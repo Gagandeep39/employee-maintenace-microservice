@@ -1,7 +1,8 @@
 <div class="container">
   <div class="form-group" align="right">
-    <button class="btn btn-secondary" type="button" name="create" id="create" (click)="createLeave()">+ Create
-      Leave</button>
+    <button [disabled]="leaveBalance==0" class="btn btn-secondary" type="button" name="create" id="create" (click)="createLeave()">
+      + Create Leave
+    </button>
   </div>
   <table class="table table-hover table-bordered">
 
