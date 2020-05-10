@@ -8,6 +8,15 @@ import { EmployeePage } from '../models/employee-page.model';
 })
 export class EmployeeService {
 
+  searchByName(searchString: string) {
+    let params = new HttpParams();
+    params = params.set('name', searchString);
+    return this.httpClient.get<EmployeePage>(environment.url + environment.byName,
+      {
+        params: params
+      });
+  }
+
   constructor(private httpClient: HttpClient) { }
 
   getEmployeePages(pageNo: number, pageSize = 10, sortBy = undefined) {

@@ -1,5 +1,10 @@
 <div class="container">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input class="form-control" type="text" name="search" id="search" #search placeholder="Enter name"(input)="searchByName(search.value)" >
+  </div>
   <table class="table table-hover table-striped table-bordered">
+   
     <thead>
       <tr>
         <td>ID</td>
