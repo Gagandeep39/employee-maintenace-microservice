@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { User } from '../models/user.mode';
 import { map } from 'rxjs/operators';
 import { LeaveBalance } from '../models/leave-balance.model';
+import { LeaveHistory } from '../models/leave-history.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,7 @@ export class LeaveService {
   createLeave() {
   }
 
-  getManagerSubEmployeeLeaves(pageNo: number, pageSize = 10, sortBy = undefined) {
+  getManagerSubEmployeeLeaves(pageNo: number, pageSize = 10, sortBy = "leaveStatus") {
     let user : User = this.authService.fetchFromSessionStorage();
     let params = new HttpParams();
     params = params.set('pageNo', pageNo.toString());
@@ -53,6 +54,13 @@ export class LeaveService {
       {
         params: params
       });
+  }
+
+  updateLeaveStatus(status: string, leaveId: number) {
+      let history = new LeaveHistory();
+      history.leaveId = leaveId;
+      history.leaveStatus = status;
+      return this.httpClient.put<LeaveHistory>(environment.url + environment.updateLeave, history);
   }
 
 }
