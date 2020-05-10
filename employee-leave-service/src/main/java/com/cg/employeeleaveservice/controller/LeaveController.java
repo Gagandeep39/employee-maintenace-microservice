@@ -17,6 +17,7 @@ import java.util.HashMap;
  */
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/leaves")
 public class LeaveController {
 

@@ -1,3 +1,7 @@
+/*
+ @author Pranav Karmarkar
+*/
+
 import { Sort } from './sort.model';
 import { LeaveHistory } from './leave-history.model';
 
