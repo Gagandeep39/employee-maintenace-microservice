@@ -40,4 +40,19 @@ export class LeaveService {
 
   createLeave() {
   }
+
+  getManagerSubEmployeeLeaves(pageNo: number, pageSize = 10, sortBy = undefined) {
+    let user : User = this.authService.fetchFromSessionStorage();
+    let params = new HttpParams();
+    params = params.set('pageNo', pageNo.toString());
+    params = params.set('pageSize', pageSize.toString());
+    if (sortBy !== undefined && sortBy !== null) {
+      params = params.set('sortBy', sortBy.toString());
+    }
+    return this.httpClient.get<LeavePage>(environment.url + environment.subEmployeeLeaves + user.empId,
+      {
+        params: params
+      });
+  }
+
 }
