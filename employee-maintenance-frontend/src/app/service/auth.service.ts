@@ -28,15 +28,35 @@ export class AuthService {
       .pipe(
         tap((user: User)=>{
           this.loggedInUser = user;
-          if(this.keepMeSignedInToggleState)
-            sessionStorage.setItem("user", user.toString());
+          sessionStorage.setItem('user', JSON.stringify(user));
+          if(this.keepMeSignedInToggleState){
+            localStorage.setItem('user', JSON.stringify(user));
+          }
         })
       );
   }
 
   public logOut() : void {
     sessionStorage.clear();
+    localStorage.clear();
     this.router.navigate(['/login']);
+  }
+
+  isLoggedIn() {
+    let user = this.fetchFromLocalStorage();
+    if(user) { 
+      sessionStorage.setItem('user', JSON.stringify(user));
+      this.loggedInUser = user;
+      this.router.navigate(['/employee/home'])
+    }
+  }
+
+  fetchFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  fetchFromSessionStorage(){
+    return JSON.parse(sessionStorage.getItem('user'));
   }
 
 }

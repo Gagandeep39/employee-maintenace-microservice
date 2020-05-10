@@ -25,7 +25,9 @@ export class UserLoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.isLoggedIn();
+  }
 
   login(loginForm: NgForm) {
     if (loginForm.valid) {
