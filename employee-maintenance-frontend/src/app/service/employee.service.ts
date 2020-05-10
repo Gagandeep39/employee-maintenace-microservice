@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { EmployeePage } from '../models/employee-page.model';
+import { EmployeeDetails } from '../models/employee-details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class EmployeeService {
       {
         params: params
       });
+  }
+
+  getEmployeeById(id: number) {
+    return this.httpClient.get<EmployeeDetails>(environment.url + environment.byId + id);
   }
 
 }
