@@ -13,7 +13,8 @@ export const environment = {
   byId: ':9200/employees/search/id/',
   employeeLeave: ':9300/leaves/employee/',
   leaveBalance: ':9300/leaves/balance/',
-  subEmployeeLeaves: ':9300/leaves/manager/'
+  subEmployeeLeaves: ':9300/leaves/manager/',
+  updateLeave: ':9300/leaves/'
 };
 
 /*
