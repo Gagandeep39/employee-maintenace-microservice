@@ -93,4 +93,9 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
         return pagedResult;
     }
 
+    @Override
+    public EmployeeDetails findById(Integer id) {
+        return employeeDetailsRepository.findById(id).get();
+    }
+
 }
