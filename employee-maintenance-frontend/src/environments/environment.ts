@@ -8,7 +8,8 @@ export const environment = {
   login: ':9100/login',
   changePassword: ':9100/login/change',
   addEmployee: ':9200/employees',
-  fetchAllEmployee: ':9200/employees/search'
+  fetchAllEmployee: ':9200/employees/search',
+  byName: ':9200/employees/search/name'
 };
 
 /*
