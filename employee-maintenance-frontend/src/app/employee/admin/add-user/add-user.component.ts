@@ -7,6 +7,7 @@ import { RoleType } from 'src/app/models/role-type.model';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { ValidatorService } from 'src/app/service/validator.service';
 import { UserForm } from 'src/app/models/user-form.model';
+import { Role } from 'src/app/models/role.model';
 
 @Component({
   selector: 'app-add-user',
@@ -18,7 +19,7 @@ export class AddUserComponent implements OnInit {
   userRegisterationForm: FormGroup;
   // Boolean value to know whether form is submitted
   submitted = false;
-  roleType = RoleType;
+  roles: Role[] = [];
   isLoading = false;
 
   constructor(
@@ -28,8 +29,10 @@ export class AddUserComponent implements OnInit {
     private validatorService: ValidatorService
   ) {}
   ngOnInit() {
-    console.log(this.route);
-
+    this.validatorService.fetchAllRoles().subscribe(response => this.roles = response);
+    this.initForm();
+  }
+  initForm() {
     this.userRegisterationForm = new FormGroup(
       {
         username: new FormControl(

@@ -33,7 +33,7 @@
           formControlName="roleId"
           [ngClass]="{'is-invalid': submitted && userRegisterationForm.get('role.roleId').invalid}"
           class="custom-select">
-              <option *ngFor="let r of roleType | keyvalue" [value]="r.key"> {{r.value}} </option>
+              <option *ngFor="let r of roles" [value]="r.roleId"> {{r.role}} </option>
           </select>
           <div class="invalid-feedback" *ngIf="submitted && userRegisterationForm.get('role.roleId').invalid">Select a role</div>
         </div>

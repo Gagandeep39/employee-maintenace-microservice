@@ -11,6 +11,10 @@ import { UserForm } from '../models/user-form.model';
 })
 export class EmployeeService {
 
+  saveEmployee(userForm: UserForm) {
+    return this.httpClient.post(environment.url + environment.addEmployee, userForm);
+  }
+
   public userEmitter: BehaviorSubject<UserForm> = new BehaviorSubject<UserForm>(null);
 
   searchByName(searchString: string) {

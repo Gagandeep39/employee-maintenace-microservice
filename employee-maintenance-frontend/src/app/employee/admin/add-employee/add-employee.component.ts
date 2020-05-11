@@ -12,6 +12,7 @@ import { ValidatorService } from 'src/app/service/validator.service';
 import { CustomValidators } from 'src/app/shared/custom-validators';
 import { UserDetailsFrom } from 'src/app/models/details-form.model';
 import { Designation } from 'src/app/models/designation.model';
+import { UserForm } from 'src/app/models/user-form.model';
 
 @Component({
   selector: 'app-add-employee',
@@ -34,16 +35,29 @@ export class AddEmployeeComponent implements OnInit {
   isLoading = false;
   currentUser: User;
   error = '';
+  userForm: UserForm;
 
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private route: ActivatedRoute,
-    private validatorService: ValidatorService
+    private validatorService: ValidatorService,
   ) {}
 
   ngOnInit() {
+    if(this.route.snapshot.url[1].path==="addemp") this.fetchUserFormData();
+    
     this.selectedGrade = new Grade();
+    this.initEmployeeForm();
+    this.validatorService.fetchAllDepartments().subscribe((response) => (this.departments = response));
+    this.validatorService.fetchAllGrades().subscribe((response) => (this.grades = response));
+    this.validatorService.fetchAllManagers().subscribe((response) => this.managers = response);
+  }
+  fetchUserFormData() {
+    this.userForm = this.employeeService.userEmitter.value;
+  }
+
+  initEmployeeForm() {
     this.employeeForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
@@ -85,9 +99,6 @@ export class AddEmployeeComponent implements OnInit {
         ]),
       }),
     });
-    this.validatorService.fetchAllDepartments().subscribe((response) => (this.departments = response));
-    this.validatorService.fetchAllGrades().subscribe((response) => (this.grades = response));
-    this.validatorService.fetchAllManagers().subscribe((response) => this.managers = response);
   }
 
   submitForm() {
@@ -104,8 +115,12 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   saveDataToServer(userDetails: UserDetailsFrom) {
-    console.log(userDetails);
-    
+    this.userForm.employeeDetails = userDetails;
+    console.log(this.userForm);
+    this.employeeService.saveEmployee(this.userForm)
+    .subscribe(response =>{
+      console.log(response);
+    });
   }
 
   redirectToHomePage() {
