@@ -6,6 +6,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { SharedRoutingModule } from './shared-routing.module';
+import { GradeTypePipe } from './grade-type.pipe';
+import { ManagerInfoPipe } from './manager-info.pipe';
 
 @NgModule({
   imports: [
@@ -18,13 +20,17 @@ import { SharedRoutingModule } from './shared-routing.module';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    GradeTypePipe,
+    ManagerInfoPipe,
   ],
   exports: [ 
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    GradeTypePipe,
+    ManagerInfoPipe
   ]
 })
 export class SharedModule { }
