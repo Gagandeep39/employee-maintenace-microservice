@@ -6,6 +6,7 @@ package com.cg.employeevalidationservice.service.implementation;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cg.employeevalidationservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,9 @@ public class ValidationServiceImpl implements ValidationService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public List<Grade> fetchAllGrades() {
@@ -52,6 +56,11 @@ public class ValidationServiceImpl implements ValidationService {
 			managers.add(m);
 		}
 		return managers;
+	}
+
+	@Override
+	public boolean usernameExists(String username) {
+		return userRepository.existsByUsername(username);
 	}
 
 }

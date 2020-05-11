@@ -9,4 +9,4 @@ eureka:
       defaultZone: http://localhost:9000/eureka
 service:
   url:
-    login: employee-validation-microservice
+    login: employee-validation-service

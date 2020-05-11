@@ -3,10 +3,15 @@
 */
 package com.cg.employeevalidationservice.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.employeevalidationservice.model.Department;
@@ -15,6 +20,7 @@ import com.cg.employeevalidationservice.model.Manager;
 import com.cg.employeevalidationservice.service.ValidationService;
 
 @RestController
+@Slf4j
 public class ValidationController {
 
 	@Autowired
@@ -36,5 +42,13 @@ public class ValidationController {
 	public List<Manager> fetchAllManagers(){
 		List<Manager> managers = validationService.fetchAllManagers();
 		return managers;
+	}
+
+	@GetMapping("/username")
+	public ResponseEntity<HashMap<String, Boolean>> checkUsernameExist(@RequestParam String username){
+		HashMap<String, Boolean> map = new HashMap<>();
+		log.info("----------------" + username);
+		map.put("exists", validationService.usernameExists(username));
+		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 }

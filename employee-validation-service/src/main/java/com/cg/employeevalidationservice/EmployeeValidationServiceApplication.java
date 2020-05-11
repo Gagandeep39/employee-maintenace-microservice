@@ -2,12 +2,14 @@ package com.cg.employeevalidationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-public class EmployeeValidationMicroserviceApplication {
+@EnableEurekaClient
+public class EmployeeValidationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeeValidationMicroserviceApplication.class, args);
+		SpringApplication.run(EmployeeValidationServiceApplication.class, args);
 	}
 
 }

@@ -15,4 +15,5 @@ public interface ValidationService {
 	List<Grade> fetchAllGrades();
 	List<Department> fetchAllDepartments();
 	List<Manager> fetchAllManagers();
+	boolean usernameExists(String username);
 }
