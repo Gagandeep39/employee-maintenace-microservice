@@ -1,3 +1,19 @@
-<p>
-  create-leave works!
-</p>
+<form class="well form-horizontal" [formGroup]="form"(ngSubmit)="submitForm()">
+  <div class="form-group" style="width:200px;">
+    <label class="labeltext">From date : </label>
+    <input type="date" formControlName="fromDate" [(value)]="fromDate" class="form-control" (change)="onKeyUpfromdate($event)" />
+    </div>
+    
+    <div class="form-group" style="width:200px; margin-left: 5px;">
+    <label class="labeltext" >To date : </label>
+    <input type="date" formControlName="toDate" [(value)]="toDate" class="form-control" (change)="onKeyUptoDate($event)" />
+    </div>
+    <div class="form-group" style="width:200px;">
+    <label class="labeltext">Total Days : </label>
+    <input type="text" name="date" class="form-control" [(value)]="leaveDays" readonly />
+    </div>
+    <div class="row container">
+      <label *ngIf="form.errors">{{ form.errors | json }}</label>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </form>
