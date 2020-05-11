@@ -15,6 +15,7 @@ import {
 import { ValidatorService } from 'src/app/service/validator.service';
 import { LeaveService } from 'src/app/service/leave.service';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-leave',
@@ -26,8 +27,9 @@ export class CreateLeaveComponent implements OnInit {
   submitted: boolean = false;
   leaveBalance: number = 13;
   leaveButtonEnabled: boolean = true;
+  errorMessage;
 
-  constructor(private fb: FormBuilder, private leaveService: LeaveService) {
+  constructor(private fb: FormBuilder, private leaveService: LeaveService, private router: Router) {
     this.createForm();
   }
 
@@ -86,6 +88,13 @@ export class CreateLeaveComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.form);
+    if (this.form.valid) {
+      this.leaveService.createLeave(this.form.value)
+      .subscribe(response => {
+        this.router.navigate(['/employee/leaves'])
+      }, error => {
+        error = this.errorMessage;
+      })
+    }
   }
 }
