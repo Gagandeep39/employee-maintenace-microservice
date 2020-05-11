@@ -330,7 +330,7 @@
       <button class="btn btn-primary" type="submit">Submit</button>
     </div>
     <div *ngIf="referenceMessage!=null">
-      {{ referenceMessage }}
+      {{ referenceMessage | json }}
     </div>
     </div>
     </form>
