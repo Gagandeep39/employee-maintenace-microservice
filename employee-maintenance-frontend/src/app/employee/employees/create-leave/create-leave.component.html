@@ -1,19 +1,35 @@
-<form class="well form-horizontal" [formGroup]="form"(ngSubmit)="submitForm()">
-  <div class="form-group" style="width:200px;">
-    <label class="labeltext">From date : </label>
-    <input type="date" formControlName="fromDate" [(value)]="fromDate" class="form-control" (change)="onKeyUpfromdate($event)" />
+<div class="container">
+  <form class="" [formGroup]="form"(ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="dateFrom">Start Date</label>
+      <input 
+      id="dateFrom"
+      class="form-control"
+      [ngClass]="{'is-invalid': submitted && form.get('dateFrom').invalid}"
+      type="date" 
+      name="dateFrom" 
+      formControlName="dateFrom">
+      <div class="invalid-feedback" *ngIf="submitted && form.get('dateFrom').invalid">
+        <div *ngIf="form.get('dateFrom').errors['required']">* Required</div>
+        <div *ngIf="form.get('dateFrom').errors['previousDate']">Date must be after today</div>
+      </div>
     </div>
-    
-    <div class="form-group" style="width:200px; margin-left: 5px;">
-    <label class="labeltext" >To date : </label>
-    <input type="date" formControlName="toDate" [(value)]="toDate" class="form-control" (change)="onKeyUptoDate($event)" />
+    <div class="form-group">
+      <input 
+      id="dateFrom"
+      class="form-control"
+      type="date" 
+      name="dateTo" 
+      [ngClass]="{'is-invalid': submitted && (form.invalid || form.get('dateTo').invalid)}"
+      formControlName="dateTo">
+      <div class="invalid-feedback" *ngIf="submitted && form.get('dateTo').invalid">
+        <div *ngIf="form.get('dateTo').errors['dateToLessThanFrom']">Date cannot be less than start date</div>
+        <div *ngIf="form.get('dateTo').errors['required']">* Required</div>
+        <div *ngIf="form.get('dateTo').errors['insufficientBalance']">Date must be after today</div>
+      </div>
     </div>
-    <div class="form-group" style="width:200px;">
-    <label class="labeltext">Total Days : </label>
-    <input type="text" name="date" class="form-control" [(value)]="leaveDays" readonly />
-    </div>
-    <div class="row container">
-      <label *ngIf="form.errors">{{ form.errors | json }}</label>
-      <button class="btn btn-primary" type="submit">Submit</button>
-    </div>
+    <button type="Submit" class="btn btn-success" [disabled]="!leaveButtonEnabled">Submit</button>
   </form>
+</div>
+{{ form.value | json }}
+{{ form.valid | json }}
