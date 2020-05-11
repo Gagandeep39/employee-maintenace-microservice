@@ -326,6 +326,9 @@
     <div class="row container">
       <button class="btn btn-primary" type="submit">Submit</button>
     </div>
+    <div *ngIf="referenceMessage!=null">
+      {{ referenceMessage }}
+    </div>
     </div>
     </form>
   <pre>

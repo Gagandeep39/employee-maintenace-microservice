@@ -5,6 +5,7 @@ import { EmployeePage } from '../models/employee-page.model';
 import { EmployeeDetails } from '../models/employee-details.model';
 import { BehaviorSubject } from 'rxjs';
 import { UserForm } from '../models/user-form.model';
+import { User } from '../models/user.mode';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { UserForm } from '../models/user-form.model';
 export class EmployeeService {
 
   saveEmployee(userForm: UserForm) {
-    return this.httpClient.post(environment.url + environment.addEmployee, userForm);
+    return this.httpClient.post<EmployeeDetails>(environment.url + environment.addEmployee, userForm);
   }
 
   public userEmitter: BehaviorSubject<UserForm> = new BehaviorSubject<UserForm>(null);

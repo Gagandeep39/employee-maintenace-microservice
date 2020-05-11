@@ -37,6 +37,8 @@ export class AddEmployeeComponent implements OnInit {
   error = '';
   userForm: UserForm;
 
+  referenceMessage: string;
+
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
@@ -55,6 +57,8 @@ export class AddEmployeeComponent implements OnInit {
   }
   fetchUserFormData() {
     this.userForm = this.employeeService.userEmitter.value;
+    if(this.userForm == null) 
+      this.router.navigate(['/employee/home']);
   }
 
   initEmployeeForm() {
@@ -119,8 +123,13 @@ export class AddEmployeeComponent implements OnInit {
     console.log(this.userForm);
     this.employeeService.saveEmployee(this.userForm)
     .subscribe(response =>{
-      console.log(response);
-    });
+      this.employeeService.userEmitter.next(null);
+      this.referenceMessage = "Successfully Added Employee with ID: " + response.empDetailsId;
+      setInterval(()=> {
+        this.router.navigate(['/employee/home'])
+      }, 2000)
+    },
+    error => {this.referenceMessage = error});
   }
 
   redirectToHomePage() {
