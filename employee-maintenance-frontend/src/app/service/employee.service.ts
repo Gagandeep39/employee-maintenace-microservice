@@ -3,11 +3,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { EmployeePage } from '../models/employee-page.model';
 import { EmployeeDetails } from '../models/employee-details.model';
+import { BehaviorSubject } from 'rxjs';
+import { UserForm } from '../models/user-form.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+
+  public userEmitter: BehaviorSubject<UserForm> = new BehaviorSubject<UserForm>(null);
 
   searchByName(searchString: string) {
     let params = new HttpParams();
