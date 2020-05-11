@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: 'footer', component: FooterComponent },
     { path: 'error/404', component: PageNotFoundComponent },
     { path: 'error/403', component: AccessDeniedComponent },
-    // { path: '**', redirectTo: 'error/404' }
+    { path: '**', redirectTo: 'error/404' }
 ]
 
 @NgModule({

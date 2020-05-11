@@ -29,8 +29,10 @@ export class AuthService {
         tap((user: User)=>{
           this.loggedInUser = user;
           sessionStorage.setItem('user', JSON.stringify(user));
+          sessionStorage.setItem('userType', this.loggedInUser.role.role);
           if(this.keepMeSignedInToggleState){
             localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('userType', this.loggedInUser.role.role);
           }
         })
       );
@@ -44,13 +46,26 @@ export class AuthService {
 
   isLoggedIn() {
     let user = this.fetchFromLocalStorage();
-    if(user) { 
+    if(user) {
       sessionStorage.setItem('user', JSON.stringify(user));
       this.loggedInUser = user;
       this.router.navigate(['/employee/home'])
     }
   }
 
+  isUserLoggedIn(): boolean {
+    let user = this.fetchFromSessionStorage();
+    if (user == null)
+      return false;
+    else
+      return true;
+  }
+
+  typeOfUser():String {
+    let userType = sessionStorage.getItem('userType');
+    return userType;
+  }
+  
   fetchFromLocalStorage() {
     return JSON.parse(localStorage.getItem('user'));
   }
