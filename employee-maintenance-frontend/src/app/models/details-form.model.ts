@@ -2,8 +2,8 @@ import { MaritalStatus } from './marital-status.model';
 import { Gender } from './gender.model';
 import { Department } from './department.model';
 import { Grade } from './grade.model';
-import { Address } from 'cluster';
 import { ManagerDetailsForm } from './manager-form.model';
+import { Address } from './address.model';
 
 export class UserDetailsFrom {
         firstName: string;
