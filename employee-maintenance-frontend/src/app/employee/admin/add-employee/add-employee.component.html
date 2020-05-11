@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="!isLoading">
+<div class="container-fluid">
 
   <form class="well form-horizontal" [formGroup]="employeeForm" (ngSubmit)="submitForm()">
 
@@ -334,7 +334,7 @@
     </div>
     </div>
     </form>
-  <pre>
+  <!-- <pre>
     {{ employeeForm.value | json }}
-  </pre>
+  </pre> -->
 </div>
