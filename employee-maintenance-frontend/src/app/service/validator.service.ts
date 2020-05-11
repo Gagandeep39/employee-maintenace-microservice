@@ -14,6 +14,7 @@ import { Manager } from '../models/manager.model';
 import { Grade } from '../models/grade.model';
 import { map } from 'rxjs/operators';
 import { UsernameExists } from '../models/username-exists.model';
+import { Role } from '../models/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,10 @@ export class ValidatorService {
 
   fetchAllGrades() {
     return this.httpClient.get<Grade[]>(environment.url + environment.grades);
+  }
+
+  fetchAllRoles() {
+    return this.httpClient.get<Role[]>(environment.url + environment.roles);
   }
 
 }

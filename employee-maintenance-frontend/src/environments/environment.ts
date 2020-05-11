@@ -18,6 +18,7 @@ export const environment = {
   grades: ':9400/grades',
   departments: ':9400/departments',
   managers: ':9400/managers',
+  roles: ':9400/roles',
   validateUsername: ':9400/username'
 };
 
