@@ -14,7 +14,11 @@ export const environment = {
   employeeLeave: ':9300/leaves/employee/',
   leaveBalance: ':9300/leaves/balance/',
   subEmployeeLeaves: ':9300/leaves/manager/',
-  updateLeave: ':9300/leaves/'
+  updateLeave: ':9300/leaves/',
+  grades: ':9400/grades',
+  departments: ':9400/departments',
+  managers: ':9400/managers',
+  validateUsername: ':9400/username'
 };
 
 /*
