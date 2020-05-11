@@ -1,5 +1,6 @@
 <div class="container">
   <div class="form-group" align="right">
+        Leave Balance: <b style="margin-right: 12px;"> {{ leaveBalance }} </b>
     <button [disabled]="leaveBalance==0" class="btn btn-secondary" type="button" name="create" id="create" (click)="createLeave()">
       + Create Leave
     </button>
@@ -9,7 +10,7 @@
     <thead>
       <tr>
         <td>ID</td>
-        <td>Leave Balance</td>
+        <!-- <td>Leave Balance</td> -->
         <td>Date from</td>
         <td>Date to</td>
         <td>Leave Status</td>
@@ -18,7 +19,7 @@
     </thead>
     <tr *ngFor="let leave of leavePage.content">
       <th> {{ leave.leaveId }} </th>
-      <td> {{ leave.leaveBalance }} </td>
+      <!-- <td> {{ leave.leaveBalance }} </td> -->
       <td> {{ leave.dateFrom }} </td>
       <td> {{ leave.dateTo }} </td>
       <td> {{ leave.leaveStatus }} </td>
