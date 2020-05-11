@@ -11,6 +11,7 @@ import { EmployeeService } from 'src/app/service/employee.service';
 import { ValidatorService } from 'src/app/service/validator.service';
 import { CustomValidators } from 'src/app/shared/custom-validators';
 import { UserDetailsFrom } from 'src/app/models/details-form.model';
+import { Designation } from 'src/app/models/designation.model';
 
 @Component({
   selector: 'app-add-employee',
@@ -25,7 +26,7 @@ export class AddEmployeeComponent implements OnInit {
   departments: Department[] = [];
   managers: Manager[] = [];
   grades: Grade[] = [];
-  designations : string;
+  designations = Designation;
 
   employeeForm: FormGroup;
   selectedGrade: Grade;
