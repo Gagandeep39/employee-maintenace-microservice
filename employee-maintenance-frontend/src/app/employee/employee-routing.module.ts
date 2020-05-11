@@ -18,6 +18,7 @@ import { EditEmployeeComponent } from './admin/edit-employee/edit-employee.compo
 import { ApproveLeaveComponent } from './manager/approve-leave/approve-leave.component';
 import { EmployeeComponent } from './employee.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
+import { AuthGuardService } from '../service/auth-guard.service';
 
 
 
@@ -25,19 +26,19 @@ const routes: Routes = [
     {
         path: 'employee', component: EmployeeComponent, children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'search', component: SearchEmployeeComponent },
-            { path: 'leaves', component: ViewLeavesComponent },
-            { path: 'home', component: HomeComponent },
-            { path: 'details/:id', component: HomeComponent },
-            { path: 'addleave', component: CreateLeaveComponent },
-            { path: 'change', component: ChangePasswordComponent },
-            { path: 'admin/adduser', component: AddUserComponent },
-            { path: 'admin/addemp', component: AddEmployeeComponent },
-            { path: 'admin/edit', component: EditEmployeeComponent },
-            { path: 'manager/approve', component: ApproveLeaveComponent },
+            { path: 'search', component: SearchEmployeeComponent, canActivate : [AuthGuardService]},
+            { path: 'leaves', component: ViewLeavesComponent, canActivate : [AuthGuardService] },
+            { path: 'home', component: HomeComponent, canActivate : [AuthGuardService] },
+            { path: 'details/:id', component: HomeComponent, canActivate : [AuthGuardService] },
+            { path: 'addleave', component: CreateLeaveComponent, canActivate : [AuthGuardService] },
+            { path: 'change', component: ChangePasswordComponent, canActivate : [AuthGuardService] },
+            { path: 'admin/adduser', component: AddUserComponent, canActivate : [AuthGuardService] },
+            { path: 'admin/addemp', component: AddEmployeeComponent, canActivate : [AuthGuardService] },
+            { path: 'admin/edit', component: EditEmployeeComponent, canActivate : [AuthGuardService] },
+            { path: 'manager/approve', component: ApproveLeaveComponent, canActivate : [AuthGuardService] },
         ]
     },
-    { path: '**', redirectTo: 'error/404' }
+    // { path: '**', redirectTo: 'error/404' }
 ]
 
 @NgModule({

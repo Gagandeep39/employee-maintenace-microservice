@@ -121,12 +121,11 @@ export class AddEmployeeComponent implements OnInit {
 
   saveDataToServer(userDetails: UserDetailsFrom) {
     this.userForm.employeeDetails = userDetails;
-    console.log(this.userForm);
     this.employeeService.saveEmployee(this.userForm)
     .subscribe(response =>{
       this.employeeService.userEmitter.next(null);
       this.referenceMessage = "Successfully Added Employee with ID: " + response.empDetailsId;
-      setInterval(()=> {
+      setTimeout(()=> {
         this.router.navigate(['/employee/home'])
       }, 2000)
     },
