@@ -3,6 +3,8 @@
 import com.cg.employeemaintenanceservice.model.EmployeeDetails;
 import com.cg.employeemaintenanceservice.model.User;
 import com.cg.employeemaintenanceservice.service.EmployeeRegistrationService;
+import com.cg.employeemaintenanceservice.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +26,19 @@ public class EmployeeRegistrationController {
     @Autowired
     private EmployeeRegistrationService employeeRegistrationService;
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/employees")
     public ResponseEntity<EmployeeDetails> addEmployee(@RequestBody User user){
         EmployeeDetails employeeDetails = employeeRegistrationService.addEmployeeDetails(user);
         return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
+    }
+
+    @PostMapping("/employees/user")
+    public ResponseEntity<User> addUser(@RequestBody User user){
+        User addedUser = userService.addUser(user);
+        return new ResponseEntity<>(addedUser, HttpStatus.OK);
     }
 
 }
