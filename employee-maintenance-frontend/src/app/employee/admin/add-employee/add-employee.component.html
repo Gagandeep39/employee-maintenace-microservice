@@ -122,33 +122,35 @@
     </div>
     <div class="row">
       <!-- Deprtment  -->
-      <div class="col">
-        <div class="form-group">
-          <label for="deptid">Department</label>
-          <select
-          name="deptid"
-          id="deptid"
-          formControlName="departmentId"
-          [ngClass]="{'is-invalid': submitted && employeeForm.get('departmentId').invalid}"
-          class="custom-select">
-              <option *ngFor="let dept of departments" [value]="dept.departmentId"> {{dept.departmentName}} </option>
-          </select>
-          <div class="invalid-feedback" *ngIf="submitted && employeeForm.get('departmentId').invalid">Select a Department</div>
+      <div formGroupName="department">
+        <div class="col">
+          <div class="form-group">
+            <label for="deptid">Department</label>
+            <select
+            name="deptid"
+            id="deptid"
+            formControlName="departmentId"
+            [ngClass]="{'is-invalid': submitted && employeeForm.get('department.departmentId').invalid}"
+            class="custom-select">
+                <option *ngFor="let dept of departments" [value]="dept.departmentId"> {{dept.departmentName}} </option>
+            </select>
+            <div class="invalid-feedback" *ngIf="submitted && employeeForm.get('department.departmentId').invalid">Select a Department</div>
+          </div>
         </div>
       </div>
       <!-- Manager  -->
-      <div class="col">
+      <div class="col" formGroupName="manager">
         <div class="form-group">
           <label for="managerid">Manager</label>
           <select
           name="managerid"
           id="managerid"
-          formControlName="managerId"
-          [ngClass]="{'is-invalid': submitted && employeeForm.get('managerId').invalid}"
+          formControlName="empDetailsId"
+          [ngClass]="{'is-invalid': submitted && employeeForm.get('manager.empDetailsId').invalid}"
           class="custom-select">
               <option *ngFor="let manager of managers" [value]="manager.managerId"> {{manager | managerInfo}} </option>
           </select>
-          <div class="invalid-feedback" *ngIf="submitted && employeeForm.get('managerId').invalid">Select a Manager</div>
+          <div class="invalid-feedback" *ngIf="submitted && employeeForm.get('manager.empDetailsId').invalid">Select a Manager</div>
         </div>
       </div>
     </div>

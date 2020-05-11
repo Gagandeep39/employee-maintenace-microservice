@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { ValidatorService } from 'src/app/service/validator.service';
 import { CustomValidators } from 'src/app/shared/custom-validators';
+import { UserDetailsFrom } from 'src/app/models/details-form.model';
 
 @Component({
   selector: 'app-add-employee',
@@ -55,8 +56,12 @@ export class AddEmployeeComponent implements OnInit {
       ]),
       maritalStatus: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
-      departmentId: new FormControl('', Validators.required),
-      managerId: new FormControl('', Validators.required),
+      department: new FormGroup({
+        departmentId: new FormControl('', Validators.required),
+      }),
+      manager: new FormGroup({
+        empDetailsId: new FormControl('', Validators.required),
+      }),
       grade: new FormControl('', Validators.required),
       designation: new FormControl('', Validators.required),
       basic: new FormControl('', [
@@ -87,7 +92,6 @@ export class AddEmployeeComponent implements OnInit {
   submitForm() {
     this.submitted = true;
     if (this.employeeForm.valid) {
-      this.isLoading = true;
       this.saveDataToServer(this.employeeForm.value);
     }
   }
@@ -98,19 +102,9 @@ export class AddEmployeeComponent implements OnInit {
     );
   }
 
-  saveDataToServer(user: User) {
-    // this.validatorService.addEmployee(this.currentUser, newEmployee).subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //     this.isLoading = false;
-    //     this.error = 'Successfully Created employee with ID: ' + response;
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.isLoading = false;
-    //     this.error = error;
-    //   }
-    // );
+  saveDataToServer(userDetails: UserDetailsFrom) {
+    console.log(userDetails);
+    
   }
 
   redirectToHomePage() {
