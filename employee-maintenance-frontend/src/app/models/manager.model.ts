@@ -1,4 +1,5 @@
 export interface Manager {
     managerId: number;
-    managerName: string;
+    firstName: string;
+    lastName: string;
 }

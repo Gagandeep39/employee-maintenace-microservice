@@ -5,5 +5,10 @@
  * @modify date 2020-05-09 23:19:33
  * @desc [description]
  */
+export class Grade {
+    gradeCode:   string;
+    minSalary:   number;
+    maxSalary:   number;
+    description: string;
+}
 
-export interface Grade {}
