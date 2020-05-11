@@ -26,17 +26,19 @@ export class AuthService {
   login(credential: User) {
     return this.httpClient.post<User>(environment.url + environment.login, credential)
       .pipe(
-        tap((user: User)=>{
+        tap((user: User) => {
           this.loggedInUser = user;
           sessionStorage.setItem('user', JSON.stringify(user));
-          if(this.keepMeSignedInToggleState){
+          sessionStorage.setItem('userType', this.loggedInUser.role.role);
+          if (this.keepMeSignedInToggleState) {
             localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('userType', this.loggedInUser.role.role);
           }
         })
       );
   }
 
-  public logOut() : void {
+  public logOut(): void {
     sessionStorage.clear();
     localStorage.clear();
     this.router.navigate(['/login']);
@@ -44,18 +46,36 @@ export class AuthService {
 
   isLoggedIn() {
     let user = this.fetchFromLocalStorage();
-    if(user) { 
+    if (user) {
       sessionStorage.setItem('user', JSON.stringify(user));
       this.loggedInUser = user;
       this.router.navigate(['/employee/home'])
     }
   }
 
+  isUserLoggedIn(): boolean {
+    let userSession = this.fetchFromSessionStorage();
+    let userLocal = this.fetchFromLocalStorage();
+    if (userSession == null && userLocal == null)
+      return false;
+    else
+      return true;
+  }
+
+  typeOfUser(): String {
+    let userTypeSession = sessionStorage.getItem('userType');
+    let userTypeLocal = localStorage.getItem('userType');
+    if (userTypeLocal == null)
+      return userTypeSession;
+    else
+      return userTypeLocal;
+  }
+
   fetchFromLocalStorage() {
     return JSON.parse(localStorage.getItem('user'));
   }
 
-  fetchFromSessionStorage(){
+  fetchFromSessionStorage() {
     return JSON.parse(sessionStorage.getItem('user'));
   }
 
