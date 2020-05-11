@@ -43,9 +43,9 @@ public class LeaveController {
         return new ResponseEntity<>(leaveHistories, HttpStatus.OK);
     }
 
-    @PostMapping("/leaves")
-    public ResponseEntity<LeaveHistory> addLeave(@RequestBody LeaveHistory leaveHistory){
-        LeaveHistory updatedLeaveHistory = leaveService.createLeave(leaveHistory);
+    @PostMapping("/leaves/{empId}")
+    public ResponseEntity<LeaveHistory> addLeave(@PathVariable Integer empId, @RequestBody LeaveHistory leaveHistory){
+        LeaveHistory updatedLeaveHistory = leaveService.createLeave(leaveHistory, empId);
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
     }
 
