@@ -16,13 +16,13 @@ INSERT INTO role_table (role_id, role_name) VALUES (100002,'ROLE_MANAGER');
 INSERT INTO role_table (role_id, role_name) VALUES (100003,'ROLE_EMPLOYEE');
 
 -- 	GRADE_DESC, GRADE_MAX_SAL, GRADE_MIN_SAL, grade_desc
-INSERT INTO grade_table (grade_code, grade_max_sal, grade_min_sal, grade_desc) VALUES ('M1', 25000, 100000, 'Trainee');
-INSERT INTO grade_table (grade_code, grade_max_sal, grade_min_sal, grade_desc) VALUES ('M2', 100001, 250000, 'Junior Employee');
-INSERT INTO grade_table (grade_code, grade_max_sal, grade_min_sal, grade_desc) VALUES ('M3', 250001, 500000, 'Senior Employee');
-INSERT INTO grade_table (grade_code, grade_max_sal, grade_min_sal, grade_desc) VALUES ('M4', 500000, 1000000, 'Team Leader');
-INSERT INTO grade_table (grade_code, grade_max_sal, grade_min_sal, grade_desc) VALUES ('M5', 1000001, 2000000, 'Department Head');
-INSERT INTO grade_table (grade_code, grade_max_sal, grade_min_sal, grade_desc) VALUES ('M6', 2000001, 3000000, 'Vice Presidents');
-INSERT INTO grade_table (grade_code, grade_max_sal, grade_min_sal, grade_desc) VALUES ('M7', 3000001, 4000000, 'Board Members');
+INSERT INTO grade_table (grade_code, grade_min_sal, grade_max_sal, grade_desc) VALUES ('M1', 25000, 100000, 'Trainee');
+INSERT INTO grade_table (grade_code, grade_min_sal, grade_max_sal, grade_desc) VALUES ('M2', 100001, 250000, 'Junior Employee');
+INSERT INTO grade_table (grade_code, grade_min_sal, grade_max_sal, grade_desc) VALUES ('M3', 250001, 500000, 'Senior Employee');
+INSERT INTO grade_table (grade_code, grade_min_sal, grade_max_sal, grade_desc) VALUES ('M4', 500000, 1000000, 'Team Leader');
+INSERT INTO grade_table (grade_code, grade_min_sal, grade_max_sal, grade_desc) VALUES ('M5', 1000001, 2000000, 'Department Head');
+INSERT INTO grade_table (grade_code, grade_min_sal, grade_max_sal, grade_desc) VALUES ('M6', 2000001, 3000000, 'Vice Presidents');
+INSERT INTO grade_table (grade_code, grade_min_sal, grade_max_sal, grade_desc) VALUES ('M7', 3000001, 4000000, 'Board Members');
 UPDATE grade_code_sequence SET next_val = 100008;
 -- ALTER sequence grade_code_sequence restart with 100008;
 

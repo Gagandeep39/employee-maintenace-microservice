@@ -3,11 +3,20 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { EmployeePage } from '../models/employee-page.model';
 import { EmployeeDetails } from '../models/employee-details.model';
+import { BehaviorSubject } from 'rxjs';
+import { UserForm } from '../models/user-form.model';
+import { User } from '../models/user.mode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+
+  saveEmployee(userForm: UserForm) {
+    return this.httpClient.post<EmployeeDetails>(environment.url + environment.addEmployee, userForm);
+  }
+
+  public userEmitter: BehaviorSubject<UserForm> = new BehaviorSubject<UserForm>(null);
 
   searchByName(searchString: string) {
     let params = new HttpParams();

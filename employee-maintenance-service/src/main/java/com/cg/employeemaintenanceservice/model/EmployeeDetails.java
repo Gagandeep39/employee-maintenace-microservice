@@ -48,7 +48,7 @@ public class EmployeeDetails {
     @Column(name = "date_of_joining")
     private LocalDate dateOfJoining;
 
-    @Column(name = "email", length = 20)
+    @Column(name = "email", length = 40)
     private String email;
 
     @Column(name = "phoneno", length = 10)

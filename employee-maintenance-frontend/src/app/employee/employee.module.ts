@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeComponent } from './employee.component';
+import { AddUserComponent } from '../employee/admin/add-user/add-user.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { EmployeeComponent } from './employee.component';
     ApproveLeaveComponent,
     SearchEmployeeComponent,
     ViewLeavesComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    AddUserComponent
   ]
 })
 export class EmployeeModule { }

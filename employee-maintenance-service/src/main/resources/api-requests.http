@@ -1,3 +1,15 @@
+POST http://localhost:9200/employees/user
+Content-Type: application/json
+
+{
+  "username": "gagan1as",
+  "password": "123456",
+  "role": {
+    "roleId": 100001,
+    "role": "ROLE_ADMIN"
+  }
+}
+
 ### Perform Login - Correct data
 POST http://localhost:9200/employees
 Content-Type: application/json

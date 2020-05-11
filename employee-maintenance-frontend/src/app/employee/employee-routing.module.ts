@@ -17,6 +17,7 @@ import { AddEmployeeComponent } from './admin/add-employee/add-employee.componen
 import { EditEmployeeComponent } from './admin/edit-employee/edit-employee.component';
 import { ApproveLeaveComponent } from './manager/approve-leave/approve-leave.component';
 import { EmployeeComponent } from './employee.component';
+import { AddUserComponent } from './admin/add-user/add-user.component';
 
 
 
@@ -30,7 +31,8 @@ const routes: Routes = [
             { path: 'details/:id', component: HomeComponent },
             { path: 'addleave', component: CreateLeaveComponent },
             { path: 'change', component: ChangePasswordComponent },
-            { path: 'admin/add', component: AddEmployeeComponent },
+            { path: 'admin/adduser', component: AddUserComponent },
+            { path: 'admin/addemp', component: AddEmployeeComponent },
             { path: 'admin/edit', component: EditEmployeeComponent },
             { path: 'manager/approve', component: ApproveLeaveComponent },
         ]
