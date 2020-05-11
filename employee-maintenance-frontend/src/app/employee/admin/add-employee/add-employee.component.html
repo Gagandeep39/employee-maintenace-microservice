@@ -54,6 +54,7 @@
           <input
           formControlName="dateOfBirth"
           data-date-end-date="0d"
+          onkeydown="return false"
           type="date"
           id="dob"
           name="dob"
@@ -63,6 +64,7 @@
           <div class="invalid-feedback" *ngIf="submitted && employeeForm.get('dateOfBirth').invalid">
             <div *ngIf="employeeForm.get('dateOfBirth').errors['required']">* Required</div>
             <div *ngIf="employeeForm.get('dateOfBirth').errors['ageIsForbidden']">Employee's Age must be between 18 and 58</div>
+            <div *ngIf="employeeForm.get('dateOfBirth').errors['futureDateForbidden']">Future dte not allowed</div>
             <!-- TODO - Do not show future dates  -->
           </div>
         </div>
@@ -74,6 +76,7 @@
           <input
           formControlName="dateOfJoining"
           type="date"
+          onkeydown="return false"
           id="dob"
           name="dob"
           class="form-control"
@@ -81,7 +84,7 @@
           >
           <div class="invalid-feedback" *ngIf="submitted && employeeForm.get('dateOfJoining').invalid">
             <div *ngIf="employeeForm.get('dateOfJoining').errors['required']">* Required</div>
-            <div *ngIf="employeeForm.get('dateOfJoining').errors['futureDateForbidden']">* Required</div>
+            <div *ngIf="employeeForm.get('dateOfJoining').errors['futureDateForbidden']">Future dte not allowed</div>
           </div>
         </div>
       </div>

@@ -68,6 +68,7 @@ export class AddEmployeeComponent implements OnInit {
       dateOfBirth: new FormControl('', [
         Validators.required,
         CustomValidators.forbiddenAge,
+        CustomValidators.forbidFutureDate
       ]),
       dateOfJoining: new FormControl('', [
         Validators.required,
