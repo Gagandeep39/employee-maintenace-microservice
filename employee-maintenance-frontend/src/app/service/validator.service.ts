@@ -27,8 +27,8 @@ export class ValidatorService {
     })
     .pipe(
       map(response => {
-        console.log(response);
-        return response.exists;
+        // Retun false if user exists
+        return !response.exists;
       })
     );
   }
