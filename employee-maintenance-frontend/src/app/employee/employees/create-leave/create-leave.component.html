@@ -1,4 +1,9 @@
 <div class="container">
+  <legend>
+    <h2 class="display-4"><b>Apply For Leave</b></h2>
+  </legend>
+  <hr>
+
   <form class="" [formGroup]="form"(ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="dateFrom">Start Date</label>
@@ -15,20 +20,24 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="dateFrom">End Date</label>
       <input 
       id="dateFrom"
       class="form-control"
       type="date" 
       name="dateTo" 
-      [ngClass]="{'is-invalid': submitted && (form.invalid || form.get('dateTo').invalid)}"
+      [ngClass]="{'is-invalid': submitted && form.get('dateTo').invalid}"
       formControlName="dateTo">
       <div class="invalid-feedback" *ngIf="submitted && form.get('dateTo').invalid">
         <div *ngIf="form.get('dateTo').errors['dateToLessThanFrom']">Date cannot be less than start date</div>
         <div *ngIf="form.get('dateTo').errors['required']">* Required</div>
-        <div *ngIf="form.get('dateTo').errors['insufficientBalance']">Date must be after today</div>
+        <div *ngIf="form.get('dateTo').errors['insufficientBalance']">Insufficient Balance</div>
       </div>
     </div>
     <button type="Submit" class="btn btn-success" [disabled]="!leaveButtonEnabled">Submit</button>
+    <div *ngIf="errorMessage!=undefined">
+        {{ errorMessage }}
+    </div>
   </form>
 </div>
 {{ form.value | json }}

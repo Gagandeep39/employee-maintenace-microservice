@@ -2,6 +2,7 @@ package com.cg.employeeleaveservice.service.implementation;
 
 import com.cg.employeeleaveservice.enums.LeaveStatus;
 import com.cg.employeeleaveservice.exception.LeaveNotFoundException;
+import com.cg.employeeleaveservice.model.EmployeeDetails;
 import com.cg.employeeleaveservice.model.LeaveHistory;
 import com.cg.employeeleaveservice.repository.LeaveHistoryRepository;
 import com.cg.employeeleaveservice.service.LeaveService;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +32,15 @@ public class LeaveServiceImpl implements LeaveService {
     private LeaveHistoryRepository leaveHistoryRepository;
 
     @Override
-    public LeaveHistory createLeave(LeaveHistory leaveHistory) {
+    public LeaveHistory createLeave(LeaveHistory leaveHistory, Integer empId) {
+        EmployeeDetails details = new EmployeeDetails();
+        details.setEmpDetailsId(empId);
+        leaveHistory.setEmployeeDetails(details);
+        leaveHistory.setLeaveBalance(fetchLeaveBalance(empId));
+        leaveHistory.setLeaveStatus(LeaveStatus.Applied);
+        Period period = Period.between(leaveHistory.getDateFrom(), leaveHistory.getDateTo());
+        leaveHistory.setNumberOfDays(period.getDays());
+        log.info("Days: " + leaveHistory.toString());
         return leaveHistoryRepository.save(leaveHistory);
     }
 
