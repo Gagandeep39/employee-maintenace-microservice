@@ -46,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public User addUser(User user) {
-        return employeeRepository.saveAndFlush(user);
+        return employeeRepository.save(user);
         // return employeeRepository.findById(user.getEmpId()).get();
     }
 }
