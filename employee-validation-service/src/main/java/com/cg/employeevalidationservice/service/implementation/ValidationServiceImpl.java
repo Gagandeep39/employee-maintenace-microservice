@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 import com.cg.employeevalidationservice.model.Department;
 import com.cg.employeevalidationservice.model.Grade;
 import com.cg.employeevalidationservice.model.Manager;
+import com.cg.employeevalidationservice.model.Role;
 import com.cg.employeevalidationservice.repository.DepartmentRepository;
 import com.cg.employeevalidationservice.repository.EmployeeRepository;
 import com.cg.employeevalidationservice.repository.GradeRepository;
+import com.cg.employeevalidationservice.repository.RoleRepository;
 import com.cg.employeevalidationservice.service.ValidationService;
 
 @Service
@@ -33,6 +35,9 @@ public class ValidationServiceImpl implements ValidationService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private RoleRepository roleRepository;
+
 	@Override
 	public List<Grade> fetchAllGrades() {
 		return gradeRepository.findAll();
@@ -47,8 +52,7 @@ public class ValidationServiceImpl implements ValidationService {
 	public List<Manager> fetchAllManagers() {
 		List<Object[]> list = employeeRepository.findAllManagers();
 		List<Manager> managers = new ArrayList<>();
-		for(Object[] obj : list)
-		{
+		for (Object[] obj : list) {
 			Manager m = new Manager();
 			m.setManagerId(Integer.parseInt(String.valueOf(obj[0])));
 			m.setFirstName(String.valueOf(obj[1]));
@@ -61,6 +65,11 @@ public class ValidationServiceImpl implements ValidationService {
 	@Override
 	public boolean usernameExists(String username) {
 		return userRepository.existsByUsername(username);
+	}
+
+	@Override
+	public List<Role> fetchRoles() {
+		return roleRepository.findAll();
 	}
 
 }

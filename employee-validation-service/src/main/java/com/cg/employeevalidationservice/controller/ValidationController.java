@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.employeevalidationservice.model.Department;
 import com.cg.employeevalidationservice.model.Grade;
 import com.cg.employeevalidationservice.model.Manager;
+import com.cg.employeevalidationservice.model.Role;
 import com.cg.employeevalidationservice.service.ValidationService;
 
 @CrossOrigin("*")
@@ -52,5 +53,11 @@ public class ValidationController {
 		log.info("----------------" + username);
 		map.put("exists", validationService.usernameExists(username));
 		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+
+	@GetMapping("/roles")
+	public ResponseEntity<List<Role>> getAllRoles(){
+		List<Role> roles = validationService.fetchRoles();
+		return new ResponseEntity<>(roles, HttpStatus.OK);
 	}
 }
