@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
  */
 public interface LeaveService {
 
-    LeaveHistory createLeave(LeaveHistory leaveHistory);
+    LeaveHistory createLeave(LeaveHistory leaveHistory, Integer empId);
     LeaveHistory updateLeave(LeaveHistory leaveHistory);
     Page<LeaveHistory> fetchAllEmployeeLeave(Integer pageNo, Integer pageSize, String sortBy, Integer empId);
     Page<LeaveHistory> fetchAllSubEmployeeLeaves(Integer pageNo, Integer pageSize, String sortBy, Integer managerId);

@@ -39,7 +39,11 @@ export class LeaveService {
     );
   }
 
-  createLeave() {
+  createLeave(leaveHistory: LeaveHistory) {
+    let user: User = this.authService.fetchFromSessionStorage();
+    console.log(leaveHistory);
+    
+    return this.httpClient.post<LeaveHistory>(environment.url + environment.createLeave + user.empId, leaveHistory);
   }
 
   getManagerSubEmployeeLeaves(pageNo: number, pageSize = 10, sortBy = "leaveStatus") {
