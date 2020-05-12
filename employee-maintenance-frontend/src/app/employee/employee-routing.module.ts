@@ -34,7 +34,7 @@ const routes: Routes = [
             { path: 'change', component: ChangePasswordComponent, canActivate : [AuthGuardService] },
             { path: 'admin/adduser', component: AddUserComponent, canActivate : [AuthGuardService] },
             { path: 'admin/addemp', component: AddEmployeeComponent, canActivate : [AuthGuardService] },
-            { path: 'admin/edit', component: EditEmployeeComponent, canActivate : [AuthGuardService] },
+            { path: 'admin/edit/:id', component: AddEmployeeComponent },
             { path: 'manager/approve', component: ApproveLeaveComponent, canActivate : [AuthGuardService] },
         ]
     },

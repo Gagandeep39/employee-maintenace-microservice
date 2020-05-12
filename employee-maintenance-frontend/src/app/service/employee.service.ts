@@ -5,13 +5,17 @@ import { EmployeePage } from '../models/employee-page.model';
 import { EmployeeDetails } from '../models/employee-details.model';
 import { BehaviorSubject } from 'rxjs';
 import { UserForm } from '../models/user-form.model';
-import { User } from '../models/user.mode';
+import { UserDetailsFrom } from "../models/details-form.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
+  updateEmployee(userDetailsForm: UserDetailsFrom) {
+    return this.httpClient.put<EmployeeDetails>(environment.url + environment.addEmployee, userDetailsForm);
+  }
+  
   saveEmployee(userForm: UserForm) {
     return this.httpClient.post<EmployeeDetails>(environment.url + environment.addEmployee, userForm);
   }
