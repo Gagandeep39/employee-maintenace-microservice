@@ -27,7 +27,7 @@ public class ApproveLeaveScheduler {
     /**
      * Executed every day at 11:00 pm
      */
-    @Scheduled(cron = "0 0 23 * *")
+    @Scheduled(cron = "0 0 23 * * *")
     public void autoApproveLeave() {
         leaveService.scheduledUpdate();
         log.info("Executed at " + new Date());
