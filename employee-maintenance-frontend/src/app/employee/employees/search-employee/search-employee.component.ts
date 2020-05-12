@@ -47,11 +47,11 @@ export class SearchEmployeeComponent implements OnInit {
   }
 
   previousPage() {
-    this.fetchDatafromServer(this.currentPage--);
+    this.fetchDatafromServer(--this.currentPage);
   }
 
   nextPage() {
-    this.fetchDatafromServer(this.currentPage++);
+    this.fetchDatafromServer(++this.currentPage);
   }
 
   counter(i: number) {
