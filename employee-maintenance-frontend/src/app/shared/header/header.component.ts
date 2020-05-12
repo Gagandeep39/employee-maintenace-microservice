@@ -7,6 +7,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
+import { User } from 'src/app/models/user.mode';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +16,14 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  user: User;
+  role: string;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.user = this.authService.fetchFromSessionStorage();
+    this.role = this.user.role.role;
   }
 
   logOut() : void {

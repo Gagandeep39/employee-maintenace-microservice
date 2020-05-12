@@ -15,8 +15,8 @@
         <td>Gender</td>
         <td>Manager ID</td>
         <td>Details</td>
-        <td>Edit details</td>
-        <td>Edit credentials</td>
+        <td>Change Role</td>
+        <td>Edit </td>
       </tr>
     </thead>
     <tr *ngFor="let employee of employeePage.content">
@@ -27,9 +27,9 @@
       <td> {{ employee.maritalStatus }} </td>
       <td> {{ employee.gender }} </td>
       <td> {{ employee.manager }} </td>
-      <td> <button class="btn btn-primary" [routerLink]="[ '/employee/details', employee.empDetailsId ]">Details</button> </td>
-      <td> <button class="btn btn-primary" [routerLink]="[ '/employee/editDetails', employee.empDetailsId ]">Edit details</button> </td>
-      <td> <button class="btn btn-primary" [routerLink]="[ '/employee/editCredentials', employee.empDetailsId ]">Edit credentials</button> </td>
+      <td> <button class="btn btn-info" [routerLink]="[ '/employee/details', employee.empDetailsId ]">Details</button> </td>
+      <td> <button class="btn btn-primary" [routerLink]="[ '/employee/admin/edituser', employee.empDetailsId ]">Edit Role</button> </td>
+      <td> <button class="btn btn-success" [routerLink]="[ '/employee/admin/editemp', employee.empDetailsId ]">Edit</button> </td>
 
     </tr>
     
