@@ -38,4 +38,12 @@ public class EmployeeController {
         return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
     }
 
+    @PutMapping("/login/update")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        User modifiedUser = employeeService.updateUser(user);
+        return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
+    }
+
+
+
 }
