@@ -16,7 +16,10 @@ export class SearchEmployeeComponent implements OnInit {
   public currentPage: number;
   departments : Department[]= [];
   grades : Grade[]=[];
-  maritalStatuses : MaritalStatus[]=[]
+  maritalStatuses : MaritalStatus[]=[];
+  category: string = 'all';
+  value: string;
+  nameType : string;
 
   constructor(private employeeService: EmployeeService, private validatorService: ValidatorService) {}
 
@@ -30,9 +33,11 @@ export class SearchEmployeeComponent implements OnInit {
 
   fetchDatafromServer(pageNo: number, pageSize = 10) {
     this.employeeService
-      .getEmployeePages(pageNo, pageSize)
+      .getEmployeeByCategory(pageNo, pageSize, this.category, this.value)
       .subscribe((response) => {
         this.employeePage = response;
+        console.log(response);
+        
       });
   }
 
@@ -42,20 +47,33 @@ export class SearchEmployeeComponent implements OnInit {
   }
 
   previousPage() {
-    this.fetchDatafromServer(this.currentPage--);
+    this.fetchDatafromServer(--this.currentPage);
   }
 
   nextPage() {
-    this.fetchDatafromServer(this.currentPage++);
+    this.fetchDatafromServer(++this.currentPage);
   }
 
   counter(i: number) {
     return new Array(i);
   }
 
-  searchByName(searchString: string){
-    this.employeeService.searchByName(searchString).subscribe(response=>{
-      this.employeePage = response;
-    });
+  searchItem(category: string, value: string) {
+    this.category = category;
+    this.value = value;
+    this.fetchDatafromServer(0);
+    this.nameType = undefined;
   }
+
+  searchByName(category: string, value: string) {
+    this.category = category;
+    this.value = value;
+    this.fetchDatafromServer(0);
+    this.nameType = undefined;
+  }
+
+  setSearchType(type: string){
+    this.nameType = type;
+  }
+
 }

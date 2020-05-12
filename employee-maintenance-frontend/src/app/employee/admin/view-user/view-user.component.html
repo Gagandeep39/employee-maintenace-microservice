@@ -1,9 +1,52 @@
 <div class="container">
-  <div class="form-group">
-    <label for="search">Search</label>
-    <input class="form-control" type="text" name="search" id="search" #search placeholder="Enter name"(input)="searchByName(search.value)" >
-  </div>
-  <table class="table table-hover table-bordered">
+  <div>
+    <div class="dropdown row">
+      <div class="col">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Search by
+        </button>
+        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+          <li class="dropdown-item"><a (click)="setSearchType('firstName')">First Name</a></li>
+          <li class="dropdown-item"><a (click)="setSearchType('lastName')">Last Name</a></li>
+          <li class="dropdown-divider"></li>
+          <li class="dropdown-submenu">
+            <a class="dropdown-item">Department</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item" *ngFor="let department of departments"><a
+                  (click)="searchItem('departments', department.departmentName)">{{department.departmentName}}</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="dropdown-item">Grade</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item" *ngFor="let grade of grades"><a
+                  (click)="searchItem('grades', grade.gradeCode)">{{grade.gradeCode}}
+                  ({{grade.minSalary}}-{{grade.maxSalary}})</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="dropdown-item">Marital Status</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item" *ngFor="let maritalStatus of maritalStatuses"
+                (click)="searchItem('maritalStatus', maritalStatus)"><a>{{maritalStatus}}</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-item"><a (click)="searchItem('all', '')">All</a></li>
+        </ul>
+      </div>
+      <!-- Search Btn -->
+      <div class="col">
+        <div class="input-group mb-3" *ngIf="nameType=='firstName' || nameType=='lastName'">
+          <input class="form-control" type="text" name="search" id="search" #search placeholder="Enter name">
+          <div class="input-group-append">
+            <input type="submit" class="btn btn-success" value="Search" (click)="searchByName(nameType, search.value)">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <table class="table table-hover table-bordered" style="margin-top: 12px;">
    
     <thead>
       <tr>
