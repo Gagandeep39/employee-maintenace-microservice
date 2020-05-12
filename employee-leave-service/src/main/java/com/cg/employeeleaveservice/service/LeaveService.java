@@ -15,5 +15,7 @@ public interface LeaveService {
     Page<LeaveHistory> fetchAllEmployeeLeave(Integer pageNo, Integer pageSize, String sortBy, Integer empId);
     Page<LeaveHistory> fetchAllSubEmployeeLeaves(Integer pageNo, Integer pageSize, String sortBy, Integer managerId);
     Integer fetchLeaveBalance(Integer empId);
+    void scheduledUpdate();
+
 
 }

@@ -64,6 +64,7 @@ public class LeaveController {
     }
     // @Autowired
     // private LeaveHistoryRepository repository;
+
     // @GetMapping("/test")
     // public void test(){
     //     repository.scheduledUpdate();

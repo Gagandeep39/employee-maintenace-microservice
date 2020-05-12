@@ -59,7 +59,7 @@ public class LeaveHistory {
     @JsonIdentityReference(alwaysAsId = true)
     private EmployeeDetails employeeDetails;
 
-    @Column(name = "created_on")
+    @Column(name = "created_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     private LocalDateTime creationTime;
 
