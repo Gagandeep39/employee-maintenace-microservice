@@ -22,6 +22,7 @@ export class UserLoginComponent implements OnInit {
   errorPassword: string;
   errorMessage: string;
   staySignedInToggle: boolean = false;
+  isLoading = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -31,11 +32,14 @@ export class UserLoginComponent implements OnInit {
 
   login(loginForm: NgForm) {
     if (loginForm.valid) {
+      this.showLoading();
       this.authService.login(loginForm.value).subscribe(
         (response) => {
+          this.hideLoading();
           this.router.navigate(['/employee/home']);
         },
         (error) => {
+          this.hideLoading();
           // Implies there is conection with server
           if (error.error.message != undefined) this.handleError(error.error);
           else this.errorMessage = error;
@@ -60,5 +64,13 @@ export class UserLoginComponent implements OnInit {
   saveSignedInState() {
     this.staySignedInToggle = !this.staySignedInToggle;
     this.authService.keepMeSignedInToggleState = this.staySignedInToggle;
+  }
+
+  showLoading(){
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 }
