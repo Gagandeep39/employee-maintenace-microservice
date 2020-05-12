@@ -69,10 +69,9 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
 
     @Override
     public Page<EmployeeDetails> findByDepartments(Integer pageNo, Integer pageSize, String sortBy, String departments) {
-        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        Pageable paging = PageRequest.of(pageNo, pageSize);
         List<String> departmentList = Arrays.asList(departments.split(","));
-        List<Integer> intList = departmentList.stream().map(Integer::parseInt).collect(Collectors.toList());
-        Page<EmployeeDetails> pagedResult = employeeDetailsRepository.findByDepartment_DepartmentIdIn(intList, paging);
+        Page<EmployeeDetails> pagedResult = employeeDetailsRepository.findByDepartment_DepartmentNameIn(departmentList, paging);
         return pagedResult;
     }
 

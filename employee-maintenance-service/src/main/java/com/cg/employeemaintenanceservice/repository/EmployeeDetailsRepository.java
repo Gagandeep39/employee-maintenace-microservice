@@ -24,7 +24,7 @@ public interface EmployeeDetailsRepository extends JpaRepository<EmployeeDetails
 
     Page<EmployeeDetails> findByGenderIn(Collection<Gender> genders, Pageable pageable);
 
-    Page<EmployeeDetails> findByDepartment_DepartmentIdIn(Collection<Integer> department, Pageable pageable);
+    Page<EmployeeDetails> findByDepartment_DepartmentNameIn(Collection<String> department, Pageable pageable);
 
     Page<EmployeeDetails> findByMaritalStatusIn(Collection<MaritalStatus> maritalStatuses, Pageable pageable);
 
