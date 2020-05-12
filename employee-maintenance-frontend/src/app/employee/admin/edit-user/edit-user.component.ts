@@ -44,7 +44,7 @@ export class EditUserComponent implements OnInit {
       this.user.role = this.userEditForm.get('role').value;
       this.employeeService.updateUser(this.user).subscribe(
         response => {
-          this.referenceMessage = response;
+          this.referenceMessage = 'Successfully added user with ID: ' + response.empId;
           setTimeout(()=>{
             this.router.navigate(['/employee/home'])
           }, 2000)
