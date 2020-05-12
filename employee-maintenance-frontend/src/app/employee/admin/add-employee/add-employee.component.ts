@@ -13,6 +13,7 @@ import { CustomValidators } from 'src/app/shared/custom-validators';
 import { UserDetailsFrom } from 'src/app/models/details-form.model';
 import { Designation } from 'src/app/models/designation.model';
 import { UserForm } from 'src/app/models/user-form.model';
+import { EmployeeDetails } from 'src/app/models/employee-details.model';
 
 @Component({
   selector: 'app-add-employee',
@@ -39,22 +40,65 @@ export class AddEmployeeComponent implements OnInit {
 
   referenceMessage: string;
 
+  // Edit Employee 
+  empId: number;
+  employeeDetails: EmployeeDetails;
+
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
     private route: ActivatedRoute,
-    private validatorService: ValidatorService,
+    private validatorService: ValidatorService
   ) {}
 
   ngOnInit() {
-    if(this.route.snapshot.url[1].path==="addemp") this.fetchUserFormData();
-    
-    this.selectedGrade = new Grade();
+    this.initDropdowns();
     this.initEmployeeForm();
+    if(this.route.snapshot.url[1].path==="addemp") this.fetchUserFormData();
+    else if (this.route.snapshot.params['id']) this.updateEmployee();
+  }
+  updateEmployee() {
+    this.empId = this.route.snapshot.params['id'];
+    this.employeeService.getEmployeeById(this.empId).subscribe(response => {
+      this.employeeDetails = response;
+      this.populateFormFields();
+    })
+    
+  }
+  populateFormFields() {
+    this.employeeForm.patchValue({
+      firstName: this.employeeDetails.firstName,
+      lastName: this.employeeDetails.lastName,
+      dateOfBirth: this.employeeDetails.dateOfBirth,
+      dateOfJoining: this.employeeDetails.dateOfJoining,
+      maritalStatus: this.employeeDetails.maritalStatus,
+      gender: this.employeeDetails.gender,
+      department: {
+        departmentId: this.employeeDetails.department.departmentId
+      },
+      manager: {
+        empDetailsId: this.employeeDetails.manager
+      },
+      grade: this.employeeDetails.grade,
+      designation: this.employeeDetails.designation,
+      basic: this.employeeDetails.basic,
+      phoneNumber: this.employeeDetails.phoneNumber,
+      email: this.employeeDetails.email,
+      address: {
+        state: this.employeeDetails.address.state,
+        area: this.employeeDetails.address.area,
+        city: this.employeeDetails.address.city,
+        pincode: this.employeeDetails.address.pincode
+      }
+    })
+  }
+  initDropdowns() {
+    this.selectedGrade = new Grade();
     this.validatorService.fetchAllDepartments().subscribe((response) => (this.departments = response));
     this.validatorService.fetchAllGrades().subscribe((response) => (this.grades = response));
     this.validatorService.fetchAllManagers().subscribe((response) => this.managers = response);
   }
+
   fetchUserFormData() {
     this.userForm = this.employeeService.userEmitter.value;
     if(this.userForm == null) 
