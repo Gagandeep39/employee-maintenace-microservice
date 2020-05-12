@@ -48,11 +48,11 @@ export class ViewUserComponent implements OnInit {
   }
 
   previousPage() {
-    this.fetchDatafromServer(this.currentPage--);
+    this.fetchDatafromServer(--this.currentPage);
   }
 
   nextPage() {
-    this.fetchDatafromServer(this.currentPage++);
+    this.fetchDatafromServer(++this.currentPage);
   }
 
   counter(i: number) {
@@ -61,11 +61,11 @@ export class ViewUserComponent implements OnInit {
 
   searchItem(category: string, value: string) {
     console.log("Executed");
-    
     this.category = category;
     this.value = value;
     this.fetchDatafromServer(0);
     this.nameType = undefined;
+    this.currentPage = 0;
   }
 
   searchByName(category: string, value: string) {
@@ -73,7 +73,9 @@ export class ViewUserComponent implements OnInit {
     this.value = value;
     this.fetchDatafromServer(0);
     this.nameType = undefined;
+    this.currentPage = 0;
   }
+  
 
   setSearchType(type: string){
     this.nameType = type;
