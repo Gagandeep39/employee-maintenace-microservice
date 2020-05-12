@@ -15,5 +15,7 @@ public interface EmployeeService {
     User performLogin(User user);
     User changePassword(User user);
     User addUser(User user);
+	User updateRole(User user);
+	User findUserById(Integer id);
 
 }
