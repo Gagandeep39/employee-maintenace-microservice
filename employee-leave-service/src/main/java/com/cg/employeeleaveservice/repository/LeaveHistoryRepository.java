@@ -27,4 +27,8 @@ public interface LeaveHistoryRepository extends JpaRepository<LeaveHistory, Inte
     @Query("update LeaveHistory l set l.leaveBalance=?2 where l.employeeDetails.empDetailsId=?1")
     void updateLeaveBalance(Integer empId, Integer updatedBalance);
 
+//     @Modifying
+//     @Query("update LeaveHistory l set l.leaveStatus=?1, l.leaveBalance=l.leaveBalance-l.numberOfDays where l.leaveStatus='Applied' AND l.creationTime > 1")
+//    void scheduledUpdate(String status);
+
 }
