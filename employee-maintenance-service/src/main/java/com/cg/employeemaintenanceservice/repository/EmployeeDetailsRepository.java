@@ -24,7 +24,7 @@ public interface EmployeeDetailsRepository extends JpaRepository<EmployeeDetails
 
     Page<EmployeeDetails> findByGenderIn(Collection<Gender> genders, Pageable pageable);
 
-    Page<EmployeeDetails> findByDepartment_DepartmentIdIn(Collection<Integer> department, Pageable pageable);
+    Page<EmployeeDetails> findByDepartment_DepartmentNameIn(Collection<String> department, Pageable pageable);
 
     Page<EmployeeDetails> findByMaritalStatusIn(Collection<MaritalStatus> maritalStatuses, Pageable pageable);
 
@@ -35,6 +35,7 @@ public interface EmployeeDetailsRepository extends JpaRepository<EmployeeDetails
     Page<EmployeeDetails> findEmployeeDetailsByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(
             String firstName, String lastName, Pageable pageable);
 
-    // Select e from EmployeeDetails e where e.firstName LIKE %?1% or e.lastName
-    // LIKE %?1%
+    Page<EmployeeDetails> findEmployeeDetailsByFirstNameContainingIgnoreCase(String firstName, Pageable pageable);
+
+    Page<EmployeeDetails> findEmployeeDetailsByLastNameContainingIgnoreCase(String lastName, Pageable pageable);
 }

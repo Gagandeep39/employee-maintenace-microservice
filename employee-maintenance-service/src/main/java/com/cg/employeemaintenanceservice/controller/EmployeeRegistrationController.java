@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,6 +40,12 @@ public class EmployeeRegistrationController {
     public ResponseEntity<User> addUser(@RequestBody User user){
         User addedUser = userService.addUser(user);
         return new ResponseEntity<>(addedUser, HttpStatus.OK);
+    }
+
+    @PutMapping("/employees")
+    public ResponseEntity<EmployeeDetails> updateEmployeeDetails(@RequestBody EmployeeDetails details){
+        EmployeeDetails employeeDetails = employeeRegistrationService.updateEmployeeDetails(details);
+        return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
     }
 
 }

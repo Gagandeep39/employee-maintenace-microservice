@@ -1,6 +1,4 @@
 <div class="container">
-
-
   <div>
     <div class="dropdown row">
       <div class="col">
@@ -48,34 +46,37 @@
       </div>
 
     </div>
-    <table class="table table-hover table-bordered" style="margin-top: 12px;">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>First Name</td>
-          <td>Last Name</td>
-          <td>Department</td>
-          <td>Grade</td>
-          <td>Marital Status</td>
-          <td>Gender</td>
-          <td>Manager ID</td>
-          <td>Details</td>
-        </tr>
-      </thead>
-      <tr *ngFor="let employee of employeePage.content">
-        <th> {{ employee.empDetailsId }} </th>
-        <td> {{ employee.firstName }} </td>
-        <td> {{ employee.lastName }} </td>
-        <td> {{ employee.department.departmentName }} </td>
-        <td> {{ employee.grade }} </td>
-        <td> {{ employee.maritalStatus }} </td>
-        <td> {{ employee.gender }} </td>
-        <td> {{ employee.manager }} </td>
-        <td> <button class="btn btn-primary"
-            [routerLink]="[ '/employee/details', employee.empDetailsId ]">Details</button> </td>
+  <table class="table table-hover table-bordered" style="margin-top: 12px;">
+   
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Department</td>
+        <td>Grade</td>
+        <td>Marital Status</td>
+        <td>Gender</td>
+        <td>Manager ID</td>
+        <td>Details</td>
+        <td>Change Role</td>
+        <td>Edit </td>
       </tr>
+    </thead>
+    <tr *ngFor="let employee of employeePage.content">
+      <th> {{ employee.empDetailsId }} </th>
+      <td> {{ employee.firstName + ' ' + employee.lastName }} </td>
+      <td> {{ employee.department.departmentName }} </td>
+      <td> {{ employee.grade }} </td>
+      <td> {{ employee.maritalStatus }} </td>
+      <td> {{ employee.gender }} </td>
+      <td> {{ employee.manager }} </td>
+      <td> <button class="btn btn-info" [routerLink]="[ '/employee/details', employee.empDetailsId ]">Details</button> </td>
+      <td> <button class="btn btn-primary" [routerLink]="[ '/employee/admin/edituser', employee.empDetailsId ]">Edit Role</button> </td>
+      <td> <button class="btn btn-success" [routerLink]="[ '/employee/admin/editemp', employee.empDetailsId ]">Edit</button> </td>
 
-    </table>
+    </tr>
+    
+  </table>
     <ul class="pagination justify-content-center">
       <li class="page-item">
         <a *ngIf="!employeePage.first" class="page-link" (click)="previousPage()">Previous</a>
@@ -89,4 +90,4 @@
         <a *ngIf="employeePage.last" class="page-link" [ngClass]="{'disabled': employeePage.last}">Next</a>
       </li>
     </ul>
-  </div>
+</div>

@@ -6,6 +6,7 @@ import { ManagerDetailsForm } from './manager-form.model';
 import { Address } from './address.model';
 
 export class UserDetailsFrom {
+        empDetailsId: number;
         firstName: string;
         lastName: string;
         dateOfBirth: Date;

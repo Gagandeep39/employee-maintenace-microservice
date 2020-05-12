@@ -4,6 +4,9 @@ import com.cg.employeeleaveservice.enums.LeaveStatus;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +14,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Gagandeep
@@ -54,5 +58,9 @@ public class LeaveHistory {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "empDetailsId")
     @JsonIdentityReference(alwaysAsId = true)
     private EmployeeDetails employeeDetails;
+
+    @Column(name = "created_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    private LocalDateTime creationTime;
 
 }

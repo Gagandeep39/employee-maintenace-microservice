@@ -24,8 +24,7 @@ public class EmployeeSearchController {
     private EmployeeSearchService employeeSearchService;
 
     @GetMapping("/search")
-    public ResponseEntity<Page<EmployeeDetails>> fetchAll(
-            @RequestParam(defaultValue = "0") Integer pageNo,
+    public ResponseEntity<Page<EmployeeDetails>> fetchAll(@RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "empDetailsId") String sortBy) {
         Page<EmployeeDetails> page = employeeSearchService.findAllEmployees(pageNo, pageSize, sortBy);
@@ -33,14 +32,11 @@ public class EmployeeSearchController {
     }
 
     @GetMapping("/search/category")
-    public ResponseEntity<Page<EmployeeDetails>> fetchByGenders(
-            @RequestParam(defaultValue = "") String genders,
-            @RequestParam(defaultValue = "") String maritalStatus,
-            @RequestParam(defaultValue = "") String departments,
-            @RequestParam(defaultValue = "") String grades,
-            @RequestParam(defaultValue = "") Integer managerId,
-            @RequestParam(defaultValue = "0") Integer pageNo,
-            @RequestParam(defaultValue = "10") Integer pageSize,
+    public ResponseEntity<Page<EmployeeDetails>> fetchByGenders(@RequestParam(defaultValue = "") String genders,
+            @RequestParam(defaultValue = "") String maritalStatus, @RequestParam(defaultValue = "") String departments,
+            @RequestParam(defaultValue = "") String grades, @RequestParam(defaultValue = "") String firstName,
+            @RequestParam(defaultValue = "") String lastName, @RequestParam(defaultValue = "") Integer managerId,
+            @RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "empDetailsId") String sortBy) {
         Page<EmployeeDetails> page;
         if (!genders.equals(""))
@@ -51,25 +47,32 @@ public class EmployeeSearchController {
             page = employeeSearchService.findByDepartments(pageNo, pageSize, sortBy, departments);
         else if (!grades.equals(""))
             page = employeeSearchService.findByGrade(pageNo, pageSize, sortBy, grades);
-        else
+        else if (!grades.equals(""))
+            page = employeeSearchService.findByGrade(pageNo, pageSize, sortBy, grades);
+
+        else if (!firstName.equals(""))
+            page = employeeSearchService.findByFirstName(pageNo, pageSize, sortBy, firstName);
+
+        else if (!lastName.equals(""))
+            page = employeeSearchService.findByLastName(pageNo, pageSize, sortBy, lastName);
+        else if (managerId != null)
             page = employeeSearchService.findEmployeeByManagerId(pageNo, pageSize, sortBy, managerId);
+        else
+            page = employeeSearchService.findAllEmployees(pageNo, pageSize, sortBy);
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/search/name")
-    public ResponseEntity<Page<EmployeeDetails>> searchByName(
-            @RequestParam String name,
-            @RequestParam(defaultValue = "0") Integer pageNo,
-            @RequestParam(defaultValue = "10") Integer pageSize,
-            @RequestParam(defaultValue = "empDetailsId") String sortBy){
+    public ResponseEntity<Page<EmployeeDetails>> searchByName(@RequestParam String name,
+            @RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "empDetailsId") String sortBy) {
         Page<EmployeeDetails> page = employeeSearchService.findByName(pageNo, pageSize, sortBy, name);
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/search/id/{id}")
-    public ResponseEntity<EmployeeDetails> findById(@PathVariable Integer id){
+    public ResponseEntity<EmployeeDetails> findById(@PathVariable Integer id) {
         return new ResponseEntity<>(employeeSearchService.findById(id), HttpStatus.OK);
     }
-
 
 }

@@ -95,4 +95,9 @@ public class LeaveServiceImpl implements LeaveService {
             return 13;
         return pages.getContent().get(0).getLeaveBalance();
     }
+
+    @Override
+    public void scheduledUpdate() {
+        leaveHistoryRepository.scheduledUpdate();
+    }
 }

@@ -83,6 +83,12 @@ GET http://localhost:9200/employees/search/category?managerId=100002
 ### Fetch By MaritalStatus
 GET http://localhost:9200/employees/search/category?maritalStatus=Single,Divorced
 
+### Fetch By All
+GET http://localhost:9200/employees/search/category?all=
+
+### Fetch By First Name
+GET http://localhost:9200/employees/search/category?firstName=p
+
 ### Search by name
 GET http://localhost:9200/employees/search/name?name=p
 
@@ -127,5 +133,38 @@ Content-Type: application/json
       "role": "ROLE_ADMIN"
     }
   }
+}
+
+### Update Employee 
+
+PUT http://localhost:9200/employees
+Content-Type: application/json
+
+{
+    "empDetailsId": 100006,
+    "firstName": "Tem",
+    "lastName": "Rigg",
+    "dateOfBirth": "1991-08-30",
+    "dateOfJoining": "2018-12-31",
+    "email": "cem@mail.com",
+    "phoneNumber": "7555361368",
+    "maritalStatus": "Single",
+    "gender": "M",
+    "grade": "M2",
+    "basic": 220000.0,
+    "designation": "DataScientist",
+    "department": {
+      "departmentId": 100006,
+      "departmentName": "Recreation"
+    },
+    "address": {
+      "city": "CLEVELAND",
+      "state": "Ohio",
+      "area": "West Fork Drive",
+      "pincode": "44113"
+    },
+    "manager": {
+      "empDetailsId": 100006
+    }
 }
 

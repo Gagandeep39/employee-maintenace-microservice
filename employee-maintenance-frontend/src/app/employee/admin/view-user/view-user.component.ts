@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from 'src/app/service/employee.service';
 import { EmployeePage } from 'src/app/models/employee-page.model';
-import { ValidatorService } from 'src/app/service/validator.service';
+import { EmployeeService } from 'src/app/service/employee.service';
 import { Department } from 'src/app/models/department.model';
 import { Grade } from 'src/app/models/grade.model';
 import { MaritalStatus } from 'src/app/models/marital-status.model';
+import { ValidatorService } from 'src/app/service/validator.service';
 
 @Component({
-  selector: 'app-search-employee',
-  templateUrl: './search-employee.component.html',
-  styleUrls: ['./search-employee.component.css'],
+  selector: 'app-view-user',
+  templateUrl: './view-user.component.html',
+  styleUrls: ['./view-user.component.css']
 })
-export class SearchEmployeeComponent implements OnInit {
+export class ViewUserComponent implements OnInit {
+
   public employeePage: EmployeePage = new EmployeePage();
   public currentPage: number;
   departments : Department[]= [];
@@ -59,10 +60,12 @@ export class SearchEmployeeComponent implements OnInit {
   }
 
   searchItem(category: string, value: string) {
+    console.log("Executed");
     this.category = category;
     this.value = value;
     this.fetchDatafromServer(0);
     this.nameType = undefined;
+    this.currentPage = 0;
   }
 
   searchByName(category: string, value: string) {
@@ -70,10 +73,11 @@ export class SearchEmployeeComponent implements OnInit {
     this.value = value;
     this.fetchDatafromServer(0);
     this.nameType = undefined;
+    this.currentPage = 0;
   }
+  
 
   setSearchType(type: string){
     this.nameType = type;
   }
-
 }

@@ -1,4 +1,4 @@
-	package com.cg.employeeleaveservice.repository;
+package com.cg.employeeleaveservice.repository;
 
 import com.cg.employeeleaveservice.model.LeaveHistory;
 import org.springframework.data.domain.Page;
@@ -26,5 +26,9 @@ public interface LeaveHistoryRepository extends JpaRepository<LeaveHistory, Inte
     @Modifying
     @Query("update LeaveHistory l set l.leaveBalance=?2 where l.employeeDetails.empDetailsId=?1")
     void updateLeaveBalance(Integer empId, Integer updatedBalance);
+
+    @Modifying
+    @Query(value = "update leave_history set leave_status='Approved', leave_balance=leave_balance-no_of_days_applied where leave_status='Applied' AND leave_id in (select  leave_id from leave_history l where TIMESTAMPDIFF(second,l.created_on,NOW()) >86400)", nativeQuery = true)
+    void scheduledUpdate();
 
 }

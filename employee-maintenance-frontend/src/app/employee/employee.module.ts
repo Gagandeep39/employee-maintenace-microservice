@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeComponent } from './employee.component';
 import { AddUserComponent } from '../employee/admin/add-user/add-user.component';
+import { ViewUserComponent } from './admin/view-user/view-user.component';
+import { EditUserComponent } from './admin/edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { AddUserComponent } from '../employee/admin/add-user/add-user.component'
     SearchEmployeeComponent,
     ViewLeavesComponent,
     EmployeeComponent,
-    AddUserComponent
+    AddUserComponent,
+    ViewUserComponent,
+    EditUserComponent
   ]
 })
 export class EmployeeModule { }
