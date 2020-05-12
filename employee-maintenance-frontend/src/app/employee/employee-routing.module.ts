@@ -19,6 +19,7 @@ import { ApproveLeaveComponent } from './manager/approve-leave/approve-leave.com
 import { EmployeeComponent } from './employee.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { AuthGuardService } from '../service/auth-guard.service';
+import { EditUserComponent } from './admin/edit-user/edit-user.component';
 
 
 
@@ -33,8 +34,9 @@ const routes: Routes = [
             { path: 'addleave', component: CreateLeaveComponent, canActivate : [AuthGuardService] },
             { path: 'change', component: ChangePasswordComponent, canActivate : [AuthGuardService] },
             { path: 'admin/adduser', component: AddUserComponent, canActivate : [AuthGuardService] },
+            { path: 'admin/edituser/:id', component: EditUserComponent},
             { path: 'admin/addemp', component: AddEmployeeComponent, canActivate : [AuthGuardService] },
-            { path: 'admin/edit/:id', component: AddEmployeeComponent },
+            { path: 'admin/editemp/:id', component: AddEmployeeComponent },
             { path: 'manager/approve', component: ApproveLeaveComponent, canActivate : [AuthGuardService] },
         ]
     },

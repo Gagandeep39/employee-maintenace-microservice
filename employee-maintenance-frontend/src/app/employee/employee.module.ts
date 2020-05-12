@@ -14,6 +14,7 @@ import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeComponent } from './employee.component';
 import { AddUserComponent } from '../employee/admin/add-user/add-user.component';
 import { ViewUserComponent } from './admin/view-user/view-user.component';
+import { EditUserComponent } from './admin/edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { ViewUserComponent } from './admin/view-user/view-user.component';
     ViewLeavesComponent,
     EmployeeComponent,
     AddUserComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    EditUserComponent
   ]
 })
 export class EmployeeModule { }
