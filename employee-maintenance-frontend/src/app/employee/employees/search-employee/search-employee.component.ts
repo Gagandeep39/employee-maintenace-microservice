@@ -19,6 +19,7 @@ export class SearchEmployeeComponent implements OnInit {
   maritalStatuses : MaritalStatus[]=[];
   category: string = 'all';
   value: string;
+  nameType : string;
 
   constructor(private employeeService: EmployeeService, private validatorService: ValidatorService) {}
 
@@ -60,8 +61,18 @@ export class SearchEmployeeComponent implements OnInit {
   searchItem(category: string, value: string) {
     this.category = category;
     this.value = value;
-    console.log("Executed");
     this.fetchDatafromServer(0);
+  }
+
+  searchByName(category: string, value: string) {
+    this.category = category;
+    this.value = value;
+    this.fetchDatafromServer(0);
+    this.nameType = undefined;
+  }
+
+  setSearchType(type: string){
+    this.nameType = type;
   }
 
 }

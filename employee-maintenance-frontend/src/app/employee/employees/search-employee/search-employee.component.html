@@ -1,9 +1,10 @@
 <div class="container">
-  <!-- <div class="form-group">
+  <div class="form-group" *ngIf="nameType=='firstName' || nameType=='lastName'">
     <label for="search">Search</label>
     <input class="form-control" type="text" name="search" id="search" #search placeholder="Enter name"
-      (input)="searchByName(search.value)">
-  </div> -->
+      >
+    <input type="submit" value="Search" (click)="searchByName(nameType, search.value)">
+  </div>
 
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
@@ -12,8 +13,8 @@
     </button>
     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
       <li class="dropdown-item"><a >ID</a></li>
-      <li class="dropdown-item"><a >First Name</a></li>
-      <li class="dropdown-item"><a >Last Name</a></li>
+      <li class="dropdown-item"><a (click)="setSearchType('firstName')">First Name</a></li>
+      <li class="dropdown-item"><a (click)="setSearchType('lastName')" >Last Name</a></li>
       <li class="dropdown-divider"></li>
       <li class="dropdown-submenu">
         <a class="dropdown-item" >Department</a>
