@@ -18,7 +18,7 @@ export class AuthGuardService implements CanActivate {
         return true;
       else if (route.url.toString() == "admin,adduser" || route.url.toString() == "admin,addemp" ||
         route.url.toString().startsWith("admin,edituser,") || route.url.toString().startsWith("admin,editemp,") ||
-        route.url.toString() == "admin/viewuser") {
+        route.url.toString() == "admin,viewuser") {
         if (this.auth.typeOfUser() == "ROLE_ADMIN")
           return true;
         else {
