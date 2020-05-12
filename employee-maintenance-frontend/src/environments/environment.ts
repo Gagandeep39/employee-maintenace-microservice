@@ -11,6 +11,7 @@ export const environment = {
   changePassword: ':9100/login/change',
   addEmployee: ':9200/employees',
   fetchAllEmployee: ':9200/employees/search',
+  searchByCategory: ':9200/employees/search/category',
   byName: ':9200/employees/search/name',
   byId: ':9200/employees/search/id/',
   employeeLeave: ':9300/leaves/employee/',
