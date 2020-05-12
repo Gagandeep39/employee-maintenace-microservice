@@ -67,6 +67,7 @@ export class AddEmployeeComponent implements OnInit {
   }
   populateFormFields() {
     this.employeeForm.patchValue({
+      empDetailsId: this.employeeDetails.empDetailsId,
       firstName: this.employeeDetails.firstName,
       lastName: this.employeeDetails.lastName,
       dateOfBirth: this.employeeDetails.dateOfBirth,
@@ -107,6 +108,7 @@ export class AddEmployeeComponent implements OnInit {
 
   initEmployeeForm() {
     this.employeeForm = new FormGroup({
+      empDetailsId: new FormControl(''),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       dateOfBirth: new FormControl('', [
@@ -153,8 +155,25 @@ export class AddEmployeeComponent implements OnInit {
   submitForm() {
     this.submitted = true;
     if (this.employeeForm.valid) {
-      this.saveDataToServer(this.employeeForm.value);
+      if(this.employeeDetails !=undefined){
+        this.updateDataOnServer(this.employeeForm.value);
+      }
+      else 
+        this.saveDataToServer(this.employeeForm.value);
     }
+  }
+  updateDataOnServer(userDetails: UserDetailsFrom) {
+    this.employeeService.updateEmployee(userDetails)
+      .subscribe(
+        response =>{
+          this.employeeService.userEmitter.next(null);
+          this.referenceMessage = "Successfully Updated Employee with ID: " + response.empDetailsId;
+          setTimeout(()=> {
+            this.router.navigate(['/employee/home'])
+          }, 2000)
+        },
+        error => {this.referenceMessage = error}
+      )
   }
 
   gradeIsSelected(event) {
