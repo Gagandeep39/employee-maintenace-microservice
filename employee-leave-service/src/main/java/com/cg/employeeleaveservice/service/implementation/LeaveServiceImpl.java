@@ -39,7 +39,7 @@ public class LeaveServiceImpl implements LeaveService {
         leaveHistory.setLeaveBalance(fetchLeaveBalance(empId));
         leaveHistory.setLeaveStatus(LeaveStatus.Applied);
         Period period = Period.between(leaveHistory.getDateFrom(), leaveHistory.getDateTo());
-        leaveHistory.setNumberOfDays(period.getDays());
+        leaveHistory.setNumberOfDays(period.getDays() + 1);
         log.info("Days: " + leaveHistory.toString());
         return leaveHistoryRepository.save(leaveHistory);
     }
