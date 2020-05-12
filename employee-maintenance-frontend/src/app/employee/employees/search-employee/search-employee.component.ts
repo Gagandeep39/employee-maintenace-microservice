@@ -20,6 +20,7 @@ export class SearchEmployeeComponent implements OnInit {
   category: string = 'all';
   value: string;
   nameType : string;
+  isLoading = false;
 
   constructor(private employeeService: EmployeeService, private validatorService: ValidatorService) {}
 
@@ -32,12 +33,12 @@ export class SearchEmployeeComponent implements OnInit {
   }
 
   fetchDatafromServer(pageNo: number, pageSize = 10) {
+    this.showLoading();
     this.employeeService
       .getEmployeeByCategory(pageNo, pageSize, this.category, this.value)
       .subscribe((response) => {
         this.employeePage = response;
-        console.log(response);
-        
+        this.hideLoading();
       });
   }
 
@@ -74,6 +75,14 @@ export class SearchEmployeeComponent implements OnInit {
 
   setSearchType(type: string){
     this.nameType = type;
+  }
+
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 
 }
