@@ -12,4 +12,6 @@ public interface EmployeeRegistrationService {
 
     EmployeeDetails addEmployeeDetails(User user);
 
+	EmployeeDetails updateEmployeeDetails(EmployeeDetails user);
+
 }

@@ -49,4 +49,10 @@ public class EmployeeRegistrationServiceImpl implements EmployeeRegistrationServ
             throw new RuntimeException("Registration Failed: Error Communicating with Login Service");
         return addedUser;
     }
+
+    @Override
+    public EmployeeDetails updateEmployeeDetails(EmployeeDetails details) {
+        details.getAddress().setAddressId(details.getEmpDetailsId());
+        return employeeDetailsRepository.save(details);
+    }
 }
