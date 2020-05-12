@@ -43,3 +43,19 @@ Content-Type: application/json
   "empId": "100001",
   "password": "1234"
 }
+
+### UPdate User
+PUT  http://localhost:9100/login/update
+Content-Type: application/json
+
+{
+  "empId": "100001",
+  "password": "1234",
+  "username": "1234",
+  "role": {
+    "roleId": 100001
+  }
+}
+
+### Get User info 
+POST  http://localhost:9100/login/100001

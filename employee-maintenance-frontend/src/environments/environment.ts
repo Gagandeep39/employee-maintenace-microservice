@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   url: 'http://192.168.56.1',
   login: ':9100/login',
+  updateUser: ':9100/login/update',
+  findUserById: ':9100/login/',
   changePassword: ':9100/login/change',
   addEmployee: ':9200/employees',
   fetchAllEmployee: ':9200/employees/search',

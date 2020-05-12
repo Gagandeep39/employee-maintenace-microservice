@@ -49,4 +49,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(user);
         // return employeeRepository.findById(user.getEmpId()).get();
     }
+
+    @Override
+    public User updateRole(User user) {
+        User dummyUser = employeeRepository.getOne(user.getEmpId());
+        dummyUser.setRole(user.getRole());
+        return employeeRepository.save(dummyUser);
+    }
+
+    @Override
+    public User findUserById(Integer id) {
+        Optional<User> container = employeeRepository.findById(id);
+        container.orElseThrow(()->new UserNotFoundException("User not found with guven ID"));
+        User user = container.get();
+        user.setEmployeeDetails(null);
+        return user;
+    }
 }
