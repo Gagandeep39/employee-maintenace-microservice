@@ -1,34 +1,71 @@
 <div class="container">
   <div class="form-group">
     <label for="search">Search</label>
-    <input class="form-control" type="text" name="search" id="search" #search placeholder="Enter name"(input)="searchByName(search.value)" >
+    <input class="form-control" type="text" name="search" id="search" #search placeholder="Enter name"
+      (input)="searchByName(search.value)">
   </div>
-  <table class="table table-hover table-bordered">
-   
-    <thead>
-      <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Department</td>
-        <td>Grade</td>
-        <td>Marital Status</td>
-        <td>Gender</td>
-        <td>Manager ID</td>
-        <td>Details</td>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Search by
+    </button>
+    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+      <li class="dropdown-item"><a href="#">ID</a></li>
+      <li class="dropdown-item"><a href="#">First Name</a></li>
+      <li class="dropdown-item"><a href="#">Last Name</a></li>
+      <li class="dropdown-divider"></li>
+      <li class="dropdown-submenu">
+        <a class="dropdown-item" tabindex="-1" href="#">Department</a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item" *ngFor="let department of departments"><a tabindex="-1"
+              href="#">{{department.departmentName}}</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="dropdown-item" tabindex="-1" href="#">Grade</a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item" *ngFor="let grade of grades"><a tabindex="-1" href="#">{{grade.gradeCode}}
+              ({{grade.minSalary}}-{{grade.maxSalary}})</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="dropdown-item" tabindex="-1" href="#">Marital Status</a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item" *ngFor="let maritalStatus of maritalStatuses"><a tabindex="-1"
+            href="#">{{maritalStatus}}</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Department</td>
+          <td>Grade</td>
+          <td>Marital Status</td>
+          <td>Gender</td>
+          <td>Manager ID</td>
+          <td>Details</td>
+        </tr>
+      </thead>
+      <tr *ngFor="let employee of employeePage.content">
+        <th> {{ employee.empDetailsId }} </th>
+        <td> {{ employee.firstName }} </td>
+        <td> {{ employee.lastName }} </td>
+        <td> {{ employee.department.departmentName }} </td>
+        <td> {{ employee.grade }} </td>
+        <td> {{ employee.maritalStatus }} </td>
+        <td> {{ employee.gender }} </td>
+        <td> {{ employee.manager }} </td>
+        <td> <button class="btn btn-primary"
+            [routerLink]="[ '/employee/details', employee.empDetailsId ]">Details</button> </td>
       </tr>
-    </thead>
-    <tr *ngFor="let employee of employeePage.content">
-      <th> {{ employee.empDetailsId }} </th>
-      <td> {{ employee.firstName + ' ' + employee.lastName }} </td>
-      <td> {{ employee.department.departmentName }} </td>
-      <td> {{ employee.grade }} </td>
-      <td> {{ employee.maritalStatus }} </td>
-      <td> {{ employee.gender }} </td>
-      <td> {{ employee.manager }} </td>
-      <td> <button class="btn btn-primary" [routerLink]="[ '/employee/details', employee.empDetailsId ]">Details</button> </td>
-    </tr>
-    
-  </table>
+
+    </table>
     <ul class="pagination justify-content-center">
       <li class="page-item">
         <a *ngIf="!employeePage.first" class="page-link" (click)="previousPage()">Previous</a>
@@ -42,4 +79,4 @@
         <a *ngIf="employeePage.last" class="page-link" [ngClass]="{'disabled': employeePage.last}">Next</a>
       </li>
     </ul>
-</div>
+  </div>
