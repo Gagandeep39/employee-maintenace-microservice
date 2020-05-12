@@ -8,6 +8,7 @@
     <div class="form-group">
       <label for="dateFrom">Start Date</label>
       <input 
+      onkeydown="return false"
       id="dateFrom"
       class="form-control"
       [ngClass]="{'is-invalid': submitted && form.get('dateFrom').invalid}"
@@ -22,6 +23,7 @@
     <div class="form-group">
       <label for="dateFrom">End Date</label>
       <input 
+      onkeydown="return false"
       id="dateFrom"
       class="form-control"
       type="date" 
@@ -34,8 +36,11 @@
         <div *ngIf="form.get('dateTo').errors['insufficientBalance']">Insufficient Balance</div>
       </div>
     </div>
-    <button type="Submit" class="btn btn-success" [disabled]="!leaveButtonEnabled">Submit</button>
-    <div *ngIf="errorMessage!=undefined">
+    <button type="Submit" class="btn btn-success" [disabled]="!leaveButtonEnabled">
+      Submit
+    </button>
+    <div class="spinner-border text-success" style="margin-left: 30px;" *ngIf="isLoading"></div>
+    <div class="text-danger">
         {{ errorMessage }}
     </div>
   </form>
