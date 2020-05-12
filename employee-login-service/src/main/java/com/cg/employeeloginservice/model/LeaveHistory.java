@@ -72,7 +72,7 @@ public class LeaveHistory {
     private EmployeeDetails employeeDetails;
 
     
-    @Column(name = "created_on")
+    @Column(name = "created_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     private LocalDateTime creationTime;
 

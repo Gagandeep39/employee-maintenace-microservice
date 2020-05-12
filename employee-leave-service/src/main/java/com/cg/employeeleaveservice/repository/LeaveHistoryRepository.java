@@ -28,7 +28,7 @@ public interface LeaveHistoryRepository extends JpaRepository<LeaveHistory, Inte
     void updateLeaveBalance(Integer empId, Integer updatedBalance);
 
     @Modifying
-    @Query(value = "update leave_history set leave_status='Approved', leave_balance=leave_balance-no_of_days_applied where leave_status='Applied' AND leave_id in (select  leave_id from leave_history l where TIMESTAMPDIFF(second,l.created_on,NOW()) >86400)", nativeQuery = true)
+    @Query(value = "update leave_history set leave_status='Approved', leave_balance=leave_balance-no_of_days_applied where leave_status='Applied' AND leave_id in (select  leave_id from leave_history l where TIMESTAMPDIFF(second,l.created_on,NOW()) >259200)", nativeQuery = true)
     void scheduledUpdate();
 
 }

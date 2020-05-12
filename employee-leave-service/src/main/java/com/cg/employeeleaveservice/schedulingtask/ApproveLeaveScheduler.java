@@ -7,9 +7,30 @@
  */
 package com.cg.employeeleaveservice.schedulingtask;
 
+import java.util.Date;
+
+import com.cg.employeeleaveservice.service.LeaveService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component
+@Slf4j
 public class ApproveLeaveScheduler {
+
+    @Autowired
+    private LeaveService leaveService;
+
+    /**
+     * Executed every day at 11:00 pm
+     */
+    @Scheduled(cron = "0 0 23 * *")
+    public void autoApproveLeave() {
+        leaveService.scheduledUpdate();
+        log.info("Executed at " + new Date());
+    }
     
 }
