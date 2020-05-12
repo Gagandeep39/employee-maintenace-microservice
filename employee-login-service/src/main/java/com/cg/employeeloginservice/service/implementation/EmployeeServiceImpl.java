@@ -51,7 +51,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public User updateUser(User user) {
-        return employeeRepository.save(user);
+    public User updateRole(User user) {
+        User dummyUser = employeeRepository.getOne(user.getEmpId());
+        dummyUser.setRole(user.getRole());
+        return employeeRepository.save(dummyUser);
+    }
+
+    @Override
+    public User findUserById(Integer id) {
+        Optional<User> container = employeeRepository.findById(id);
+        container.orElseThrow(()->new UserNotFoundException("User not found with guven ID"));
+        User user = container.get();
+        user.setEmployeeDetails(null);
+        return user;
     }
 }

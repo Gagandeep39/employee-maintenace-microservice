@@ -40,10 +40,14 @@ public class EmployeeController {
 
     @PutMapping("/login/update")
     public ResponseEntity<User> updateUser(@RequestBody User user) {
-        User modifiedUser = employeeService.updateUser(user);
+        User modifiedUser = employeeService.updateRole(user);
         return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
     }
 
-
+    @GetMapping("/login/{id}")
+    public ResponseEntity<User> fetchUserById(@PathVariable Integer id) {
+        User user = employeeService.findUserById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 
 }

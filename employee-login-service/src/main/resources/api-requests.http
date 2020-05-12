@@ -56,3 +56,6 @@ Content-Type: application/json
     "roleId": 100001
   }
 }
+
+### Get User info 
+POST  http://localhost:9100/login/100001
