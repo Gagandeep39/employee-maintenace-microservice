@@ -59,4 +59,19 @@ export class EmployeeService {
     return this.httpClient.get<EmployeeDetails>(environment.url + environment.byId + id);
   }
 
+  getEmployeeByCategory(pageNo: number, pageSize = 10, category: string, value: string) {
+    let params = new HttpParams();
+    console.log("----------");
+    
+    params = params.set('pageNo', pageNo.toString());
+    params = params.set('pageSize', pageSize.toString());
+    params = params.set(category, value);
+    console.log(params);
+    
+    return this.httpClient.get<EmployeePage>(environment.url + environment.searchByCategory,
+      {
+        params: params
+      });
+  }
+
 }
