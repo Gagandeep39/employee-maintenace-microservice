@@ -44,3 +44,6 @@ Content-Type: application/json
   "leaveStatus": "Approved",
   "numberOfDays": 5
 }
+
+###
+GET http://localhost:9300/test

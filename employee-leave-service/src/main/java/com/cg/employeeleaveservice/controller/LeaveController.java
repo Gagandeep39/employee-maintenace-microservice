@@ -1,6 +1,7 @@
 package com.cg.employeeleaveservice.controller;
 
 import com.cg.employeeleaveservice.model.LeaveHistory;
+import com.cg.employeeleaveservice.repository.LeaveHistoryRepository;
 import com.cg.employeeleaveservice.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -61,5 +62,12 @@ public class LeaveController {
         map.put("balance", leaveService.fetchLeaveBalance(empId));
         return new ResponseEntity<>(map, HttpStatus.ACCEPTED);
     }
+    // @Autowired
+    // private LeaveHistoryRepository repository;
+
+    // @GetMapping("/test")
+    // public void test(){
+    //     repository.scheduledUpdate();
+    // }
 
 }

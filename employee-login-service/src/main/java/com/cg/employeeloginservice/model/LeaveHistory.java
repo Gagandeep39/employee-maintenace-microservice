@@ -1,6 +1,7 @@
 package com.cg.employeeloginservice.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +20,8 @@ import com.cg.employeeloginservice.enums.LeaveStatus;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -67,5 +70,10 @@ public class LeaveHistory {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "empDetailsId")
     @JsonIdentityReference(alwaysAsId = true)
     private EmployeeDetails employeeDetails;
+
+    
+    @Column(name = "created_on")
+    @CreationTimestamp
+    private LocalDateTime creationTime;
 
 }
