@@ -62,6 +62,7 @@ export class SearchEmployeeComponent implements OnInit {
     this.category = category;
     this.value = value;
     this.fetchDatafromServer(0);
+    this.nameType = undefined;
   }
 
   searchByName(category: string, value: string) {
