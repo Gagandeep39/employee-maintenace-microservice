@@ -20,6 +20,7 @@ import { EmployeeComponent } from './employee.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { AuthGuardService } from '../service/auth-guard.service';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
+import { ViewUserComponent } from './admin/view-user/view-user.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
             { path: 'admin/edituser/:id', component: EditUserComponent},
             { path: 'admin/addemp', component: AddEmployeeComponent, canActivate : [AuthGuardService] },
             { path: 'admin/editemp/:id', component: AddEmployeeComponent },
+            { path: 'admin/viewuser', component: ViewUserComponent },
             { path: 'manager/approve', component: ApproveLeaveComponent, canActivate : [AuthGuardService] },
         ]
     },
