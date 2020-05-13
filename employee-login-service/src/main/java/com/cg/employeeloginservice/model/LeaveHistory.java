@@ -1,6 +1,7 @@
 package com.cg.employeeloginservice.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import org.hibernate.annotations.CreationTimestamp;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -78,5 +80,10 @@ public class LeaveHistory {
     @JsonIdentityReference(alwaysAsId = true)
     @ApiModelProperty("Link to employee details")
     private EmployeeDetails employeeDetails;
+    
+    @Column(name = "created_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @ApiModelProperty("Creation time of leave")
+    private LocalDateTime creationTime;
 
 }
