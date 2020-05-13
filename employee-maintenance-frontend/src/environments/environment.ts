@@ -4,26 +4,29 @@
 
 export const environment = {
   production: false,
-  url: 'http://192.168.56.1',
-  login: ':9100/login',
-  updateUser: ':9100/login/update',
-  findUserById: ':9100/login/',
-  changePassword: ':9100/login/change',
-  addEmployee: ':9200/employees',
-  fetchAllEmployee: ':9200/employees/search',
-  searchByCategory: ':9200/employees/search/category',
-  byName: ':9200/employees/search/name',
-  byId: ':9200/employees/search/id/',
-  employeeLeave: ':9300/leaves/employee/',
-  leaveBalance: ':9300/leaves/balance/',
-  subEmployeeLeaves: ':9300/leaves/manager/',
-  updateLeave: ':9300/leaves/',
-  createLeave: ':9300/leaves/',
-  grades: ':9400/grades',
-  departments: ':9400/departments',
-  managers: ':9400/managers',
-  roles: ':9400/roles',
-  validateUsername: ':9400/username'
+  url: 'http://localhost:9900',
+  login: '/employee-login-service/login',
+  updateUser: '/employee-login-service/login/update',
+  findUserById: '/employee-login-service/login/',
+  changePassword: '/employee-login-service/login/change',
+
+  addEmployee: '/employee-management-service/employees',
+  fetchAllEmployee: '/employee-management-service/employees/search',
+  searchByCategory: '/employee-management-service/employees/search/category',
+  byName: '/employee-management-service/employees/search/name',
+  byId: '/employee-management-service/employees/search/id/',
+
+  employeeLeave: '/employee-leave-service/leaves/employee/',
+  leaveBalance: '/employee-management-service/leaves/balance/',
+  subEmployeeLeaves: '/employee-management-service/leaves/manager/',
+  updateLeave: '/employee-management-service/leaves/',
+  createLeave: '/employee-management-service/leaves/',
+
+  grades: '/employee-validation-service/grades',
+  departments: '/employee-validation-service/departments',
+  managers: '/employee-validation-service/managers',
+  roles: '/employee-validation-service/roles',
+  validateUsername: '/employee-validation-service/username'
 };
 
 /*
