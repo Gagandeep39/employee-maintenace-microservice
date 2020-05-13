@@ -42,7 +42,8 @@
       </li>
     </ul>
     <ul class="navbar-nav" style="align-items: right;">
-      <li class="nav-item"><a class="nav-link" (click)="logOut()">Log Out</a></li>
+      <a class="nav-link" [routerLink]="['/aboutus']" routerLinkActive="active">About us</a>
+      <li class="nav-item"><a class="nav-link active" (click)="logOut()">Log Out</a></li>
     </ul>
   </div>
 </nav>

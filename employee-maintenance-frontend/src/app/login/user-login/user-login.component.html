@@ -55,7 +55,8 @@
         </div>
       </div>
       <!-- Submit Button -->
-      <button type="submit" class="btn btn-black">Login</button>
+      <button type="submit" class="btn btn-black" *ngIf="!isLoading">Login</button>
+      <div class="spinner-border text-dark" *ngIf="isLoading"></div>
       <!-- Server Error -->
       <div *ngIf="errorMessage" class="text-danger" style="margin-top: 12px;">Cannot connect to server</div>
     </form>

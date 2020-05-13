@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   userInfo: User;
   employee: EmployeeDetails;
+  isLoading = false;
 
   constructor(
     private employeeService: EmployeeService,
@@ -33,7 +34,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     if (this.activatedRoute.snapshot.url[0].path.includes('home')) {
       this.userInfo = this.authService.fetchFromSessionStorage();
-      // Added later on
       this.employee = this.userInfo.employeeDetails;
     } else {
       let empId = this.activatedRoute.snapshot.params['id'];
@@ -42,12 +42,23 @@ export class HomeComponent implements OnInit {
   }
 
   fetchUserInfo(empId: number) {
+    this.showLoading();
     this.employeeService.getEmployeeById(empId).subscribe((response) => {
       this.employee = response;
+      this.hideLoading();
     });
   }
 
   goBack() {
     this.location.back();
   }
+
+  showLoading(){
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
+  }
+
 }

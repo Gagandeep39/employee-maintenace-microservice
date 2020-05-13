@@ -5,7 +5,7 @@
     <!-- Form Name -->
 
     <legend>
-      <h2><b>Employee Registration Form</b></h2>
+      <h2 class="display-4"><b>Employee Registration Form</b></h2>
     </legend>
     <hr>
     <div>
@@ -328,15 +328,21 @@
         </div>
       </div>
     </div>
-    <div class="row container">
-      <button class="btn btn-primary" type="submit">Submit</button>
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary" *ngIf="!isLoading">Next</button>
+        <div class="spinner-border text-primary" style="margin-left: 20px; padding-top: 20px;" *ngIf="isLoading"></div>
+      </div>
+      <div class="col text-danger">
+        {{ errorMessage }}
+      </div>
     </div>
-    <div *ngIf="referenceMessage!=null">
+    <div *ngIf="referenceMessage" class="text-success">
       {{ referenceMessage | json }}
     </div>
     </div>
     </form>
   <pre>
-    {{ employeeForm.value | json }}
+    <!-- {{ employeeForm.value | json }} -->
   </pre>
 </div>

@@ -29,6 +29,9 @@ export class EmployeeService {
     return this.httpClient.post<EmployeeDetails>(environment.url + environment.addEmployee, userForm);
   }
 
+  changePassword(user: User) {
+    return this.httpClient.put<User>(environment.url + environment.changePassword, user);
+  }
   public userEmitter: BehaviorSubject<UserForm> = new BehaviorSubject<UserForm>(null);
 
   searchByName(searchString: string) {

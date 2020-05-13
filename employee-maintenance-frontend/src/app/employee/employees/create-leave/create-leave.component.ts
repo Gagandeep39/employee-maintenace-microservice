@@ -16,6 +16,7 @@ import { ValidatorService } from 'src/app/service/validator.service';
 import { LeaveService } from 'src/app/service/leave.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { CustomValidators } from 'src/app/shared/custom-validators';
 
 @Component({
   selector: 'app-create-leave',
@@ -27,14 +28,29 @@ export class CreateLeaveComponent implements OnInit {
   submitted: boolean = false;
   leaveBalance: number = 13;
   leaveButtonEnabled: boolean = true;
-  errorMessage;
+  errorMessage: string;
+  isLoading: boolean = false;
 
-  constructor(private fb: FormBuilder, private leaveService: LeaveService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private leaveService: LeaveService,
+    private router: Router
+  ) {
     this.createForm();
   }
 
   ngOnInit(): void {
-    this.leaveService.getLeaveBalance().subscribe(response => this.leaveBalance = response, error => this.leaveButtonEnabled = false)
+    this.showLoading();
+    this.leaveService.getLeaveBalance().subscribe(
+      (response) => {
+        this.leaveBalance = response;
+        this.hideLoading();
+      },
+      (error) => {
+        this.leaveButtonEnabled = false;
+        this.handleError(error);
+      }
+    );
   }
 
   createForm() {
@@ -45,56 +61,45 @@ export class CreateLeaveComponent implements OnInit {
       },
       {
         validator: [
-          this.dateLessThan('dateFrom', 'dateTo'),
-          this.cannotBePastDate(),
-          this.validateBalance(this.leaveBalance),
+          CustomValidators.dateLessThan('dateFrom', 'dateTo'),
+          CustomValidators.cannotBePastDate(),
+          CustomValidators.validateBalance(this.leaveBalance),
         ],
       }
     );
   }
 
-  cannotBePastDate() {
-    return (control: FormControl) => {
-      const dateFrom: Date = control.get('dateFrom').value;
-      const from = new Date(dateFrom);
-      if (from < new Date())
-          control.get('dateFrom').setErrors({ previousDate: true });
-      else 
-        return null;
-    };
-  }
-
-  validateBalance(leaveBalance: number) {
-    return (control: FormControl) => {
-      const from = new Date(control.get('dateFrom').value);
-      const to = new Date(control.get('dateTo').value);
-      const diff = to.getDate() - from.getDate();
-      if (leaveBalance - diff < 0)
-        control.get('dateTo').setErrors({ insufficientBalance: true });
-      else return null;
-    };
-  }
-
-  dateLessThan(from: string, to: string) {
-    return (group: FormGroup): { [key: string]: any } => {
-      let f = group.controls[from];
-      let t = group.controls[to];
-      if (f.value > t.value) {
-        group.controls[to].setErrors({dateToLessThanFrom: true})
-      }
-      return {};
-    };
-  }
-
   onSubmit() {
+    this.showLoading();
     this.submitted = true;
     if (this.form.valid) {
-      this.leaveService.createLeave(this.form.value)
-      .subscribe(response => {
-        this.router.navigate(['/employee/leaves'])
-      }, error => {
-        error = this.errorMessage;
-      })
+      this.leaveService.createLeave(this.form.value).subscribe(
+        (response) => {
+          this.hideLoading();
+          this.router.navigate(['/employee/leaves']);
+        },
+        (error) => {
+          this.handleError(error);
+        }
+      );
     }
+  }
+
+  handleError(error: string) {
+    this.errorMessage = 'Something went wrong :(';
+    console.log(error);
+    this.hideLoading();
+    setTimeout(() => {
+      this.errorMessage = undefined;
+      this.leaveButtonEnabled = true;
+    }, 4000);
+  }
+
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 }

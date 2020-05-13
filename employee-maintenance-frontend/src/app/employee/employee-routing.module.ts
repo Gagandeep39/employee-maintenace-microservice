@@ -35,10 +35,10 @@ const routes: Routes = [
             { path: 'addleave', component: CreateLeaveComponent, canActivate : [AuthGuardService] },
             { path: 'change', component: ChangePasswordComponent, canActivate : [AuthGuardService] },
             { path: 'admin/adduser', component: AddUserComponent, canActivate : [AuthGuardService] },
-            { path: 'admin/edituser/:id', component: EditUserComponent},
+            { path: 'admin/edituser/:id', component: EditUserComponent, canActivate : [AuthGuardService]},
             { path: 'admin/addemp', component: AddEmployeeComponent, canActivate : [AuthGuardService] },
-            { path: 'admin/editemp/:id', component: AddEmployeeComponent },
-            { path: 'admin/viewuser', component: ViewUserComponent },
+            { path: 'admin/editemp/:id', component: AddEmployeeComponent , canActivate : [AuthGuardService]},
+            { path: 'admin/viewuser', component: ViewUserComponent , canActivate : [AuthGuardService]},
             { path: 'manager/approve', component: ApproveLeaveComponent, canActivate : [AuthGuardService] },
         ]
     },

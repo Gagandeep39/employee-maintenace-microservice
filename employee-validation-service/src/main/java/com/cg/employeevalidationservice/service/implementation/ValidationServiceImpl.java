@@ -50,7 +50,7 @@ public class ValidationServiceImpl implements ValidationService {
 
 	@Override
 	public List<Manager> fetchAllManagers() {
-		List<Object[]> list = employeeRepository.findAllManagers();
+		List<Object[]> list = userRepository.findAllManagers();
 		List<Manager> managers = new ArrayList<>();
 		for (Object[] obj : list) {
 			Manager m = new Manager();

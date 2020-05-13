@@ -12,12 +12,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
     { path: 'header', component: HeaderComponent },
     { path: 'footer', component: FooterComponent },
     { path: 'error/404', component: PageNotFoundComponent },
     { path: 'error/403', component: AccessDeniedComponent },
+    { path: 'aboutus', component: AboutUsComponent},
     { path: '**', redirectTo: 'error/404' }
 ]
 

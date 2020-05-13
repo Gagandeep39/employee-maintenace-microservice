@@ -17,4 +17,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     boolean existsByUsername(String username);
+
+    @Query("select u.empId, u.employeeDetails.firstName, u.employeeDetails.lastName from User u where u.role.roleId=100002")
+    List<Object[]> findAllManagers();
 }

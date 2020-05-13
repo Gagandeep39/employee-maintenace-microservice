@@ -1,4 +1,7 @@
 <div class="container">
+  <legend class="row">
+    <h2 class="display-4 col"><b>Detailed Search</b></h2>
+  </legend>
   <div>
     <div class="dropdown row">
       <div class="col">
@@ -35,6 +38,10 @@
           <li class="dropdown-item"><a (click)="searchItem('all', '')">All</a></li>
         </ul>
       </div>
+
+      <div class="col" *ngIf="isLoading">
+        <div class="spinner-border text-dark"></div>
+      </div>
       <!-- Search Btn -->
       <div class="col">
         <div class="input-group mb-3" *ngIf="nameType=='firstName' || nameType=='lastName'">
@@ -44,10 +51,11 @@
           </div>
         </div>
       </div>
-
+      <div class="col text-danger">
+        {{ errorMessage }}
+      </div>
     </div>
   <table class="table table-hover table-bordered" style="margin-top: 12px;">
-   
     <thead>
       <tr>
         <td>ID</td>
