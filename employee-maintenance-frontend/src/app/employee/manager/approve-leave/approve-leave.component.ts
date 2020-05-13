@@ -15,6 +15,8 @@ export class ApproveLeaveComponent implements OnInit {
   public currentPage: number;
   public leaveBalance: number = 0;
   public leaveStatuses = LeaveStatus;
+  public isLoading: boolean = false;
+  public errorMessage: string;
 
   constructor(private leaveService: LeaveService, private route: Router) { }
 
@@ -24,11 +26,13 @@ export class ApproveLeaveComponent implements OnInit {
   }
 
   fetchDatafromServer(pageNo: number, pageSize = 10) {
+    this.showLoading();
     this.leaveService
       .getManagerSubEmployeeLeaves(pageNo, pageSize)
       .subscribe((response) => {
+        this.hideLoading();
         this.leavePage = response;
-      });
+      }, error => this.handleError(error));
   }
 
   goToPage(pageNo: number) {
@@ -49,8 +53,28 @@ export class ApproveLeaveComponent implements OnInit {
   }
 
   updateStatus(status: string, leaveId: number) {
+    this.showLoading();
     this.leaveService.updateLeaveStatus(status, leaveId)
-    .subscribe(response => this.fetchDatafromServer(0))
+    .subscribe(response => {
+      this.fetchDatafromServer(0);
+      this.hideLoading();
+    }, error => this.handleError(error))
+  }
+
+  handleError(error: string): void {
+    this.errorMessage = 'Something went wrong :(';
+    console.log(error);
+    
+    this.hideLoading();
+    setTimeout(()=> this.errorMessage = undefined, 4000)
+  }
+
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 
 }

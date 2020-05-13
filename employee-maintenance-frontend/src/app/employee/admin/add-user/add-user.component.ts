@@ -8,6 +8,7 @@ import { EmployeeService } from 'src/app/service/employee.service';
 import { ValidatorService } from 'src/app/service/validator.service';
 import { UserForm } from 'src/app/models/user-form.model';
 import { Role } from 'src/app/models/role.model';
+import { HttpHandler } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-user',
@@ -21,6 +22,7 @@ export class AddUserComponent implements OnInit {
   submitted = false;
   roles: Role[] = [];
   isLoading = false;
+  errorMessage: string;
 
   constructor(
     private router: Router,
@@ -29,9 +31,26 @@ export class AddUserComponent implements OnInit {
     private validatorService: ValidatorService
   ) {}
   ngOnInit() {
-    this.validatorService.fetchAllRoles().subscribe(response => this.roles = response);
+    this.fetchRoles();
     this.initForm();
   }
+
+  fetchRoles() {
+    this.showLoading();
+    this.validatorService.fetchAllRoles().subscribe(response => {
+      this.roles = response
+      this.hideLoading();
+    },error => this.handleError(error));
+  }
+
+  handleError(error: any): void {
+    this.hideLoading();
+    this.errorMessage = 'Error Loading Roles';
+    console.log(error);
+    
+    setTimeout(()=>this.errorMessage = undefined, 4000)
+  }
+
   initForm() {
     this.userRegisterationForm = new FormGroup(
       {
@@ -79,5 +98,13 @@ export class AddUserComponent implements OnInit {
       this.employeeService.userEmitter.next(newUser);
       this.router.navigate(['/employee/admin/addemp']);
     }
+  }
+  
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 }
