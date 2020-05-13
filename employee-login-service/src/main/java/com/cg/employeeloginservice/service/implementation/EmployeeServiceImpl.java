@@ -43,7 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         User user = container.get();
         if (!user.getPassword().equals(changePassword.getOldPassword()))
             throw new UserNotFoundException("Entered password is wrong");
-        user.setPassword(changePassword.getNewPassword());
+        user.setPassword(changePassword.getPassword());
         return employeeRepository.save(user);
     }
 

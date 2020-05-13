@@ -42,7 +42,7 @@ Content-Type: application/json
 {
   "userId": "100001",
   "oldPassword": "123456",
-  "newPassword": "1234569"
+  "password": "Ssj391111"
 }
 
 ### UPdate User
