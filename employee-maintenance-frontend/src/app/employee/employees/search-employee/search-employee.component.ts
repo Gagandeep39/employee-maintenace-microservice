@@ -1,3 +1,11 @@
+/**
+ * @author Gagandeep Singh
+ * @email singh.gagandeep3911@gmail.com
+ * @create date 2020-04-13 03:10:07
+ * @modify date 2020-04-13 03:10:07
+ * @desc TO provide basic employee Search
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { EmployeePage } from 'src/app/models/employee-page.model';

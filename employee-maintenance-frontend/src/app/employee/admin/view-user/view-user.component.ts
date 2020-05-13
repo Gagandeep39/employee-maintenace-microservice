@@ -1,3 +1,10 @@
+/**
+ * @author Gagandeep Singh
+ * @email singh.gagandeep3911@gmail.com
+ * @create date 2020-04-13 01:12:39
+ * @modify date 2020-04-13 01:12:39
+ * @desc Admin Detailed search Panel
+ */
 import { Component, OnInit } from '@angular/core';
 import { EmployeePage } from 'src/app/models/employee-page.model';
 import { EmployeeService } from 'src/app/service/employee.service';
