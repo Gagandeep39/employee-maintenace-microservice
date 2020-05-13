@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * @author Gagandeep
  * @date 06-05-2020
@@ -15,36 +18,42 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
+@Api("Manage login related operations")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
     @PostMapping("/login")
+    @ApiOperation(value = "Logs in to system")
     public ResponseEntity<User> performLogin(@RequestBody User user){
         User loggedInUser = employeeService.performLogin(user);
         return new ResponseEntity<User>(loggedInUser, HttpStatus.OK);
     }
 
     @PostMapping("/login/add")
+    @ApiOperation(value = "Adds new user")
     public ResponseEntity<User> addUser(@RequestBody User user){
         User addedUser = employeeService.addUser(user);
         return new ResponseEntity<>(addedUser, HttpStatus.OK);
     }
 
     @PutMapping("/login/change")
+    @ApiOperation(value = "Changes password of user")
     public ResponseEntity<User> changePassword(@RequestBody User user) {
         User modifiedUser = employeeService.changePassword(user);
         return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
     }
 
     @PutMapping("/login/update")
+    @ApiOperation(value = "Update details of user")
     public ResponseEntity<User> updateUser(@RequestBody User user) {
         User modifiedUser = employeeService.updateRole(user);
         return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
     }
 
     @GetMapping("/login/{id}")
+    @ApiOperation(value = "Fetches user by Id")
     public ResponseEntity<User> fetchUserById(@PathVariable Integer id) {
         User user = employeeService.findUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);

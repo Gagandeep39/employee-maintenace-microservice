@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import com.cg.employeevalidationservice.model.Department;
 import com.cg.employeevalidationservice.model.Grade;
 import com.cg.employeevalidationservice.model.Manager;
@@ -24,30 +27,35 @@ import com.cg.employeevalidationservice.service.ValidationService;
 @CrossOrigin("*")
 @RestController
 @Slf4j
+@Api("To fetch data for validation and population of various dropdowns ")
 public class ValidationController {
 
 	@Autowired
 	private ValidationService validationService;
 	
 	@GetMapping("/grades")
+	@ApiOperation(value = "Fetches all grades")
 	public List<Grade> fetchAllGrades(){
 		List<Grade> grades = validationService.fetchAllGrades();
 		return grades;
 	}
 	
 	@GetMapping("/departments")
+	@ApiOperation(value = "Fetches all departments")
 	public List<Department> fetchAllDepartments(){
 		List<Department> departments = validationService.fetchAllDepartments();
 		return departments;
 	}
 	
 	@GetMapping("/managers")
+	@ApiOperation(value = "Fetches all managers")
 	public List<Manager> fetchAllManagers(){
 		List<Manager> managers = validationService.fetchAllManagers();
 		return managers;
 	}
 
 	@GetMapping("/username")
+	@ApiOperation(value = "Check if username exists in database")
 	public ResponseEntity<HashMap<String, Boolean>> checkUsernameExist(@RequestParam String username){
 		HashMap<String, Boolean> map = new HashMap<>();
 		log.info("----------------" + username);
@@ -56,6 +64,7 @@ public class ValidationController {
 	}
 
 	@GetMapping("/roles")
+	@ApiOperation(value = "Fetches all roles")
 	public ResponseEntity<List<Role>> getAllRoles(){
 		List<Role> roles = validationService.fetchRoles();
 		return new ResponseEntity<>(roles, HttpStatus.OK);
