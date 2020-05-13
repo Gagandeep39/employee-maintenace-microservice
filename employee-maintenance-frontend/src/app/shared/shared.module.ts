@@ -8,6 +8,7 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { GradeTypePipe } from './grade-type.pipe';
 import { ManagerInfoPipe } from './manager-info.pipe';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { ManagerInfoPipe } from './manager-info.pipe';
     FormsModule,
     ReactiveFormsModule,
     SharedRoutingModule
-  ],
+    ],
   declarations: [
     HeaderComponent,
     FooterComponent,
@@ -23,6 +24,7 @@ import { ManagerInfoPipe } from './manager-info.pipe';
     AccessDeniedComponent,
     GradeTypePipe,
     ManagerInfoPipe,
+    AboutUsComponent,
   ],
   exports: [ 
     HeaderComponent,
