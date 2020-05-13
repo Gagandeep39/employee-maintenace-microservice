@@ -3,6 +3,8 @@ server:
 spring:
   profiles:
     active: dev
+  application:
+    name: employee-validation-service
 eureka:
   client:
     serviceUrl:
