@@ -29,6 +29,10 @@ export class ChangePasswordComponent implements OnInit {
   initForm() {
     this.changePasswordForm = new FormGroup(
       {
+        oldPassword: new FormControl('', [
+          Validators.required,
+          CustomValidators.validateOldPassword
+        ]),
         password: new FormControl('', [
           Validators.required,
           Validators.pattern(
@@ -51,17 +55,22 @@ export class ChangePasswordComponent implements OnInit {
   
   onSubmit() {
     this.submitted = true;
-    this.showLoading();
     if (this.changePasswordForm.valid) {
-      this.isLoading = true;
-      this.submitted = false;
+      this.showLoading();
       delete this.changePasswordForm.value.confirmPassword;
+      this.authService.changePassword(this.changePasswordForm.value)
+      .subscribe(response => {
+        this.hideLoading();
+        this.referenceMessage = 'Successfully Changed password'
+        setTimeout(()=>this.router.navigate(['/employee/home']), 4000)
+      }, error => this.handleError(error))
+      
     }
   }
 
   handleError(error: any): void {
     this.hideLoading();
-    this.errorMessage = 'Error Loading Roles';
+    this.errorMessage = 'Error Commnicatig to server';
     console.log(error);
     
     setTimeout(()=>this.errorMessage = undefined, 4000)
