@@ -41,9 +41,14 @@
         </div>
       </li>
     </ul>
-    <ul class="navbar-nav" style="align-items: right;">
-      <a class="nav-link" [routerLink]="['/aboutus']" routerLinkActive="active">About us</a>
-      <li class="nav-item"><a class="nav-link active" (click)="logOut()">Log Out</a></li>
+
+    <!-- More -->
+    <ul class="nav-item dropdown my-2 my-lg-0">
+      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">More</a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" [routerLink]="['/employee/change']">Change Password</a>
+        <a class="dropdown-item" (click)="logOut()">Log Out</a>
+      </div>
     </ul>
   </div>
 </nav>
