@@ -36,12 +36,13 @@ Content-Type: application/json
 }
 
 ### Change password
-PUT  http://localhost:9100/login/change
+POST  http://localhost:9100/login/change
 Content-Type: application/json
 
 {
-  "empId": "100001",
-  "password": "1234"
+  "userId": "100001",
+  "oldPassword": "123456",
+  "newPassword": "1234569"
 }
 
 ### UPdate User
@@ -50,7 +51,7 @@ Content-Type: application/json
 
 {
   "empId": "100001",
-  "password": "1234",
+  "password": "123456",
   "username": "1234",
   "role": {
     "roleId": 100001

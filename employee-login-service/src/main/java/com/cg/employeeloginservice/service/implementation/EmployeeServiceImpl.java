@@ -9,6 +9,7 @@
 package com.cg.employeeloginservice.service.implementation;
 
 import com.cg.employeeloginservice.exception.UserNotFoundException;
+import com.cg.employeeloginservice.model.ChangePassword;
 import com.cg.employeeloginservice.model.User;
 import com.cg.employeeloginservice.repository.EmployeeRepository;
 import com.cg.employeeloginservice.service.EmployeeService;
@@ -36,12 +37,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public User changePassword(User user) {
-        Optional<User> databaseUser = employeeRepository.findById(user.getEmpId());
-        databaseUser.orElseThrow(()->new UserNotFoundException("User does not exist"));
-        User newUser = databaseUser.get();
-        newUser.setPassword(user.getPassword());
-        return employeeRepository.save(newUser);
+    public User changePassword(ChangePassword changePassword) {
+        Optional<User> container = employeeRepository.findById(changePassword.getUserId());
+        container.orElseThrow(()-> new UserNotFoundException("Wrong Username"));
+        User user = container.get();
+        if (!user.getPassword().equals(changePassword.getOldPassword()))
+            throw new UserNotFoundException("Entered password is wrong");
+        user.setPassword(changePassword.getNewPassword());
+        return employeeRepository.save(user);
     }
 
     @Override
