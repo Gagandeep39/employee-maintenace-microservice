@@ -6,9 +6,11 @@ spring:
   application:
     name: employee-management-service
 eureka:
+  instance:
+    hostname: localhost
   client:
     serviceUrl:
-      defaultZone: http://localhost:9000/eureka
+      defaultZone: http://${eureka.instance.hostname}:9000/eureka
 
 service:
   url:
