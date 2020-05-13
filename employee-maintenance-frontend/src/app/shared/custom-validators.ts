@@ -10,6 +10,7 @@ import {
   ValidatorFn,
   AsyncValidatorFn,
   ValidationErrors,
+  FormGroup,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -63,4 +64,38 @@ export class CustomValidators {
         .pipe(map((response) => (response ? null : { usernameTaken: true })));
     };
   }
+
+  static cannotBePastDate() {
+    return (control: FormControl) => {
+      const dateFrom: Date = control.get('dateFrom').value;
+      const from = new Date(dateFrom);
+      if (from < new Date())
+          control.get('dateFrom').setErrors({ previousDate: true });
+      else 
+        return null;
+    };
+  }
+
+  static validateBalance(leaveBalance: number) {
+    return (control: FormControl) => {
+      const from = new Date(control.get('dateFrom').value);
+      const to = new Date(control.get('dateTo').value);
+      const diff = to.getDate() - from.getDate();
+      if (leaveBalance - diff < 0)
+        control.get('dateTo').setErrors({ insufficientBalance: true });
+      else return null;
+    };
+  }
+
+  static dateLessThan(from: string, to: string) {
+    return (group: FormGroup): { [key: string]: any } => {
+      let f = group.controls[from];
+      let t = group.controls[to];
+      if (f.value > t.value) {
+        group.controls[to].setErrors({dateToLessThanFrom: true})
+      }
+      return {};
+    };
+  }
+  
 }

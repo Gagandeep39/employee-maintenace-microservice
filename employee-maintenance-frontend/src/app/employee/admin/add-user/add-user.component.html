@@ -2,7 +2,7 @@
   <form [formGroup]="userRegisterationForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
 
     <legend>
-      <h2><b>User Registration Form</b></h2>
+      <h2 class="display-4"><b>User Registration Form</b></h2>
     </legend>
     <hr>
   
@@ -73,7 +73,15 @@
           <div *ngIf="userRegisterationForm.get('confirmPassword').errors['passwordMatchError']">Passwords are not same</div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Next</button>
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" *ngIf="!isLoading">Next</button>
+          <div class="spinner-border text-primary" style="margin-left: 20px; padding-top: 20px;" *ngIf="isLoading"></div>
+        </div>
+        <div class="col text-danger">
+          {{ errorMessage }}
+        </div>
+      </div>
   </form>
 </div>
 

@@ -16,7 +16,9 @@ export class EditUserComponent implements OnInit {
   roles: Role[] = [];
   userEditForm: FormGroup;
   user: User = new User();
-  referenceMessage;
+  referenceMessage: string;
+  errorMessage: string;
+  isLoading: boolean;
 
   constructor(
     private validatorService: ValidatorService,
@@ -33,34 +35,38 @@ export class EditUserComponent implements OnInit {
 
   initUpdateUser() {
     let empId = this.route.snapshot.params['id'];
+    this.showLoading();
     this.employeeService.findUserById(empId).subscribe((response) => {
+      this.hideLoading();
       this.user = response;
     });
   }
 
   onSubmit() {
     this.submitted = true;
+    this.showLoading();
     if(this.userEditForm.valid) {
       this.user.role = this.userEditForm.get('role').value;
       this.employeeService.updateUser(this.user).subscribe(
         response => {
-          this.referenceMessage = 'Successfully added user with ID: ' + response.empId;
+          this.hideLoading();
+          this.referenceMessage = 'Successfully updated user with role ID: ' + response.role.roleId;
           setTimeout(()=>{
             this.router.navigate(['/employee/home'])
           }, 2000)
-        },error => {
-          this.referenceMessage = error;
-        }
+        },error => this.handleError(error)
       );
     }
   }
 
   initDropdowns() {
+    this.showLoading();
     this.validatorService
       .fetchAllRoles()
       .subscribe((response) => {
+        this.hideLoading();
         this.roles = response.filter(role=> role.role != 'ROLE_EMPLOYEE')
-      });
+      }, error => this.handleError(error));
   }
 
   initForm() {
@@ -69,5 +75,21 @@ export class EditUserComponent implements OnInit {
         roleId: new FormControl('', Validators.required),
       }),
     });
+  }
+
+  handleError(error: any): void {
+    this.hideLoading();
+    this.errorMessage = 'Error Loading Roles';
+    console.log(error);
+    
+    setTimeout(()=>this.errorMessage = undefined, 4000)
+  }
+  
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 }

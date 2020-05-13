@@ -16,6 +16,8 @@ export class ViewLeavesComponent implements OnInit {
   public leavePage: LeavePage = new LeavePage();
   public currentPage: number;
   public leaveBalance: number = 0;
+  public isLoading: boolean = false;
+  public errorMessage: string;
 
   constructor(private leaveService: LeaveService, private route: Router) { }
 
@@ -29,11 +31,22 @@ export class ViewLeavesComponent implements OnInit {
   }
 
   fetchDatafromServer(pageNo: number, pageSize = 10) {
+    this.showLoading();
     this.leaveService
       .getLeavePages(pageNo, pageSize)
       .subscribe((response) => {
         this.leavePage = response;
+        this.hideLoading();
+      }, error => {
+        this.handleError(error);
       });
+  }
+
+  handleError(error: any) {
+    this.isLoading = false;
+    this.errorMessage = 'Something went wrong :(';
+    console.log(error);
+    setTimeout(()=>this.errorMessage=undefined, 4000)
   }
 
   goToPage(pageNo: number) {
@@ -56,4 +69,13 @@ export class ViewLeavesComponent implements OnInit {
   createLeave() {
     this.route.navigate(['employee/addleave']);
   }
+
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
+  }
+
 }

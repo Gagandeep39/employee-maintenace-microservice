@@ -1,4 +1,11 @@
 <div class="container">
+  <legend class="row">
+    <h2 class="display-4 col"><b>Approve Leaves</b></h2>
+    <div class="col" align="right">
+      <div class="spinner-border text-dark" *ngIf="isLoading"></div>
+    </div>
+  </legend>
+  <hr>
   <table class="table table-hover table-bordered">
 
     <thead>
@@ -39,6 +46,8 @@
     </tr>
 
   </table>
+
+  <p class="text-danger"> {{ errorMessage }} </p>
   <ul class="pagination justify-content-center">
     <li class="page-item">
       <a *ngIf="!leavePage.first" class="page-link" (click)="previousPage()">Previous</a>

@@ -1,3 +1,10 @@
+/**
+ * @author Gagandeep Singh
+ * @email singh.gagandeep3911@gmail.com
+ * @create date 2020-05-13 08:31:42
+ * @modify date 2020-05-13 08:31:42
+ * @desc Add Employee details form
+ */
 import { Component, OnInit } from '@angular/core';
 import { MaritalStatus } from 'src/app/models/marital-status.model';
 import { Gender } from 'src/app/models/gender.model';
@@ -43,6 +50,9 @@ export class AddEmployeeComponent implements OnInit {
   // Edit Employee 
   empId: number;
   employeeDetails: EmployeeDetails;
+
+  // Error and loading
+  errorMessage: string;
 
   constructor(
     private employeeService: EmployeeService,
@@ -163,16 +173,18 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
   updateDataOnServer(userDetails: UserDetailsFrom) {
+    this.showLoading();
     this.employeeService.updateEmployee(userDetails)
       .subscribe(
         response =>{
+          this.hideLoading();
           this.employeeService.userEmitter.next(null);
           this.referenceMessage = "Successfully Updated Employee with ID: " + response.empDetailsId;
           setTimeout(()=> {
             this.router.navigate(['/employee/home'])
           }, 2000)
         },
-        error => {this.referenceMessage = error}
+        error => this.handleError(error)
       )
   }
 
@@ -183,21 +195,35 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   saveDataToServer(userDetails: UserDetailsFrom) {
+    this.showLoading();
     this.userForm.employeeDetails = userDetails;
     this.employeeService.saveEmployee(this.userForm)
     .subscribe(response =>{
+      this.hideLoading();
       this.employeeService.userEmitter.next(null);
       this.referenceMessage = "Successfully Added Employee with ID: " + response.empDetailsId;
       setTimeout(()=> {
         this.router.navigate(['/employee/home'])
       }, 2000)
     },
-    error => {this.referenceMessage = error});
-  }
-
-  redirectToHomePage() {
-    // this.router.navigate(['../list'], { relativeTo: this.route });
+    error => this.handleError(error));
   }
 
   OnInit() {}
+
+  handleError(error: any): void {
+    this.hideLoading();
+    this.errorMessage = 'Error Communicting to server';
+    console.log(error);
+    
+    setTimeout(()=>this.errorMessage = undefined, 4000)
+  }
+
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
+  }
 }
