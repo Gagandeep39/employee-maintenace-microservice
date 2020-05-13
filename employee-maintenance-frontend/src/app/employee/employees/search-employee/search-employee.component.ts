@@ -21,6 +21,7 @@ export class SearchEmployeeComponent implements OnInit {
   value: string;
   nameType : string;
   isLoading = false;
+  errorMessage: string;
 
   constructor(private employeeService: EmployeeService, private validatorService: ValidatorService) {}
 
@@ -39,7 +40,14 @@ export class SearchEmployeeComponent implements OnInit {
       .subscribe((response) => {
         this.employeePage = response;
         this.hideLoading();
-      });
+      },error => this.handleError(error));
+  }
+
+  handleError(error: any): void {
+    this.hideLoading();
+    this.errorMessage = 'Something Went Wrong :(';
+    console.log(error);
+    setTimeout(()=>this.errorMessage = undefined, 4000)
   }
 
   goToPage(pageNo: number) {

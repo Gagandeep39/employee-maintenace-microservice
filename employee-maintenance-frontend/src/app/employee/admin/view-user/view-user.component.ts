@@ -21,6 +21,8 @@ export class ViewUserComponent implements OnInit {
   category: string = 'all';
   value: string;
   nameType : string;
+  isLoading = false;
+  errorMessage: string;
 
   constructor(private employeeService: EmployeeService, private validatorService: ValidatorService) {}
 
@@ -33,13 +35,21 @@ export class ViewUserComponent implements OnInit {
   }
 
   fetchDatafromServer(pageNo: number, pageSize = 10) {
+    this.showLoading();
     this.employeeService
       .getEmployeeByCategory(pageNo, pageSize, this.category, this.value)
       .subscribe((response) => {
         this.employeePage = response;
-        console.log(response);
-        
-      });
+        this.hideLoading();
+      }, error => this.handleError(error));
+  }
+
+  handleError(error: any): void {
+    this.hideLoading();
+    this.errorMessage = 'Something Went Wrong :(';
+    console.log(error);
+    
+    setTimeout(()=>this.errorMessage = undefined, 4000)
   }
 
   goToPage(pageNo: number) {
@@ -79,5 +89,14 @@ export class ViewUserComponent implements OnInit {
 
   setSearchType(type: string){
     this.nameType = type;
+  }
+
+  
+  showLoading() {
+    this.isLoading = true;
+  }
+
+  hideLoading() {
+    this.isLoading = false;
   }
 }
