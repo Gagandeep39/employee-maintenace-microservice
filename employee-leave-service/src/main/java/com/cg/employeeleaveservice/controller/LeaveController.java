@@ -27,6 +27,9 @@ public class LeaveController {
     @Autowired
     private LeaveService leaveService;
 
+    /**
+     * Fetch all Leave of An Employee
+     */
     @GetMapping("/leaves/employee/{empId}")
     @ApiOperation(value = "Fetches all leaves of the employee")
     public ResponseEntity<Page<LeaveHistory>> fetchEmployeeLeave(
@@ -38,6 +41,9 @@ public class LeaveController {
         return new ResponseEntity<>(leaveHistories, HttpStatus.OK);
     }
 
+    /**
+     * Fetch All manager leaves
+     */
     @GetMapping("/leaves/manager/{managerId}")
     @ApiOperation(value = "Fetches all sub employee leaves of manager")
     public ResponseEntity<Page<LeaveHistory>> fetchManagerLeaves(
@@ -49,13 +55,21 @@ public class LeaveController {
         return new ResponseEntity<>(leaveHistories, HttpStatus.OK);
     }
 
+    /**
+     * Crate a new Lave
+     */
     @PostMapping("/leaves/{empId}")
     @ApiOperation(value = "Adds new leave into system")
-    public ResponseEntity<LeaveHistory> addLeave(@PathVariable Integer empId, @RequestBody LeaveHistory leaveHistory){
+    public ResponseEntity<LeaveHistory> addLeave(
+        @PathVariable Integer empId, 
+        @RequestBody LeaveHistory leaveHistory){
         LeaveHistory updatedLeaveHistory = leaveService.createLeave(leaveHistory, empId);
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
     }
 
+    /**
+     * Update :Leave
+     */
     @PutMapping("/leaves")
     @ApiOperation(value = "Updates leave status in system")
     public ResponseEntity<LeaveHistory> updateLeave(@RequestBody LeaveHistory leaveHistory){
@@ -63,6 +77,9 @@ public class LeaveController {
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
     }
 
+    /**
+     * Fteh leave Balance
+     */
     @GetMapping("/leaves/balance/{empId}")
     @ApiOperation(value = "Fetches leave balance of employee")
     public ResponseEntity<HashMap<String, Integer>> fetchBalance(@PathVariable Integer empId){
@@ -70,12 +87,5 @@ public class LeaveController {
         map.put("balance", leaveService.fetchLeaveBalance(empId));
         return new ResponseEntity<>(map, HttpStatus.ACCEPTED);
     }
-    // @Autowired
-    // private LeaveHistoryRepository repository;
-
-    // @GetMapping("/test")
-    // public void test(){
-    //     repository.scheduledUpdate();
-    // }
 
 }
