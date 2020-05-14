@@ -14,15 +14,25 @@ import org.springframework.stereotype.Component;
  * @time 02:43
  */
 
+/**
+ * Used for custom l;ogging
+ * Uses the concept of AOP
+ */
 @Aspect
 @Slf4j
 @Component
 public class CustomLogger {
 
 
+    /**
+     * Specifies where will certain operation be carried out
+     */
     @Pointcut("execution(* com.cg.*.*.*.*(..)))")
     public void everyWhere() {}
 
+    /**
+     * The advice To be executed
+     */
     @Before("everyWhere()")
     public void logBefore(JoinPoint point) {
         log.debug("@Before class: " + point.getTarget().getClass().getSimpleName());
@@ -34,12 +44,14 @@ public class CustomLogger {
         }
     }
 
+    /**
+     * The advice to be executed
+     */
     @AfterReturning(pointcut = "everyWhere()", returning = "result")
     public void logAfter(JoinPoint point, Object result) {
         log.debug("@AfterReturning class: " + point.getTarget().getClass().getSimpleName());
         log.debug("@AfterReturning method: " + point.getSignature().toShortString());
         log.debug("Returning Value: " + result);
     }
-
 
 }

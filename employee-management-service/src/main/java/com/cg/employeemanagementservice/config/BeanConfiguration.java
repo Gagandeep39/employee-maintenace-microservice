@@ -20,15 +20,24 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @time 02:15
  */
 
+/**
+ * Stores all necessary Beans
+ */
 @Configuration
 public class BeanConfiguration {
 
+	/**
+	 * Intermicroservice Communication
+	 */
     @Bean
     @LoadBalanced
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
 
+	/**
+	 * Fetch a dummy user to Indicate that login server is down
+	 */
     @Bean
     public User getUser(){
         User user = new User();

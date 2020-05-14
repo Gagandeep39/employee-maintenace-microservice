@@ -23,6 +23,10 @@ import io.swagger.annotations.ApiOperation;
  * @time 01:41
  */
 
+/**
+ * @CrossOrigin - To fix cross origin error
+ * @Controller - Used to Register/ Update a new Employee
+ */
 @CrossOrigin("*")
 @RestController
 @Api("Manage employee related operations")
@@ -34,6 +38,9 @@ public class EmployeeRegistrationController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Add a new emloyee details using post mapping
+     */
     @PostMapping("/employees")
     @ApiOperation(value = "Adds new employee details")
     public ResponseEntity<EmployeeDetails> addEmployee(@RequestBody User user){
@@ -41,6 +48,9 @@ public class EmployeeRegistrationController {
         return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
     }
 
+    /**
+     * Adds Employee Details + User credentials
+     */
     @PostMapping("/employees/user")
     @ApiOperation(value = "Adds new user details")
     public ResponseEntity<User> addUser(@RequestBody User user){
@@ -48,6 +58,11 @@ public class EmployeeRegistrationController {
         return new ResponseEntity<>(addedUser, HttpStatus.OK);
     }
 
+    /**
+     * 
+     * @param details Employee Details to be Updated
+     * @return Retuns a response Entity container
+     */
     @PutMapping("/employees")
     @ApiOperation(value = "Updates employee details")
     public ResponseEntity<EmployeeDetails> updateEmployeeDetails(@RequestBody EmployeeDetails details){

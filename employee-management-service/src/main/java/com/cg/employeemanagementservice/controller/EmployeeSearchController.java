@@ -18,6 +18,9 @@ import io.swagger.annotations.ApiOperation;
  * @time 03:11
  */
 
+/**
+ * Controller - Perform Various Form of searches with Filters
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/employees")
@@ -27,6 +30,9 @@ public class EmployeeSearchController {
     @Autowired
     private EmployeeSearchService employeeSearchService;
 
+    /**
+     * Fetches a complete of EMployees
+     */
     @GetMapping("/search")
     @ApiOperation(value = "Fetches all employee details")
     public ResponseEntity<Page<EmployeeDetails>> fetchAll(@RequestParam(defaultValue = "0") Integer pageNo,
@@ -36,6 +42,20 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Fetches employees Based On category
+     * @param genders Filter By Gender
+     * @param maritalStatus Marital Status
+     * @param departments Filter By Department
+     * @param grades Filter By grad
+     * @param firstName Filter By FirstName
+     * @param lastName Filter By LastName
+     * @param managerId Filter y Manager ID
+     * @param pageNo Page number to be fetched
+     * @param pageSize Number of elements in a single Page
+     * @param sortBy The field by woch data will be sorted
+     * @return A Page Containing Emplloyees
+     */
     @GetMapping("/search/category")
     @ApiOperation(value = "Fetches employee details by category")
     public ResponseEntity<Page<EmployeeDetails>> fetchByCategory(
@@ -69,6 +89,9 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search EMployees absed on Frist Name
+     */
     @GetMapping("/search/firstName/{firstName}")
     @ApiOperation(value = "Fetches employee details by firstName")
     public ResponseEntity<Page<EmployeeDetails>> searchByName(
@@ -80,6 +103,9 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search By last name
+     */
     @GetMapping("/search/lastName/{lastName}")
     @ApiOperation(value = "Fetches employee details by lastName")
     public ResponseEntity<Page<EmployeeDetails>> searchByLastName(
@@ -91,6 +117,14 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search By Gendrt
+     * @param genders
+     * @param pageNo
+     * @param pageSize
+     * @param sortBy
+     * @return
+     */
     @GetMapping("/search/genders/{genders}")
     @ApiOperation(value = "Fetches employee details by lastName")
     public ResponseEntity<Page<EmployeeDetails>> searchByGender(
@@ -102,6 +136,9 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search Employees By marital Status
+     */
     @GetMapping("/search/maritalStatus/{maritalStatus}")
     @ApiOperation(value = "Fetches employee details by Marital Status")
     public ResponseEntity<Page<EmployeeDetails>> searchByMaritalStatus(
@@ -113,6 +150,9 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search EMployees By Dpartment
+     */
     @GetMapping("/search/departments/{departments}")
     @ApiOperation(value = "Fetches employee details by Department")
     public ResponseEntity<Page<EmployeeDetails>> searchByDepartment(
@@ -124,6 +164,9 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search Employees By Grade
+     */
     @GetMapping("/search/grades/{grades}")
     @ApiOperation(value = "Fetches employee details by grades")
     public ResponseEntity<Page<EmployeeDetails>> searchByGrades(
@@ -135,6 +178,9 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search Employees By Manager ID
+     */
     @GetMapping("/search/managerId/{managerId}")
     @ApiOperation(value = "Fetches employee details by Manager ID")
     public ResponseEntity<Page<EmployeeDetails>> searchByManagerId(
@@ -146,6 +192,9 @@ public class EmployeeSearchController {
         return new ResponseEntity<>(page, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Search a single Employee By ID
+     */
     @GetMapping("/search/id/{id}")
     @ApiOperation(value = "Fetch employee details by ID")
     public ResponseEntity<EmployeeDetails> findById(@PathVariable Integer id) {
