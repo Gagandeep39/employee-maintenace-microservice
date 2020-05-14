@@ -93,6 +93,16 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
+
+	<repositories>
+	<!-- Repository from where Springfox swagger2 3.0 library is downloaded (Not availiable in mvn central) -->
+		<repository>
+			<id>jcenter-snapshots</id>
+			<name>jcenter</name>
+			<url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
