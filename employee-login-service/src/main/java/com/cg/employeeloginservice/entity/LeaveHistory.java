@@ -36,6 +36,9 @@ import lombok.ToString;
  * @time 19:54
  */
 
+ /**
+  * Creates a grade table
+  */
 @Entity
 @Table(name = "leave_history")
 @Getter
@@ -45,6 +48,10 @@ import lombok.ToString;
 @ApiModel("Leave history : Stores the history of leaves of employee")
 public class LeaveHistory {
 
+    /**
+     * Manual sequence generator for leave hostory
+     * Starting value is 100000
+     */
     @Id
     @Column(name = "leave_id")
     @SequenceGenerator(name = "leave_id_sequence", initialValue = 100000, allocationSize = 1)
@@ -52,27 +59,46 @@ public class LeaveHistory {
     @ApiModelProperty("Leave ID")
     private Integer leaveId;
 
+    /**
+     * Leave Balance
+     */
     @Column(name = "leave_balance")
     @ApiModelProperty("Leave balance")
     private Integer leaveBalance;
 
+    /**
+     * Date from
+     */
     @Column(name = "date_from")
     @ApiModelProperty("Leave from date")
     private LocalDate dateFrom;
 
+    /**
+     * Date TO
+     */
     @Column(name = "date_to")
     @ApiModelProperty("Leave to date")
     private LocalDate dateTo;
 
+    /**
+     * Leave Status
+     */
     @Column(name = "leave_status", columnDefinition = "varchar(20) check (leave_status in ('Applied','Approved','Rejected'))")
     @Enumerated(EnumType.STRING)
     @ApiModelProperty("Leave status")
     private LeaveStatus leaveStatus;
 
+    /**
+     * Number of days he eave was requested for
+     */
     @Column(name = "no_of_days_applied")
     @ApiModelProperty("Number of days for which leave is applied")
     private Integer numberOfDays;
 
+    /**
+     * Maping with Employee
+     * Multiple Leaves ca be taken buy a single Employee
+     */
     @ManyToOne
     @JoinColumn(name = "emp_id", foreignKey = @ForeignKey(name = "FK_LEAVE_ID"))
     // @JsonIgnore
@@ -81,6 +107,9 @@ public class LeaveHistory {
     @ApiModelProperty("Link to employee details")
     private EmployeeDetails employeeDetails;
     
+    /**
+     * Createion time i.e Time when this leave was created
+     */
     @Column(name = "created_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     @ApiModelProperty("Creation time of leave")
