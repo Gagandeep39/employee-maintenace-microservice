@@ -1,13 +1,15 @@
 package com.cg.employeeleaveservice.controller;
 
 import com.cg.employeeleaveservice.model.LeaveHistory;
-import com.cg.employeeleaveservice.repository.LeaveHistoryRepository;
 import com.cg.employeeleaveservice.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 import java.util.HashMap;
 
@@ -19,12 +21,14 @@ import java.util.HashMap;
 
 @RestController
 @CrossOrigin("*")
+@Api("Manage leave related operations")
 public class LeaveController {
 
     @Autowired
     private LeaveService leaveService;
 
     @GetMapping("/leaves/employee/{empId}")
+    @ApiOperation(value = "Fetches all leaves of the employee")
     public ResponseEntity<Page<LeaveHistory>> fetchEmployeeLeave(
             @PathVariable Integer empId,
             @RequestParam(defaultValue = "0") Integer pageNo,
@@ -35,6 +39,7 @@ public class LeaveController {
     }
 
     @GetMapping("/leaves/manager/{managerId}")
+    @ApiOperation(value = "Fetches all sub employee leaves of manager")
     public ResponseEntity<Page<LeaveHistory>> fetchManagerLeaves(
             @PathVariable Integer managerId,
             @RequestParam(defaultValue = "0") Integer pageNo,
@@ -45,18 +50,21 @@ public class LeaveController {
     }
 
     @PostMapping("/leaves/{empId}")
+    @ApiOperation(value = "Adds new leave into system")
     public ResponseEntity<LeaveHistory> addLeave(@PathVariable Integer empId, @RequestBody LeaveHistory leaveHistory){
         LeaveHistory updatedLeaveHistory = leaveService.createLeave(leaveHistory, empId);
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/leaves")
+    @ApiOperation(value = "Updates leave status in system")
     public ResponseEntity<LeaveHistory> updateLeave(@RequestBody LeaveHistory leaveHistory){
         LeaveHistory updatedLeaveHistory = leaveService.updateLeave(leaveHistory);
         return new ResponseEntity<>(updatedLeaveHistory, HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/leaves/balance/{empId}")
+    @ApiOperation(value = "Fetches leave balance of employee")
     public ResponseEntity<HashMap<String, Integer>> fetchBalance(@PathVariable Integer empId){
         HashMap<String, Integer> map = new HashMap<>();
         map.put("balance", leaveService.fetchLeaveBalance(empId));
