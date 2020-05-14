@@ -3,8 +3,7 @@ package com.cg.employeemanagementservice.service.implementation;
 import com.cg.employeemanagementservice.enums.Gender;
 import com.cg.employeemanagementservice.enums.Grade;
 import com.cg.employeemanagementservice.enums.MaritalStatus;
-import com.cg.employeemanagementservice.model.Department;
-import com.cg.employeemanagementservice.model.EmployeeDetails;
+import com.cg.employeemanagementservice.entity.EmployeeDetails;
 import com.cg.employeemanagementservice.repository.EmployeeDetailsRepository;
 import com.cg.employeemanagementservice.service.EmployeeSearchService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 

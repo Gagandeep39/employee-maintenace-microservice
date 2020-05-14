@@ -5,7 +5,7 @@
  * @modify date 2020-05-05 18:16:52
  * @desc Department Details
  */
-package com.cg.employeemanagementservice.model;
+package com.cg.employeemanagementservice.entity;
 
 import lombok.*;
 

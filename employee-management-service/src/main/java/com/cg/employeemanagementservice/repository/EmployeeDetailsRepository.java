@@ -3,15 +3,13 @@ package com.cg.employeemanagementservice.repository;
 import com.cg.employeemanagementservice.enums.Gender;
 import com.cg.employeemanagementservice.enums.Grade;
 import com.cg.employeemanagementservice.enums.MaritalStatus;
-import com.cg.employeemanagementservice.model.Department;
-import com.cg.employeemanagementservice.model.EmployeeDetails;
+import com.cg.employeemanagementservice.entity.EmployeeDetails;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author Gagandeep

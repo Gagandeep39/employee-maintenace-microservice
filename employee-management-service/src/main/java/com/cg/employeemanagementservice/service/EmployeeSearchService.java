@@ -1,6 +1,6 @@
 package com.cg.employeemanagementservice.service;
 
-import com.cg.employeemanagementservice.model.EmployeeDetails;
+import com.cg.employeemanagementservice.entity.EmployeeDetails;
 import org.springframework.data.domain.Page;
 
 /**

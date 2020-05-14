@@ -1,4 +1,4 @@
-package com.cg.employeemanagementservice.model;
+package com.cg.employeemanagementservice.entity;
 
 import java.time.LocalDate;
 

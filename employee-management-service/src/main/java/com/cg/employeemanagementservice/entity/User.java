@@ -5,7 +5,7 @@
  * @modify date 2020-05-05 17:18:24
  * @desc Basic user Credential
  */
-package com.cg.employeemanagementservice.model;
+package com.cg.employeemanagementservice.entity;
 
 import com.fasterxml.jackson.annotation.*;
 

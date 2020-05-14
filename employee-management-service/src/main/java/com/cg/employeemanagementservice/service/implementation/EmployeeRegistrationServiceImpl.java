@@ -1,8 +1,8 @@
 package com.cg.employeemanagementservice.service.implementation;
 
-import com.cg.employeemanagementservice.model.Address;
-import com.cg.employeemanagementservice.model.EmployeeDetails;
-import com.cg.employeemanagementservice.model.User;
+import com.cg.employeemanagementservice.entity.Address;
+import com.cg.employeemanagementservice.entity.EmployeeDetails;
+import com.cg.employeemanagementservice.entity.User;
 import com.cg.employeemanagementservice.repository.EmployeeDetailsRepository;
 import com.cg.employeemanagementservice.service.EmployeeRegistrationService;
 import com.cg.employeemanagementservice.service.UserService;

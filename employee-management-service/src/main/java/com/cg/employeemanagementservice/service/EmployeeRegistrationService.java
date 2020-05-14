@@ -1,7 +1,7 @@
 package com.cg.employeemanagementservice.service;
 
-import com.cg.employeemanagementservice.model.EmployeeDetails;
-import com.cg.employeemanagementservice.model.User;
+import com.cg.employeemanagementservice.entity.EmployeeDetails;
+import com.cg.employeemanagementservice.entity.User;
 
 /**
  * @author Gagandeep
