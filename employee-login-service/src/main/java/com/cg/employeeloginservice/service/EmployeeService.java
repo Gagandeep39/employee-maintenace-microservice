@@ -8,12 +8,13 @@
 package com.cg.employeeloginservice.service;
 
 
+import com.cg.employeeloginservice.model.ChangePassword;
 import com.cg.employeeloginservice.model.User;
 
 public interface EmployeeService {
 
     User performLogin(User user);
-    User changePassword(User user);
+    User changePassword(ChangePassword changePassword);
     User addUser(User user);
 	User updateRole(User user);
 	User findUserById(Integer id);

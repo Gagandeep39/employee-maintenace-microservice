@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ValidatorService } from '../service/validator.service';
 import { Grade } from '../models/grade.model';
+import { User } from '../models/user.mode';
 
 export class CustomValidators {
   static forbiddenAge(control: FormControl) {
@@ -97,5 +98,13 @@ export class CustomValidators {
       return {};
     };
   }
-  
+
+  static validateOldPassword(control: FormControl) {
+    const oldPassword: string = control.value;
+    let user: User = JSON.parse(sessionStorage.getItem('user'));
+    if (oldPassword != user.password) {
+      return { incorrectPassword: true };
+    return null;
+  }
+}
 }

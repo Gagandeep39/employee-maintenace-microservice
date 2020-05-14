@@ -1,5 +1,6 @@
 package com.cg.employeeloginservice.controller;
 
+import com.cg.employeeloginservice.model.ChangePassword;
 import com.cg.employeeloginservice.model.User;
 import com.cg.employeeloginservice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,10 @@ public class EmployeeController {
         return new ResponseEntity<>(addedUser, HttpStatus.OK);
     }
 
-    @PutMapping("/login/change")
     @ApiOperation(value = "Changes password of user")
-    public ResponseEntity<User> changePassword(@RequestBody User user) {
-        User modifiedUser = employeeService.changePassword(user);
+    @PostMapping("/login/change")
+    public ResponseEntity<User> changePassword(@RequestBody ChangePassword changePassword) {
+        User modifiedUser = employeeService.changePassword(changePassword);
         return new ResponseEntity<>(modifiedUser, HttpStatus.OK);
     }
 
