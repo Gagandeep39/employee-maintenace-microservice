@@ -75,7 +75,7 @@ public class EmployeeDetails {
     @ApiModelProperty("Date of joining")
     private LocalDate dateOfJoining;
 
-    @Column(name = "email", length = 20)
+    @Column(name = "email", length = 50)
     @ApiModelProperty("Email id")
     private String email;
 
