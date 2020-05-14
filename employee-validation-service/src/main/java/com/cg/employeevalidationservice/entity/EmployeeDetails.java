@@ -5,7 +5,7 @@
  * @modify date 2020-05-05 17:32:19
  * @desc Storing User details
  */
-package com.cg.employeevalidationservice.model;
+package com.cg.employeevalidationservice.entity;
 
 import com.cg.employeevalidationservice.enums.Gender;
 import com.cg.employeevalidationservice.enums.Grade;

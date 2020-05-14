@@ -1,4 +1,4 @@
-package com.cg.employeevalidationservice.model;
+package com.cg.employeevalidationservice.entity;
 
 import java.time.LocalDate;
 

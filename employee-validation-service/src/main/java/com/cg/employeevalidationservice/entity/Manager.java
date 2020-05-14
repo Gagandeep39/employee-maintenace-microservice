@@ -1,7 +1,7 @@
 /* 
 @author Pranav Karmarkar
 */
-package com.cg.employeevalidationservice.model;
+package com.cg.employeevalidationservice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

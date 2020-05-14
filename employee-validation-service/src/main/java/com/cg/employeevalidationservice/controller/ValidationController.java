@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-import com.cg.employeevalidationservice.model.Department;
-import com.cg.employeevalidationservice.model.Grade;
-import com.cg.employeevalidationservice.model.Manager;
-import com.cg.employeevalidationservice.model.Role;
+import com.cg.employeevalidationservice.entity.Department;
+import com.cg.employeevalidationservice.entity.Grade;
+import com.cg.employeevalidationservice.entity.Manager;
+import com.cg.employeevalidationservice.entity.Role;
 import com.cg.employeevalidationservice.service.ValidationService;
 
 @CrossOrigin("*")
