@@ -24,6 +24,11 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel("Department - Stores the department")
 public class Department {
 
+    /**
+     * Department ID
+     * Uses a sequence generator named dept_id_sequence"
+     * Initial value is 100000
+     */
     @Id
     @SequenceGenerator(name = "dept_id_sequence", initialValue = 100000, allocationSize = 1)
     @GeneratedValue(generator = "dept_id_sequence", strategy = GenerationType.SEQUENCE)
@@ -31,6 +36,9 @@ public class Department {
     @ApiModelProperty("Department ID")
     private Integer departmentId;
 
+    /**
+     * Department Name
+     */
     @Column(name = "dept_name", length = 25)
     @ApiModelProperty("Department Name")
     private String departmentName;
