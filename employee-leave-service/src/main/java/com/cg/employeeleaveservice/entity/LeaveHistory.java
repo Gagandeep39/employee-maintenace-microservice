@@ -1,4 +1,4 @@
-package com.cg.employeeleaveservice.model;
+package com.cg.employeeleaveservice.entity;
 
 import com.cg.employeeleaveservice.enums.LeaveStatus;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

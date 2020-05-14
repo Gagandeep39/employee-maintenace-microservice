@@ -1,6 +1,6 @@
 package com.cg.employeeleaveservice.controller;
 
-import com.cg.employeeleaveservice.model.LeaveHistory;
+import com.cg.employeeleaveservice.entity.LeaveHistory;
 import com.cg.employeeleaveservice.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

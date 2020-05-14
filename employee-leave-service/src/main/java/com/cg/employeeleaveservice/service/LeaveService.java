@@ -1,6 +1,6 @@
 package com.cg.employeeleaveservice.service;
 
-import com.cg.employeeleaveservice.model.LeaveHistory;
+import com.cg.employeeleaveservice.entity.LeaveHistory;
 import org.springframework.data.domain.Page;
 
 /**

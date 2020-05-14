@@ -1,4 +1,4 @@
-package com.cg.employeeleaveservice.model;
+package com.cg.employeeleaveservice.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
