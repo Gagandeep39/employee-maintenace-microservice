@@ -5,7 +5,7 @@
  * @modify date 2020-05-05 17:32:19
  * @desc Storing User details
  */
-package com.cg.employeeloginservice.model;
+package com.cg.employeeloginservice.entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.cg.employeeloginservice.model;
+package com.cg.employeeloginservice.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

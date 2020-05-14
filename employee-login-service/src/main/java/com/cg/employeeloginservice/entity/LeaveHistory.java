@@ -1,4 +1,4 @@
-package com.cg.employeeloginservice.model;
+package com.cg.employeeloginservice.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -5,7 +5,7 @@
  * @modify date 2020-05-06 18:33:35
  * @desc Employees adress details
  */
-package com.cg.employeeloginservice.model;
+package com.cg.employeeloginservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
