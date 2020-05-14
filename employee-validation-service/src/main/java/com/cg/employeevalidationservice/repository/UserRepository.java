@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-import com.cg.employeevalidationservice.model.User;
+import com.cg.employeevalidationservice.entity.User;
 import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Integer> {

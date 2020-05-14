@@ -10,10 +10,10 @@ import com.cg.employeevalidationservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.employeevalidationservice.model.Department;
-import com.cg.employeevalidationservice.model.Grade;
-import com.cg.employeevalidationservice.model.Manager;
-import com.cg.employeevalidationservice.model.Role;
+import com.cg.employeevalidationservice.entity.Department;
+import com.cg.employeevalidationservice.entity.Grade;
+import com.cg.employeevalidationservice.entity.Manager;
+import com.cg.employeevalidationservice.entity.Role;
 import com.cg.employeevalidationservice.repository.DepartmentRepository;
 import com.cg.employeevalidationservice.repository.EmployeeRepository;
 import com.cg.employeevalidationservice.repository.GradeRepository;

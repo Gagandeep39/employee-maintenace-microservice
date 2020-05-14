@@ -2,8 +2,8 @@ package com.cg.employeeleaveservice.service.implementation;
 
 import com.cg.employeeleaveservice.enums.LeaveStatus;
 import com.cg.employeeleaveservice.exception.LeaveNotFoundException;
-import com.cg.employeeleaveservice.model.EmployeeDetails;
-import com.cg.employeeleaveservice.model.LeaveHistory;
+import com.cg.employeeleaveservice.entity.EmployeeDetails;
+import com.cg.employeeleaveservice.entity.LeaveHistory;
 import com.cg.employeeleaveservice.repository.LeaveHistoryRepository;
 import com.cg.employeeleaveservice.service.LeaveService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.Period;
-import java.util.List;
 import java.util.Optional;
 
 /**

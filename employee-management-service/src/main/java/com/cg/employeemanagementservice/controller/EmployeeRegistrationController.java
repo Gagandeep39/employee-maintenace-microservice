@@ -1,7 +1,7 @@
 	package com.cg.employeemanagementservice.controller;
 
-import com.cg.employeemanagementservice.model.EmployeeDetails;
-import com.cg.employeemanagementservice.model.User;
+import com.cg.employeemanagementservice.entity.EmployeeDetails;
+import com.cg.employeemanagementservice.entity.User;
 import com.cg.employeemanagementservice.service.EmployeeRegistrationService;
 import com.cg.employeemanagementservice.service.UserService;
 

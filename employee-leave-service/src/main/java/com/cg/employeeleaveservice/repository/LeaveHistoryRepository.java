@@ -1,6 +1,6 @@
 package com.cg.employeeleaveservice.repository;
 
-import com.cg.employeeleaveservice.model.LeaveHistory;
+import com.cg.employeeleaveservice.entity.LeaveHistory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

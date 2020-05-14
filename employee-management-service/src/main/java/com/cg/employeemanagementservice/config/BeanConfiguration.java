@@ -2,7 +2,7 @@ package com.cg.employeemanagementservice.config;
 
 import java.util.Collections;
 
-import com.cg.employeemanagementservice.model.User;
+import com.cg.employeemanagementservice.entity.User;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
