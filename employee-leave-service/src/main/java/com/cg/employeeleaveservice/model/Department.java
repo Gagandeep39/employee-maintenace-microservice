@@ -11,6 +11,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "department_table")
 @Getter
@@ -18,15 +21,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
+@ApiModel("Department - Stores the department")
 public class Department {
 
     @Id
     @SequenceGenerator(name = "dept_id_sequence", initialValue = 100000, allocationSize = 1)
     @GeneratedValue(generator = "dept_id_sequence", strategy = GenerationType.SEQUENCE)
     @Column(name = "dept_id", length = 6)
+    @ApiModelProperty("Department ID")
     private Integer departmentId;
 
     @Column(name = "dept_name", length = 25)
+    @ApiModelProperty("Department Name")
     private String departmentName;
 
 }

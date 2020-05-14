@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * @author Gagandeep
  * @date 07-05-2020
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")
 @RestController
+@Api("Manage employee related operations")
 public class EmployeeRegistrationController {
 
     @Autowired
@@ -31,18 +35,21 @@ public class EmployeeRegistrationController {
     private UserService userService;
 
     @PostMapping("/employees")
+    @ApiOperation(value = "Adds new employee details")
     public ResponseEntity<EmployeeDetails> addEmployee(@RequestBody User user){
         EmployeeDetails employeeDetails = employeeRegistrationService.addEmployeeDetails(user);
         return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
     }
 
     @PostMapping("/employees/user")
+    @ApiOperation(value = "Adds new user details")
     public ResponseEntity<User> addUser(@RequestBody User user){
         User addedUser = userService.addUser(user);
         return new ResponseEntity<>(addedUser, HttpStatus.OK);
     }
 
     @PutMapping("/employees")
+    @ApiOperation(value = "Updates employee details")
     public ResponseEntity<EmployeeDetails> updateEmployeeDetails(@RequestBody EmployeeDetails details){
         EmployeeDetails employeeDetails = employeeRegistrationService.updateEmployeeDetails(details);
         return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
