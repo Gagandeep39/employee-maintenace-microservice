@@ -52,8 +52,7 @@
         placeholder="Enter Password">
         <div class="invalid-feedback" *ngIf="submitted && userRegisterationForm.get('password').invalid">
           <div *ngIf="userRegisterationForm.get('password').errors['required']">* Required</div>
-          <div *ngIf="userRegisterationForm.get('password').errors['pattern']">Password must contain atleast 1 uppercase, lowercase and number</div>
-          <div *ngIf="userRegisterationForm.get('password').errors['minLength']">Username must have minimum 6 characters</div>
+          <div *ngIf="userRegisterationForm.get('password').errors['pattern']">Password must contain atleast 1 uppercase, lowercase and number with length (6-12)</div>
         </div>
       </div>
       <!-- confirm password  -->
