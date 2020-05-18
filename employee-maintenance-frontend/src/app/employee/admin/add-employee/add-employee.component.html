@@ -86,7 +86,7 @@
           >
           <div class="invalid-feedback" *ngIf="submitted && employeeForm.get('dateOfJoining').invalid">
             <div *ngIf="employeeForm.get('dateOfJoining').errors['required']">* Required</div>
-            <div *ngIf="employeeForm.get('dateOfJoining').errors['futureDateForbidden']">Future dte not allowed</div>
+            <!-- <div *ngIf="employeeForm.get('dateOfJoining').errors['futureDateForbidden']">Future dte not allowed</div> -->
           </div>
         </div>
       </div>
