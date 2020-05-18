@@ -1,7 +1,7 @@
 package com.cg.employeemanagementservice.service;
 
-import com.cg.employeemanagementservice.model.EmployeeDetails;
-import com.cg.employeemanagementservice.model.User;
+import com.cg.employeemanagementservice.entity.EmployeeDetails;
+import com.cg.employeemanagementservice.entity.User;
 
 /**
  * @author Gagandeep
@@ -10,8 +10,17 @@ import com.cg.employeemanagementservice.model.User;
  */
 public interface EmployeeRegistrationService {
 
+    /**
+     * Add a new User with credentials
+     * @param user Complete user object with User credential and Employee Details
+     * @return Details of the added Employee
+     */
     EmployeeDetails addEmployeeDetails(User user);
 
-	EmployeeDetails updateEmployeeDetails(EmployeeDetails user);
+    /**
+     * @param details The user details to be updated
+     * @return Updated Data from database
+     */
+	EmployeeDetails updateEmployeeDetails(EmployeeDetails details);
 
 }

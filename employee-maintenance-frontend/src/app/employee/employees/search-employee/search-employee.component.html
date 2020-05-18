@@ -13,14 +13,14 @@
           <li class="dropdown-item"><a (click)="setSearchType('firstName')">First Name</a></li>
           <li class="dropdown-item"><a (click)="setSearchType('lastName')">Last Name</a></li>
           <li class="dropdown-divider"></li>
-          <li class="dropdown-submenu">
+          <li class="dropdown-submenu" *ngIf="departments.length!=0">
             <a class="dropdown-item">Department</a>
             <ul class="dropdown-menu">
               <li class="dropdown-item" *ngFor="let department of departments"><a
                   (click)="searchItem('departments', department.departmentName)">{{department.departmentName}}</a></li>
             </ul>
           </li>
-          <li class="dropdown-submenu">
+          <li class="dropdown-submenu" *ngIf="grades.length!=0">
             <a class="dropdown-item">Grade</a>
             <ul class="dropdown-menu">
               <li class="dropdown-item" *ngFor="let grade of grades"><a
@@ -28,7 +28,7 @@
                   ({{grade.minSalary}}-{{grade.maxSalary}})</a></li>
             </ul>
           </li>
-          <li class="dropdown-submenu">
+          <li class="dropdown-submenu" *ngIf="maritalStatuses.length!=0">
             <a class="dropdown-item">Marital Status</a>
             <ul class="dropdown-menu">
               <li class="dropdown-item" *ngFor="let maritalStatus of maritalStatuses"

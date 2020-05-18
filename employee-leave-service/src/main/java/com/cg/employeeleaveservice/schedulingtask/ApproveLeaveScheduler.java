@@ -17,6 +17,9 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * A schedling task to approve leaves
+ */
 @Component
 @Slf4j
 public class ApproveLeaveScheduler {
@@ -26,6 +29,8 @@ public class ApproveLeaveScheduler {
 
     /**
      * Executed every day at 11:00 pm
+     * Uses CRON Standard
+     * second, mind, hour, day, week, month
      */
     @Scheduled(cron = "0 0 23 * * *")
     public void autoApproveLeave() {

@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.cg.employeevalidationservice.model.EmployeeDetails;
+import com.cg.employeevalidationservice.entity.EmployeeDetails;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeDetails, Integer> {

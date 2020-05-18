@@ -66,9 +66,8 @@ export class AddUserComponent implements OnInit {
         password: new FormControl('', [
           Validators.required,
           Validators.pattern(
-            '^(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,}$'
-          ),
-          Validators.minLength(6),
+            '^(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,12}$'
+          )
         ]),
         confirmPassword: new FormControl('', [
           Validators.required,

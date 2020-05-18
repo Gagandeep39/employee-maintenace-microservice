@@ -1,9 +1,8 @@
 package com.cg.employeemanagementservice.service.implementation;
 
-import com.cg.employeemanagementservice.model.User;
+import com.cg.employeemanagementservice.entity.User;
 import com.cg.employeemanagementservice.service.UserService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.mode';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
+import { ChangePassword } from '../models/change-password.model';
+import { pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +30,34 @@ export class AuthService {
       .pipe(
         tap((user: User) => {
           this.loggedInUser = user;
-          sessionStorage.setItem('user', JSON.stringify(user));
-          sessionStorage.setItem('userType', this.loggedInUser.role.role);
+          this.saveToSessionStorage(user);
           if (this.keepMeSignedInToggleState) {
-            localStorage.setItem('user', JSON.stringify(user));
-            localStorage.setItem('userType', this.loggedInUser.role.role);
+            this.saveToLocalStorage(user);
           }
         })
       );
+  }
+
+  saveToSessionStorage(user: User) {
+    sessionStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('userType', user.role.role);
+  }
+
+  saveToLocalStorage(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('userType', this.loggedInUser.role.role);
+  }
+  
+  changePassword(changePassword: ChangePassword) {
+    let user: User = this.fetchFromSessionStorage();
+    changePassword.userId = user.empId
+    return this.httpClient.post<User>(environment.url + environment.changePassword, changePassword).
+    pipe(tap(response => {
+      this.saveToSessionStorage(response);
+      if (this.keepMeSignedInToggleState) {
+        this.saveToLocalStorage(response);
+      }
+    }));
   }
 
   public logOut(): void {

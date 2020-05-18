@@ -168,3 +168,14 @@ Content-Type: application/json
     }
 }
 
+### Fetch By MaritalStatus
+GET http://localhost:9200/employees/search/maritalStatus/Single,Divorc
+
+### Fetch By First Name
+GET http://localhost:9200/employees/search/firstName/g
+
+### Search by name
+GET http://localhost:9200/employees/search/lastName/s
+
+### Searc By ID
+GET http://localhost:9200/employees/search/genders/M

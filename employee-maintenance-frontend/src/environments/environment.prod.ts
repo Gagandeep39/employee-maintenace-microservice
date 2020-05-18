@@ -13,10 +13,10 @@ export const environment = {
   byId: '/employee-management-service/employees/search/id/',
 
   employeeLeave: '/employee-leave-service/leaves/employee/',
-  leaveBalance: '/employee-management-service/leaves/balance/',
-  subEmployeeLeaves: '/employee-management-service/leaves/manager/',
-  updateLeave: '/employee-management-service/leaves/',
-  createLeave: '/employee-management-service/leaves/',
+  leaveBalance: '/employee-leave-service/leaves/balance/',
+  subEmployeeLeaves: '/employee-leave-service/leaves/manager/',
+  updateLeave: '/employee-leave-service/leaves/',
+  createLeave: '/employee-leave-service/leaves/',
 
   grades: '/employee-validation-service/grades',
   departments: '/employee-validation-service/departments',

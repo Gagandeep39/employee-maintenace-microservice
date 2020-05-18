@@ -128,7 +128,7 @@ export class AddEmployeeComponent implements OnInit {
       ]),
       dateOfJoining: new FormControl('', [
         Validators.required,
-        CustomValidators.forbidFutureDate,
+        // CustomValidators.forbidFutureDate,
       ]),
       maritalStatus: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
